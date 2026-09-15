@@ -1,0 +1,173 @@
+// ---------------------------------------------------------------------------
+// Global, non-component-scoped styles: page-level resets, the keyframes
+// shared by every section, and the scroll-driven reveal system.
+//
+// Keyframe names and the `[data-reveal]` / `[data-motion]` attribute
+// selectors below are intentionally global (not inside a `.module.scss`
+// file) so any component can opt an element in just by adding the
+// attribute + an `animation-name` in its own module stylesheet.
+// ---------------------------------------------------------------------------
+@use "../abstracts/variables" as v;
+
+body {
+  overflow-x: hidden;
+}
+
+// ---- Keyframes --------------------------------------------------------
+
+// `rise`, `riseIn` and `fadein` are symmetric: they play forward as an
+// element enters from below (0% → 14%), hold once settled in view
+// (14% → 86%), then play in reverse as it exits off the top (86% → 100%).
+// Paired with the full-lifetime `animation-range` below, this is what makes
+// them animate on the way out when you scroll back up, not just on entry.
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+  14%,
+  86% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-34px);
+  }
+}
+
+@keyframes riseIn {
+  0% {
+    opacity: 0;
+    transform: translateY(46px) scale(0.92);
+  }
+  14%,
+  86% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-46px) scale(0.92);
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  14%,
+  86% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulsedot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.78);
+  }
+}
+
+@keyframes sheen {
+  0% {
+    transform: translateX(-130%);
+  }
+  55%,
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -26px, 0) scale(1.08);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(560%);
+    opacity: 0;
+  }
+}
+
+@keyframes growLine {
+  0% {
+    transform: scaleX(0);
+  }
+  14%,
+  86% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+// ---- Scroll-driven reveals ---------------------------------------------
+//
+// Any element with `data-reveal` and an `animation-name` set (e.g. `rise`
+// or `riseIn`) is tied to its own scroll position for as long as any part
+// of it is on screen, via the CSS `animation-timeline: view()` API — no JS
+// observer needed. `animation-range: cover 0% cover 100%` spans the
+// element's entire visible lifetime (first pixel in, to last pixel out), so
+// scrolling down plays it forward as the element enters and again in
+// reverse as it leaves off the top, and scrolling back up replays both in
+// reverse — motion follows the scrollbar directly, in either direction.
+// Browsers without support (checked via `@supports`) get the animation
+// disabled and full opacity, so content is never stuck invisible.
+
+[data-reveal] {
+  animation-duration: 0.8s;
+  animation-timing-function: v.$ease-standard;
+  animation-fill-mode: both;
+  animation-timeline: view();
+  animation-range: cover 0% cover 100%;
+}
+
+@supports not (animation-timeline: view()) {
+  [data-reveal] {
+    animation-name: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-motion] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

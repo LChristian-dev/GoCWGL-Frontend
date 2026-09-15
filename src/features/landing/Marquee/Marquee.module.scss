@@ -1,0 +1,37 @@
+@use "abstracts/variables" as v;
+@use "abstracts/keyframes" as k;
+
+// Defined here (rather than referencing the global keyframes in
+// base/_global.scss) so CSS Modules scopes the `@keyframes` and the
+// `.track` rule below to the same name — see abstracts/_keyframes.scss.
+@include k.keyframes-marquee;
+
+.band {
+  position: relative;
+  overflow: hidden;
+  background: v.$color-surface-2;
+  border-top: 1px solid v.$color-border;
+  border-bottom: 1px solid v.$color-border;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  padding: 15px 0;
+  animation: marquee 34s linear infinite;
+}
+
+.group {
+  display: flex;
+  gap: 44px;
+  padding-right: 44px;
+  font-family: v.$font-mono;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+}
+
+.dot {
+  color: v.$color-amber-deep;
+}

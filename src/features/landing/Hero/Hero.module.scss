@@ -1,0 +1,144 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+@use "abstracts/keyframes" as k;
+
+// Defined here so CSS Modules scopes each `@keyframes` together with
+// its usages below (and inside the drift-glow mixin calls) — see
+// abstracts/_keyframes.scss.
+@include k.keyframes-rise;
+@include k.keyframes-riseIn;
+@include k.keyframes-fadein;
+@include k.keyframes-pulsedot;
+@include k.keyframes-drift;
+
+.hero {
+  position: relative;
+  background: v.$color-surface;
+  color: v.$color-text;
+  overflow: hidden;
+}
+
+.glowAmber {
+  @include m.drift-glow(720px, rgba(247, 168, 27, 0.28), rgba(247, 168, 27, 0), 66%, 16s);
+  top: -220px;
+  right: -160px;
+}
+
+.glowNavy {
+  @include m.drift-glow(660px, rgba(28, 86, 160, 0.16), rgba(28, 86, 160, 0), 68%, 21s, reverse);
+  top: 160px;
+  left: -260px;
+}
+
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(13, 21, 32, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 21, 32, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 35%, #000 30%, transparent 78%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  @include m.container;
+  padding-top: 86px;
+  padding-bottom: 72px;
+}
+
+.grid {
+  @include m.auto-grid(336px, 58px);
+  align-items: center;
+}
+
+.column {
+  min-width: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 16px;
+  margin-bottom: 26px;
+  background: v.$color-amber-tint;
+  border: 1px solid rgba(247, 168, 27, 0.42);
+  border-radius: v.$radius-pill;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: v.$color-amber-ink;
+  animation: rise 0.7s v.$ease-standard both;
+}
+
+.badgeDot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: v.$radius-pill;
+  background: v.$color-amber;
+  animation: pulsedot 2.2s ease-in-out infinite;
+}
+
+.heading {
+  margin: 0 0 22px;
+  font-size: clamp(42px, 5.8vw, 70px);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  animation: riseIn 0.85s v.$ease-standard 0.06s both;
+}
+
+.headingGradient {
+  background-image: linear-gradient(96deg, v.$color-amber-deep, v.$color-amber 55%, v.$color-amber-deep);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  margin: 0 0 34px;
+  max-width: 534px;
+  font-size: 19px;
+  line-height: 1.62;
+  color: v.$color-text-muted;
+  text-wrap: pretty;
+  animation: rise 0.85s v.$ease-standard 0.16s both;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 13px;
+  animation: rise 0.85s v.$ease-standard 0.24s both;
+}
+
+.ctaPrimary {
+  padding: 18px 32px;
+  font-size: 17px;
+}
+
+.ctaSecondary {
+  padding: 18px 28px;
+  font-size: 17px;
+}
+
+.trust {
+  margin: 22px 0 0;
+  font-family: v.$font-mono;
+  font-size: 13px;
+  color: v.$color-text-muted;
+  animation: fadein 1s 0.55s both;
+}
+
+.reportColumn {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  animation: riseIn 0.95s v.$ease-standard 0.3s both;
+}

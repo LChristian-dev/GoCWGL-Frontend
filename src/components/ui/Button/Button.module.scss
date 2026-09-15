@@ -1,0 +1,21 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+@use "abstracts/keyframes" as k;
+
+@include k.keyframes-sheen;
+
+.amber {
+  @include m.button-amber;
+}
+
+.outlineLight {
+  @include m.button-outline-light;
+}
+
+.outlineDark {
+  @include m.button-outline-dark;
+}
+
+.sheen {
+  @include m.sheen;
+}

@@ -1,0 +1,133 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+@use "abstracts/keyframes" as k;
+
+@include k.keyframes-drift;
+
+.section {
+  position: relative;
+  overflow: hidden;
+  background: v.$color-ink;
+  color: v.$color-text-on-dark;
+}
+
+.glow {
+  @include m.drift-glow(620px, rgba(28, 86, 160, 0.35), rgba(28, 86, 160, 0), 68%, 19s);
+  top: 40px;
+  right: -180px;
+}
+
+.container {
+  position: relative;
+  @include m.container;
+  padding-block: 100px;
+}
+
+.intro {
+  max-width: 660px;
+  margin-bottom: 52px;
+}
+
+.eyebrow {
+  @include m.eyebrow(v.$color-amber);
+}
+
+.heading {
+  @include m.heading-2;
+  margin-bottom: 16px;
+}
+
+.lead {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: v.$color-text-on-dark-muted;
+}
+
+.steps {
+  @include m.auto-grid(240px, 20px);
+}
+
+.step {
+  min-width: 0;
+  padding: 30px 26px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: v.$radius-md;
+  @include m.card-hover-dark;
+}
+
+.stepFeatured {
+  min-width: 0;
+  padding: 30px 26px;
+  color: v.$color-text-on-amber-strong;
+  background: v.$color-amber;
+  border: 1px solid v.$color-amber;
+  border-radius: v.$radius-md;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 52px -24px rgba(247, 168, 27, 0.8);
+  }
+}
+
+.stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 18px;
+  border-radius: v.$radius-icon;
+  background: rgba(247, 168, 27, 0.14);
+  color: v.$color-amber;
+  font-family: v.$font-mono;
+  font-size: 13px;
+}
+
+.stepNumberFeatured {
+  background: rgba(10, 18, 32, 0.14);
+  color: v.$color-text-on-amber-strong;
+}
+
+.stepTitle {
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+}
+
+.stepBody {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: v.$color-text-on-dark-muted;
+}
+
+.stepBodyFeatured {
+  color: v.$color-text-on-amber;
+}
+
+.notes {
+  @include m.auto-grid(250px, 20px);
+  margin-top: 20px;
+}
+
+.note {
+  min-width: 0;
+  padding: 22px 24px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: v.$radius-sm;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: v.$color-text-on-dark-body;
+}
+
+.noteStrong {
+  font-weight: 700;
+  color: v.$color-text-on-dark;
+}

@@ -1,0 +1,10 @@
+export { Hero } from "./Hero/Hero";
+export { Marquee } from "./Marquee/Marquee";
+export { Stats } from "./Stats/Stats";
+export { Story } from "./Story/Story";
+export { HowItWorks } from "./HowItWorks/HowItWorks";
+export { Benefits } from "./Benefits/Benefits";
+export { Pricing } from "./Pricing/Pricing";
+export { Timeline } from "./Timeline/Timeline";
+export { Faq } from "./Faq/Faq";
+export { CtaBlock } from "./CtaBlock/CtaBlock";

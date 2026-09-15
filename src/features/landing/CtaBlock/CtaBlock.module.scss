@@ -1,0 +1,117 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+@use "abstracts/keyframes" as k;
+
+@include k.keyframes-drift;
+
+.section {
+  position: relative;
+  overflow: hidden;
+  background: v.$color-ink;
+  color: v.$color-text-on-dark;
+}
+
+.glow {
+  @include m.drift-glow(680px, rgba(247, 168, 27, 0.24), rgba(247, 168, 27, 0), 66%, 17s);
+  top: -180px;
+  right: -140px;
+}
+
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 70% 70% at 40% 50%, #000 25%, transparent 75%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  @include m.container;
+  padding-block: 104px;
+}
+
+.grid {
+  @include m.auto-grid(320px, 54px);
+  align-items: center;
+}
+
+.column {
+  min-width: 0;
+}
+
+.heading {
+  margin: 0 0 18px;
+  font-size: clamp(32px, 4.4vw, 50px);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.032em;
+  text-wrap: balance;
+}
+
+.lead {
+  margin: 0 0 34px;
+  max-width: 510px;
+  font-size: 18.5px;
+  line-height: 1.6;
+  color: v.$color-text-on-dark-muted;
+  text-wrap: pretty;
+}
+
+.cta {
+  padding: 19px 34px;
+  font-size: 17.5px;
+}
+
+.finePrint {
+  margin: 24px 0 0;
+  font-size: 16px;
+  color: v.$color-text-on-dark-muted;
+}
+
+.finePrintEmail {
+  color: v.$color-amber;
+  font-weight: 600;
+
+  &:hover {
+    color: v.$color-amber-hover;
+  }
+}
+
+.panel {
+  min-width: 0;
+  padding: 32px 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: v.$radius-lg;
+}
+
+.panelLabel {
+  margin: 0 0 20px;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: v.$color-text-on-dark-subtle;
+}
+
+.panelList {
+  display: grid;
+  gap: 16px;
+  font-size: 16.5px;
+  line-height: 1.5;
+}
+
+.panelItem {
+  display: flex;
+  gap: 13px;
+}
+
+.panelNumber {
+  font-family: v.$font-mono;
+  font-size: 14px;
+  color: v.$color-amber;
+}

@@ -1,0 +1,34 @@
+@use "abstracts/variables" as v;
+
+.footer {
+  background: v.$color-surface;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: v.$container-max;
+  margin-inline: auto;
+  padding: 46px v.$container-pad;
+}
+
+.meta {
+  margin: 0;
+  font-size: 14.5px;
+  color: v.$color-text-subtle;
+}
+
+.email {
+  color: v.$color-navy;
+  font-weight: 600;
+}
+
+.copyright {
+  margin: 0;
+  font-family: v.$font-mono;
+  font-size: 12.5px;
+  color: v.$color-text-faint;
+}

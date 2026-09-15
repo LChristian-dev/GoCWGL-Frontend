@@ -1,0 +1,41 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+
+.section {
+  background: v.$color-surface;
+}
+
+.container {
+  @include m.container($max: v.$container-narrow);
+  padding-top: 84px;
+  padding-bottom: 92px;
+}
+
+.eyebrow {
+  @include m.eyebrow;
+}
+
+.quote {
+  margin: 0 0 22px;
+  font-size: clamp(23px, 2.9vw, 32px);
+  line-height: 1.38;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+.body {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.66;
+  color: v.$color-text-muted;
+  text-wrap: pretty;
+}
+
+.rule {
+  transform-origin: left;
+  margin-top: 40px;
+  height: 3px;
+  border-radius: v.$radius-pill;
+  background: linear-gradient(90deg, v.$color-amber, rgba(247, 168, 27, 0));
+}

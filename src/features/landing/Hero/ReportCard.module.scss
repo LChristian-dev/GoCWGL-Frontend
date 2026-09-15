@@ -1,0 +1,130 @@
+@use "abstracts/variables" as v;
+@use "abstracts/keyframes" as k;
+
+@include k.keyframes-scanline;
+@include k.keyframes-pulsedot;
+@include k.keyframes-rise;
+@include k.keyframes-fadein;
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  overflow: hidden;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-lg;
+  padding: 26px;
+  box-shadow: 0 44px 90px -42px rgba(13, 21, 32, 0.42);
+  transition: transform 0.45s v.$ease-standard;
+
+  &:hover {
+    transform: translateY(-8px);
+  }
+}
+
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 90px;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 168, 27, 0),
+    rgba(247, 168, 27, 0.14),
+    rgba(247, 168, 27, 0)
+  );
+  animation: scanline 6.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid v.$color-border-card;
+}
+
+.headerLabel {
+  font-family: v.$font-mono;
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: v.$color-text-subtle;
+}
+
+.liveDot {
+  display: block;
+  margin-left: auto;
+  width: 7px;
+  height: 7px;
+  border-radius: v.$radius-pill;
+  background: v.$color-success;
+  box-shadow: 0 0 12px rgba(53, 208, 127, 0.9);
+  animation: pulsedot 2.4s ease-in-out infinite;
+}
+
+.metrics {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding-top: 12px;
+}
+
+.metricRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 11px 0;
+
+  &:not(:first-child) {
+    border-top: 1px solid v.$color-border-row;
+  }
+
+  // Each row rises in on its own beat, matching the report's stagger.
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation: rise 0.6s (0.38s + $i * 0.12s) both;
+    }
+  }
+}
+
+.metricLabel {
+  font-size: 15.5px;
+  color: v.$color-text-muted;
+}
+
+.metricValue {
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: v.$color-text;
+}
+
+.metricValueAccent {
+  color: v.$color-amber-deep;
+}
+
+.note {
+  margin-top: 10px;
+  padding: 15px 17px;
+  background: v.$color-amber-tint;
+  border: 1px solid rgba(247, 168, 27, 0.28);
+  border-radius: v.$radius-icon;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: v.$color-note-text;
+  animation: rise 0.6s 1.1s both;
+}
+
+.caption {
+  margin: 8px 0 0;
+  font-family: v.$font-mono;
+  font-size: 11px;
+  color: v.$color-text-faint;
+  animation: fadein 0.6s 1.2s both;
+}

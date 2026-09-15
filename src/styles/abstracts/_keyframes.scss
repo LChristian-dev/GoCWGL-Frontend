@@ -1,0 +1,118 @@
+// ---------------------------------------------------------------------------
+// Keyframe mixins.
+//
+// CSS Modules only renames an `animation-name` consistently with its
+// `@keyframes` when both live in the *same* file — referencing a keyframe
+// defined in the global stylesheet (base/_global.scss) from inside a
+// `*.module.scss` file's `animation:` property does not resolve correctly
+// here (Next's Turbopack/Lightning CSS pipeline has no working escape hatch
+// for it in a Sass value). So: any component that plays one of these
+// animations via a CSS Modules *class* (as opposed to a plain inline
+// `style={{ animationName: ... }}`, which bypasses module scoping entirely
+// and can keep using the plain global keyframes in base/_global.scss)
+// should `@include` the matching mixin below once, then reference the
+// keyframe by its plain name as usual — the module will scope the
+// `@keyframes` and every usage in that file together, consistently.
+// ---------------------------------------------------------------------------
+
+@mixin keyframes-rise {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin keyframes-riseIn {
+  @keyframes riseIn {
+    from {
+      opacity: 0;
+      transform: translateY(34px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+@mixin keyframes-fadein {
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin keyframes-pulsedot {
+  @keyframes pulsedot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(0.78);
+    }
+  }
+}
+
+@mixin keyframes-sheen {
+  @keyframes sheen {
+    0% {
+      transform: translateX(-130%);
+    }
+    55%,
+    100% {
+      transform: translateX(240%);
+    }
+  }
+}
+
+@mixin keyframes-drift {
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(0, -26px, 0) scale(1.08);
+    }
+  }
+}
+
+@mixin keyframes-marquee {
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@mixin keyframes-scanline {
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(560%);
+      opacity: 0;
+    }
+  }
+}

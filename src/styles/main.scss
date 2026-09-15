@@ -1,0 +1,18 @@
+// ---------------------------------------------------------------------------
+// Global stylesheet entry point — imported once, from `src/app/layout.tsx`.
+//
+// Everything section/component-specific lives in a colocated
+// `*.module.scss` file instead (see `src/components` and `src/features`),
+// which can reach the tokens/mixins below via:
+//   @use "abstracts/variables" as v;
+//   @use "abstracts/mixins" as m;
+// (resolvable thanks to `sassOptions.includePaths` in `next.config.ts`).
+// ---------------------------------------------------------------------------
+@forward "abstracts/variables";
+@forward "abstracts/mixins";
+@forward "abstracts/functions";
+@forward "abstracts/keyframes";
+
+@use "base/reset";
+@use "base/typography";
+@use "base/global";

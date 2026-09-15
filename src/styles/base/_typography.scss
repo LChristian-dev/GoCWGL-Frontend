@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------------------
+// Base typography. The Archivo / IBM Plex Mono font files themselves are
+// loaded and self-hosted via `next/font/google` in `src/app/layout.tsx`,
+// which exposes them as the `--font-archivo` / `--font-mono` CSS variables
+// consumed by the `$font-heading` / `$font-mono` tokens below.
+// ---------------------------------------------------------------------------
+@use "../abstracts/variables" as v;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: v.$font-heading;
+  color: v.$color-text;
+  background: v.$color-surface;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: v.$color-navy;
+  text-decoration: none;
+
+  &:hover {
+    color: v.$color-amber-deep;
+  }
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}

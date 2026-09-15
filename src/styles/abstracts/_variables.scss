@@ -1,0 +1,66 @@
+// ---------------------------------------------------------------------------
+// Design tokens — GoCWGL "Revenue Engine" landing page
+// Source of truth: design handoff README (design_handoff_gocwgl_landing)
+// ---------------------------------------------------------------------------
+
+// Colors — brand
+$color-ink: #070c14; // dark section backgrounds, dark cards
+$color-navy: #0f2e56; // brand primary; outline-button text/border on light
+$color-navy-grad-from: #133f74;
+$color-navy-grad-to: #0b1e3a;
+$color-amber: #f7a81b; // brand secondary; primary CTA fill, accents on dark
+$color-amber-deep: #c4820d; // amber on light backgrounds
+$color-amber-ink: #a9700a; // text inside amber pill badges on light
+$color-amber-tint: #fff6e4; // amber-wash panels on light
+$color-amber-hover: #ffd27a; // amber link hover on dark
+
+// Colors — text
+$color-text: #0d1520; // primary text on light
+$color-text-muted: #5a6472; // body text on light
+$color-text-subtle: #7a8492; // tertiary text on light (>=16px only)
+$color-text-faint: #a3abb7; // captions on light
+$color-text-on-dark: #ffffff; // primary text on dark
+$color-text-on-dark-muted: #a8b6c9; // body text on dark
+$color-text-on-dark-subtle: #8fa0b6; // tertiary text on dark
+$color-text-on-dark-caption: #6c7c93; // caption / disabled text on dark
+$color-text-on-dark-body: #d6dee9; // card body copy on dark
+$color-text-on-amber: #3a2c0c; // body copy on amber card
+$color-text-on-amber-strong: #0a1220; // headings / button text on amber
+$color-text-fee-note: #f2debb; // annual fee note copy on dark
+
+// Colors — surfaces & borders
+$color-surface: #ffffff; // light section background
+$color-surface-2: #f8fafc; // light cards, marquee band, FAQ section
+$color-border: #e9ecf1; // borders on light
+$color-border-card: #edeff3; // card inner dividers (report card header)
+$color-border-row: #f2f4f7; // card inner dividers (report card rows)
+$color-border-dashed: #c9d0da; // "what we won't claim" card
+$color-border-outline: #d3dae4; // outline button border on light
+
+// Colors — status
+$color-success: #35d07f; // live dot in report card
+$color-note-text: #4a5666; // note-panel copy on light
+
+// Fonts (CSS variables are supplied by next/font in the root layout)
+$font-heading: var(--font-archivo), Helvetica, Arial, sans-serif;
+$font-mono: var(--font-mono), "SFMono-Regular", Menlo, monospace;
+
+// Easing
+$ease-standard: cubic-bezier(0.2, 0.75, 0.2, 1);
+
+// Layout
+$container-max: 1200px;
+$container-narrow: 920px;
+$container-faq: 900px;
+$container-pad: 26px;
+
+// Radii
+$radius-pill: 999px;
+$radius-lg: 20px;
+$radius-md: 18px;
+$radius-sm: 16px;
+$radius-icon: 12px;
+
+// Breakpoints (used sparingly — the design relies on auto-fit grids)
+$bp-sm: 640px;
+$bp-md: 860px;

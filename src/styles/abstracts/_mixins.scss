@@ -1,0 +1,169 @@
+@use "variables" as v;
+
+// Centered content wrapper matching the design's section widths.
+@mixin container($max: v.$container-max) {
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: v.$container-pad;
+}
+
+// Responsive card/column grid — collapses on its own via auto-fit, no
+// breakpoints needed. Matches the `repeat(auto-fit, minmax(min(100%, Npx), 1fr))`
+// pattern used throughout the design.
+@mixin auto-grid($min: 240px, $gap: 20px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, $min), 1fr));
+  gap: $gap;
+}
+
+// Mono, uppercase "eyebrow" label used above section headings.
+@mixin eyebrow($color: v.$color-amber-deep) {
+  margin: 0 0 14px;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@mixin heading-2 {
+  margin: 0;
+  font-size: clamp(32px, 4.2vw, 46px);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+// Shared base for every pill-shaped call to action.
+@mixin button-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: v.$radius-pill;
+  font-family: v.$font-heading;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+// The amber CTA's shadow and hover-lift distance both vary per instance in
+// the design (compare the nav pill to the hero button), so they're read
+// from custom properties the component sets inline, falling back to "none"
+// / the hero's own -3px lift when a given instance doesn't set them.
+@mixin button-amber {
+  @include button-base;
+  background: v.$color-amber;
+  color: v.$color-text-on-amber-strong;
+  font-weight: 700;
+  box-shadow: var(--btn-shadow, none);
+
+  &:hover {
+    transform: var(--btn-hover-lift, translateY(-3px));
+    box-shadow: var(--btn-shadow-hover, none);
+  }
+}
+
+@mixin button-outline-light {
+  @include button-base;
+  border: 1px solid v.$color-border-outline;
+  color: v.$color-navy;
+  font-weight: 600;
+  background: transparent;
+
+  &:hover {
+    border-color: v.$color-navy;
+    background: v.$color-surface-2;
+    transform: translateY(-3px);
+  }
+}
+
+@mixin button-outline-dark {
+  @include button-base;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: v.$color-text-on-dark;
+  font-weight: 600;
+  background: transparent;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: v.$color-text-on-dark;
+  }
+}
+
+// Diagonal sheen sweep rendered inside a CTA button; pair with a `<span>`
+// carrying this mixin. Duration varies per CTA in the design, so it's read
+// from a `--sheen-duration` custom property (set inline by the component)
+// rather than a Sass argument.
+//
+// NOTE: this mixin does NOT define the `sheen` keyframes itself — CSS
+// Modules only keeps an `animation-name` in sync with its `@keyframes` when
+// both live in the same compiled file, so the *caller* must
+// `@include k.keyframes-sheen;` once, at the top level of its own
+// `*.module.scss` file, before using this mixin (see abstracts/_keyframes.scss).
+@mixin sheen {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 45%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: sheen var(--sheen-duration, 4.2s) ease-in-out infinite;
+  pointer-events: none;
+}
+
+@mixin card-hover-light {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    background: v.$color-surface;
+    box-shadow: 0 30px 54px -32px rgba(13, 21, 32, 0.35);
+  }
+}
+
+@mixin card-hover-dark {
+  transition:
+    transform 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(247, 168, 27, 0.4);
+  }
+}
+
+// A soft radial glow that drifts slowly behind hero/dark sections.
+// $start/$end accept any valid CSS color (hex, rgb(), rgba()) — pass the
+// exact stops from the design tokens rather than deriving them here, since
+// each glow in the design uses its own alpha value.
+//
+// NOTE: like `sheen` above, this does NOT define the `drift` keyframes —
+// the caller must `@include k.keyframes-drift;` once at the top level of
+// its own file first (harmless to include once even if this mixin is then
+// used several times in that same file for multiple glows).
+@mixin drift-glow($size, $start, $end, $stop: 68%, $duration: 18s, $direction: normal) {
+  position: absolute;
+  width: $size;
+  height: $size;
+  border-radius: v.$radius-pill;
+  background: radial-gradient(circle, $start, $end $stop);
+  animation: drift $duration ease-in-out infinite $direction;
+  pointer-events: none;
+}

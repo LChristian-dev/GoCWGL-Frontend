@@ -1,0 +1,49 @@
+@use "abstracts/variables" as v;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid v.$color-border;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px v.$container-pad;
+  max-width: v.$container-max;
+  margin-inline: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: auto;
+  font-size: 15px;
+  font-weight: 500;
+
+  // Wrap instead of overflowing on narrow viewports — the design calls
+  // this out as the one spot that needs explicit small-screen handling.
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 10px;
+}
+
+.link {
+  color: v.$color-text;
+
+  &:hover {
+    color: v.$color-amber-deep;
+  }
+}
+
+.cta {
+  padding: 12px 22px;
+  font-size: 15px;
+  gap: 8px;
+}
