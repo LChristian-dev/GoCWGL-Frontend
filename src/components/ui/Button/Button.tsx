@@ -22,6 +22,13 @@ const variantClass: Record<ButtonVariant, string> = {
   outlineDark: styles.outlineDark,
 };
 
+// A plain `<a>`, deliberately not `next/link`: several callers point at
+// hash anchors on a long, scroll-animation-heavy page, and a `next/link`
+// client-side transition races its own "scroll to top" against "scroll to
+// hash" (both inherit the site's global `scroll-behavior: smooth`) — a race
+// that's lost often enough on a page this long to land in the wrong place.
+// A full page load has no such race. See Header.tsx for the fuller version
+// of this note.
 export function Button({
   variant,
   children,

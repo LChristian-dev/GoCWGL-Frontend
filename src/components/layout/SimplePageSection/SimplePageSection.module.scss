@@ -1,0 +1,147 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+@use "abstracts/keyframes" as k;
+
+// Both the drift glows and the badge's pulsing dot are CSS-Modules-class
+// animations, so their keyframes are defined here rather than referencing
+// the global ones — see abstracts/_keyframes.scss.
+@include k.keyframes-drift;
+@include k.keyframes-pulsedot;
+
+// A toned-down version of the hero's treatment (glows + dot grid), so
+// standalone pages like /survey and /book still feel like part of the same
+// site instead of a bare utility page.
+.section {
+  position: relative;
+  overflow: hidden;
+  background: v.$color-surface;
+}
+
+.glowAmber {
+  @include m.drift-glow(560px, rgba(247, 168, 27, 0.22), rgba(247, 168, 27, 0), 66%, 17s);
+  top: -190px;
+  right: -160px;
+}
+
+.glowNavy {
+  @include m.drift-glow(480px, rgba(28, 86, 160, 0.14), rgba(28, 86, 160, 0), 68%, 20s, reverse);
+  top: 200px;
+  left: -220px;
+}
+
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(13, 21, 32, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 21, 32, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 55% at 50% 30%, #000 30%, transparent 78%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  @include m.container($max: v.$container-narrow);
+  padding-block: 100px;
+}
+
+// Matches `.fill`'s tighter top padding (32px) without touching the bottom
+// padding or anything else — for a page that wants a shorter gap under the
+// header but is otherwise laid out normally (scrollable, full-size title).
+.compactTop {
+  padding-top: 32px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  background: v.$color-amber-tint;
+  border: 1px solid rgba(247, 168, 27, 0.42);
+  border-radius: v.$radius-pill;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: v.$color-amber-ink;
+}
+
+.badgeDot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: v.$radius-pill;
+  background: v.$color-amber;
+  animation: pulsedot 2.2s ease-in-out infinite;
+}
+
+// Bigger and bolder than the standard section heading-2 — this title is
+// the whole point of the page, so it should read like it.
+.title {
+  margin: 0 0 18px;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: v.$color-text;
+  text-wrap: balance;
+}
+
+.description {
+  margin: 0;
+  max-width: 620px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: v.$color-text-muted;
+  text-wrap: pretty;
+}
+
+.body {
+  position: relative;
+  margin-top: 44px;
+}
+
+// ---- `fill` variant ------------------------------------------------------
+// Stretches to fill its flex parent's height (the page wrapper's
+// `flex: 1` main) instead of using the section's normal generous,
+// scrollable spacing. See app/survey/page.tsx + page.module.scss.
+
+.fill {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.fill .container {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 32px;
+}
+
+.fill .badge {
+  margin-bottom: 16px;
+}
+
+.fill .title {
+  margin-bottom: 12px;
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.fill .description {
+  font-size: 16.5px;
+}
+
+.fill .body {
+  flex: 1;
+  min-height: 0;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}

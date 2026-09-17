@@ -3,11 +3,22 @@ import { Logo } from "@/components/ui/Logo/Logo";
 import { Button } from "@/components/ui/Button/Button";
 import styles from "./Header.module.scss";
 
+// Absolute paths (not bare "#how") so these still work from /survey, /book,
+// or any other page — a bare hash link just rewrites the current page's URL
+// and goes nowhere if that page has no matching id.
+//
+// Rendered as plain `<a>` tags rather than `next/link` deliberately: a
+// `next/link` client-side transition into a route+hash races its own
+// "scroll to top" against "scroll to hash" (both inherit the site's global
+// `scroll-behavior: smooth`), and on a page this long that race is lost as
+// often as it's won, landing anywhere from the very top to the wrong
+// section. A full page load has no such race — the browser performs a
+// single, reliable jump to the hash on initial paint.
 const NAV_LINKS = [
-  { href: "#how", label: "How it works" },
-  { href: "#included", label: "What you get" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#how", label: "How it works" },
+  { href: "/#included", label: "What you get" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 const ctaShadowVars = {
@@ -20,7 +31,7 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Logo height={33} priority />
+        <Logo height={46} priority />
         <nav className={styles.nav} aria-label="Primary">
           {NAV_LINKS.map((link) => (
             <a key={link.href} href={link.href} className={styles.link}>
@@ -28,7 +39,7 @@ export function Header() {
             </a>
           ))}
           <Button
-            href="#book"
+            href="/book"
             variant="amber"
             className={styles.cta}
             style={ctaShadowVars}

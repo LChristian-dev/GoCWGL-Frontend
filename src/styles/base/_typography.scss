@@ -8,6 +8,11 @@
 
 html {
   scroll-behavior: smooth;
+  // Offsets hash-fragment/Link scrolling so a section's top isn't hidden
+  // under the sticky header (currently ~71px tall) when a nav link jumps
+  // to it — applies to both same-page anchors and cross-page navigation
+  // (e.g. from /survey back to /#pricing).
+  scroll-padding-top: 88px;
 }
 
 body {

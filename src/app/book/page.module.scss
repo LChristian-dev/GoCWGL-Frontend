@@ -1,0 +1,10 @@
+// The booking widget's own inline style only sets width/border/overflow
+// (that's the embed code exactly as provided) — height and display come
+// from here since this page (unlike /survey) isn't laid out to fill a
+// single viewport, so the iframe needs a sensible fixed starting height
+// before the vendor's script resizes it to fit the calendar's content.
+.iframe {
+  display: block;
+  width: 100%;
+  height: 760px;
+}
