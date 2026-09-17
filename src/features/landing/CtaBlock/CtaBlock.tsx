@@ -29,7 +29,7 @@ export function CtaBlock() {
               your bottleneck, and quote a real number. No pressure either way.
             </p>
             <Button
-              href="mailto:info@GoCWGL.com?subject=Discovery%20call%20%E2%80%94%20Revenue%20Engine"
+              href="/survey"
               variant="amber"
               className={styles.cta}
               sheen

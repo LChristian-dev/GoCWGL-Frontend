@@ -7,7 +7,9 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <Logo height={30} />
+        <a href="/" className={styles.logoLink} aria-label="GoCWGL home">
+          <Logo height={46} />
+        </a>
         <p className={styles.meta}>
           Virtual assistants since 2016 ·{" "}
           <a href="mailto:info@GoCWGL.com" className={styles.email}>

@@ -4,6 +4,11 @@
   background: v.$color-surface;
 }
 
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
 .inner {
   display: flex;
   flex-wrap: wrap;

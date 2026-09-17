@@ -31,7 +31,9 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Logo height={46} priority />
+        <a href="/" className={styles.logoLink} aria-label="GoCWGL home">
+          <Logo height={46} priority />
+        </a>
         <nav className={styles.nav} aria-label="Primary">
           {NAV_LINKS.map((link) => (
             <a key={link.href} href={link.href} className={styles.link}>
@@ -39,7 +41,7 @@ export function Header() {
             </a>
           ))}
           <Button
-            href="/book"
+            href="/survey"
             variant="amber"
             className={styles.cta}
             style={ctaShadowVars}

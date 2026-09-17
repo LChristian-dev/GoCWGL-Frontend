@@ -31,7 +31,7 @@ export function Hero() {
 
             <div className={styles.actions}>
               <Button
-                href="#book"
+                href="/survey"
                 variant="amber"
                 className={styles.ctaPrimary}
                 sheen
