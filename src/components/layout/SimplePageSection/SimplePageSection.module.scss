@@ -7,6 +7,8 @@
 // the global ones — see abstracts/_keyframes.scss.
 @include k.keyframes-drift;
 @include k.keyframes-pulsedot;
+@include k.keyframes-rise;
+@include k.keyframes-riseIn;
 
 // A toned-down version of the hero's treatment (glows + dot grid), so
 // standalone pages like /survey and /book still feel like part of the same
@@ -53,6 +55,21 @@
   padding-top: 32px;
 }
 
+// Matches the landing page's section width instead of this component's
+// default single-column measure — for a page (like /about) that sits
+// alongside other full-width sections and needs its edges to line up.
+.wide {
+  max-width: v.$container-max;
+}
+
+// Recenters the actual copy inside `.wide`'s much wider container, so the
+// leftover width becomes a balanced margin on both sides instead of one
+// large, lopsided gap on the right.
+.centerCol {
+  max-width: 880px;
+  margin-inline: auto;
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -76,6 +93,25 @@
   border-radius: v.$radius-pill;
   background: v.$color-amber;
   animation: pulsedot 2.2s ease-in-out infinite;
+}
+
+// One-shot entrance animations for `animate` — plain, delay-staggered
+// keyframes (matching the landing Hero's own badge/heading/lead) rather
+// than the scroll-linked `[data-reveal]` system used further down the
+// page: this content sits right at the top of the page, so a
+// `animation-timeline: view()` never gets a meaningful "entering" phase to
+// animate through and the badge in particular was rendering stuck
+// half-transparent instead of playing anything.
+.animateBadge {
+  animation: rise 0.7s v.$ease-standard both;
+}
+
+.animateTitle {
+  animation: riseIn 0.85s v.$ease-standard 0.06s both;
+}
+
+.animateDescription {
+  animation: rise 0.85s v.$ease-standard 0.16s both;
 }
 
 // Bigger and bolder than the standard section heading-2 — this title is

@@ -57,10 +57,11 @@
 // The amber CTA's shadow and hover-lift distance both vary per instance in
 // the design (compare the nav pill to the hero button), so they're read
 // from custom properties the component sets inline, falling back to "none"
-// / the hero's own -3px lift when a given instance doesn't set them.
+// / the hero's own -3px lift when a given instance doesn't set them. The
+// fill color follows the same pattern, falling back to the brand token.
 @mixin button-amber {
   @include button-base;
-  background: v.$color-amber;
+  background: var(--btn-bg, #{v.$color-amber});
   color: v.$color-text-on-amber-strong;
   font-weight: 700;
   box-shadow: var(--btn-shadow, none);

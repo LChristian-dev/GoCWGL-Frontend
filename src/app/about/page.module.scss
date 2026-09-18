@@ -1,0 +1,98 @@
+@use "abstracts/variables" as v;
+@use "abstracts/keyframes" as k;
+
+@include k.keyframes-rise;
+
+// Brand name in the hero title, split into the same two tones as the logo
+// mark (navy "Go" + amber "CWGL") instead of running in the heading's
+// plain dark ink. Both use the logo file's actual sampled colors
+// (#0e2c4d navy, #f7ae0e amber) rather than the $color-navy / $color-amber
+// design tokens — close, but not quite the same shades as the real logo
+// asset, which is the point of comparison here.
+//
+// The two halves are wrapped in `.brandName` so hovering either word lifts
+// and glows both together as one unit, instead of each reacting on its
+// own — it should read as one name, not two independent hot spots.
+.brandName {
+  display: inline-block;
+  padding-inline: 3px;
+  cursor: default;
+  transition: transform 0.3s v.$ease-standard;
+
+  &:hover {
+    transform: scale(1.035);
+  }
+}
+
+.brandGo {
+  color: #0e2c4d;
+  text-shadow: 0 2px 28px rgba(14, 44, 77, 0.45);
+  transition: text-shadow 0.3s ease;
+}
+
+.brandCwgl {
+  color: #f7ae0e;
+  text-shadow: 0 2px 28px rgba(247, 174, 14, 0.55);
+  transition: text-shadow 0.3s ease;
+}
+
+.brandName:hover .brandGo {
+  text-shadow: 0 4px 40px rgba(14, 44, 77, 0.8);
+}
+
+.brandName:hover .brandCwgl {
+  text-shadow: 0 4px 44px rgba(247, 174, 14, 0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brandName,
+  .brandGo,
+  .brandCwgl {
+    transition: none;
+  }
+
+  .brandName:hover {
+    transform: none;
+  }
+}
+
+// Origin-story copy dropped into <SimplePageSection>'s body slot — styled
+// like Story.tsx's lead/body pair rather than SimplePageSection's own
+// single-paragraph description, since this page has more to say.
+.story {
+  max-width: 760px;
+}
+
+// One-shot, delay-staggered entrance (like the landing Hero's own lead
+// paragraph) rather than the scroll-linked `[data-reveal]` system: this
+// copy sits close enough to the top of the page that a
+// `animation-timeline: view()` timeline never gets a real "entering"
+// phase to play through, and was rendering stuck half-visible.
+.lead {
+  margin: 0 0 20px;
+  font-size: clamp(19px, 2.1vw, 22px);
+  line-height: 1.55;
+  font-weight: 500;
+  color: v.$color-text;
+  text-wrap: pretty;
+  animation: rise 0.85s v.$ease-standard 0.16s both;
+}
+
+.body {
+  margin: 0 0 16px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: v.$color-text-muted;
+  text-wrap: pretty;
+  animation: rise 0.85s v.$ease-standard 0.26s both;
+
+  // Both paragraphs share this class; stagger the second one a touch so
+  // they don't land in the exact same instant.
+  &:nth-of-type(3) {
+    animation-delay: 0.34s;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

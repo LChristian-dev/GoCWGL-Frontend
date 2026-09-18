@@ -16,7 +16,7 @@ export function Footer() {
             info@GoCWGL.com
           </a>
         </p>
-        <p className={styles.copyright}>© {year} Go CWGL</p>
+        <p className={styles.copyright}>© {year} GoCWGL</p>
       </div>
     </footer>
   );

@@ -32,18 +32,42 @@
   font-size: 15px;
   font-weight: 500;
 
-  // Wrap instead of overflowing on narrow viewports — the design calls
-  // this out as the one spot that needs explicit small-screen handling.
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  row-gap: 10px;
+  // Below $bp-md there isn't room for five links plus the CTA — rather
+  // than let them wrap into a ragged second row, the whole nav is hidden
+  // here and replaced by .menuToggle + .mobileNav (see below).
+  @media (max-width: v.$bp-md) {
+    display: none;
+  }
 }
 
 .link {
-  color: v.$color-text;
+  position: relative;
+  padding-bottom: 3px;
+  color: v.$color-navy;
+  transition: color 0.25s ease;
+
+  // Amber underline accent — brand secondary color, hidden until hover
+  // instead of a permanent rule, so the nav stays clean at rest.
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    border-radius: v.$radius-pill;
+    background: v.$color-amber;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s v.$ease-standard;
+  }
 
   &:hover {
     color: v.$color-amber-deep;
+
+    &::after {
+      transform: scaleX(1);
+    }
   }
 }
 
@@ -51,4 +75,107 @@
   padding: 12px 22px;
   font-size: 15px;
   gap: 8px;
+}
+
+// ---- Compact nav (< $bp-md) ---------------------------------------------
+
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  padding: 0;
+  background: none;
+  border: 1px solid v.$color-border-outline;
+  border-radius: v.$radius-icon;
+  cursor: pointer;
+
+  @media (max-width: v.$bp-md) {
+    display: flex;
+  }
+}
+
+// Hamburger drawn from the toggle's own box, not an svg — two bars that
+// splay into an X (via their own ::before/::after) when .menuOpen, using
+// the same easing as the rest of the site's motion.
+.menuIcon {
+  position: relative;
+  width: 18px;
+  height: 2px;
+  border-radius: v.$radius-pill;
+  background: v.$color-navy;
+  transition: background-color 0.25s v.$ease-standard;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    border-radius: v.$radius-pill;
+    background: v.$color-navy;
+    transition:
+      transform 0.25s v.$ease-standard,
+      top 0.25s v.$ease-standard;
+  }
+
+  &::before {
+    top: -6px;
+  }
+
+  &::after {
+    top: 6px;
+  }
+
+  &[data-open] {
+    background: transparent;
+
+    &::before {
+      top: 0;
+      transform: rotate(45deg);
+      background: v.$color-amber-deep;
+    }
+
+    &::after {
+      top: 0;
+      transform: rotate(-45deg);
+      background: v.$color-amber-deep;
+    }
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px v.$container-pad 20px;
+  background: v.$color-surface;
+  border-top: 1px solid v.$color-border;
+
+  @media (min-width: calc(v.$bp-md + 1px)) {
+    display: none;
+  }
+}
+
+.mobileLink {
+  padding: 12px 4px;
+  color: v.$color-navy;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid v.$color-border;
+
+  &:hover {
+    color: v.$color-amber-deep;
+  }
+}
+
+.mobileCta {
+  justify-content: center;
+  margin-top: 14px;
+  padding: 14px 22px;
+  font-size: 15px;
 }

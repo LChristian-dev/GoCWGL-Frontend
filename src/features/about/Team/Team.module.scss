@@ -1,0 +1,100 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+
+.section {
+  background: v.$color-surface;
+}
+
+.container {
+  @include m.container;
+  padding-block: 100px;
+}
+
+.intro {
+  max-width: 660px;
+  margin-bottom: 46px;
+}
+
+.eyebrow {
+  @include m.eyebrow;
+}
+
+.heading {
+  @include m.heading-2;
+}
+
+.grid {
+  @include m.auto-grid(340px, 24px);
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  min-width: 0;
+  padding: 30px 28px;
+  background: v.$color-surface-2;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-md;
+  @include m.card-hover-light;
+}
+
+// Circular, sized to sit comfortably next to the bio text rather than
+// dominate the card. object-position is pulled up (not centered) because a
+// cover-fit crop on a portrait source would otherwise center on the torso —
+// biasing toward the top keeps the full head in frame while still showing
+// past the chin, on both the square and portrait source photos.
+.photoFrame {
+  position: relative;
+  flex: none;
+  width: 108px;
+  height: 108px;
+  overflow: hidden;
+  border-radius: v.$radius-pill;
+  border: 1px solid v.$color-border;
+  background: v.$color-border;
+}
+
+.photo {
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.info {
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.name {
+  margin: 0 0 2px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.role {
+  margin: 0 0 12px;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: v.$color-amber-deep;
+}
+
+.bio {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: v.$color-text-muted;
+}
+
+.closing {
+  margin: 50px 0 0;
+  max-width: 720px;
+  padding-top: 40px;
+  border-top: 1px solid v.$color-border;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: v.$color-text;
+  text-wrap: pretty;
+}
