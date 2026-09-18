@@ -5,13 +5,13 @@ const TEAM = [
   {
     name: "Christian",
     role: "Co-Founder, Systems & Automation",
-    bio: "Christian leads the technical build — the funnels, the automation workflows, the code that keeps everything running quietly in the background.",
+    bio: "Christian leads the team's technical build — the funnels, the automation workflows, and the code that keeps everything running quietly in the background.",
     photo: "/images/team/christian.png",
   },
   {
     name: "Wendy",
     role: "Co-Founder, Client Strategy",
-    bio: "Wendy leads discovery and client strategy — making sure every system we build actually fits the business it's built for, not just what looks good on paper.",
+    bio: "Wendy leads the team's discovery and client strategy — making sure every system we build actually fits the business it's built for, not just what looks good on paper.",
     photo: "/images/team/wendy.jpg",
   },
 ];
