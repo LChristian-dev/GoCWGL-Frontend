@@ -22,7 +22,7 @@ export function ReportCard() {
       <span aria-hidden="true" data-motion="" className={styles.scanline} />
 
       <div className={styles.header}>
-        <Image src="/images/gocwgl-icon-v5.png" alt="" width={26} height={26} />
+        <Image src="/images/gocwgl-icon-v6.png" alt="" width={26} height={26} />
         <span className={styles.headerLabel}>Your daily report · 7:00 AM</span>
         <span aria-hidden="true" data-motion="" className={styles.liveDot} />
       </div>
