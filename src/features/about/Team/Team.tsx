@@ -5,14 +5,14 @@ const TEAM = [
   {
     name: "Christian",
     role: "Co-Founder, Systems & Automation",
-    bio: "Christian leads the team's technical build — the funnels, the automation workflows, and the code that keeps everything running quietly in the background.",
+    bio: "Christian started out as a virtual assistant in 2016 and has spent years sharpening the craft ever since. Today he leads the team's technical build — the funnels, the automation workflows, and the code that keeps everything running quietly and seamlessly in the background.",
     photo: "/images/team/christian.png",
   },
   {
     name: "Wendy",
     role: "Co-Founder, Client Strategy",
-    bio: "Wendy leads the team's discovery and client strategy — making sure every system we build actually fits the business it's built for, not just what looks good on paper.",
-    photo: "/images/team/wendy.jpg",
+    bio: "Wendy started out as a virtual assistant in 2015, bringing a natural instinct for what businesses truly need. Today she leads the team's discovery and client strategy — making sure every system we build actually fits the business it's built for, not just what looks good on paper.",
+    photo: "/images/team/wendy-new-headshot.jpg",
   },
 ];
 

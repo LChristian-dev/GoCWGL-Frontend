@@ -35,7 +35,7 @@ export default function AboutPage() {
         >
           <div className={styles.story}>
             <p className={styles.lead}>
-              Christian and Wendy have been virtual assistants since 2016. Over the years, we
+              Christian and Wendy have been virtual assistants since 2015. Over the years, we
               watched the same story play out with almost every small business and startup we
               worked with: they&apos;d hire one assistant to handle emails, then another for their
               funnel, then a freelancer for automation, then someone else for reporting — and
