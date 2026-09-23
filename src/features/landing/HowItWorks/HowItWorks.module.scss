@@ -111,6 +111,16 @@
   color: v.$color-text-on-amber;
 }
 
+.stepNoteFeatured {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(10, 18, 32, 0.18);
+  font-size: 13.5px;
+  font-style: italic;
+  line-height: 1.5;
+  color: v.$color-text-on-amber;
+}
+
 .notes {
   @include m.auto-grid(250px, 20px);
   margin-top: 20px;

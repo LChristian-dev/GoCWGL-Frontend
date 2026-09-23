@@ -22,6 +22,7 @@ const FEATURED_STEP = {
   number: "04",
   title: "You get one email a day",
   body: "Who reached out, who booked, what needs you. You never log in to find out.",
+  note: "Using Claude AI? We can set it up to update you automatically every day.",
 };
 
 const YOU_DONTS = [
@@ -70,6 +71,7 @@ export function HowItWorks() {
             <p className={[styles.stepBody, styles.stepBodyFeatured].join(" ")}>
               {FEATURED_STEP.body}
             </p>
+            <p className={styles.stepNoteFeatured}>{FEATURED_STEP.note}</p>
           </div>
         </div>
 
