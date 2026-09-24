@@ -24,8 +24,8 @@ export function Hero() {
             </h1>
 
             <p className={styles.lead}>
-              For most start-ups, nothing. Nobody follows up, nothing gets logged, and nobody can
-              say what worked. We build the system that catches every lead — pipeline, funnel,
+              For most start-ups, nothing. Leads go unanswered, nothing gets logged, and no one can
+              say what worked. We build the system that captures every lead — pipeline, funnel,
               automation, and one daily report in your inbox.
             </p>
 

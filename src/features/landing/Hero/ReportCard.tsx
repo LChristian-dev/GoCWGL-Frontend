@@ -5,14 +5,18 @@ interface Metric {
   label: string;
   value: string;
   accent?: boolean;
+  summary?: string;
 }
 
 const METRICS: Metric[] = [
   { label: "New leads captured", value: "7" },
-  { label: "Follow-ups sent automatically", value: "19" },
   { label: "Calls booked", value: "3", accent: true },
   { label: "Social posts published today", value: "4" },
-  { label: "Broadcasts sent today", value: "2" },
+  {
+    label: "Emails received today",
+    value: "12",
+    summary: "5 new inquiries, 4 client replies, 2 invoices, 1 partnership pitch",
+  },
 ];
 
 /** The hero's signature "daily report" preview — an illustrative example, not live data. */
@@ -38,6 +42,7 @@ export function ReportCard() {
             >
               {metric.value}
             </span>
+            {metric.summary && <p className={styles.metricSummary}>{metric.summary}</p>}
           </div>
         ))}
 

@@ -3,7 +3,7 @@ import styles from "./Benefits.module.scss";
 const BENEFITS = [
   {
     title: "Stop losing leads silently",
-    body: "Every lead is captured and followed up on — no gap between someone showing interest and someone reaching out.",
+    body: "Every lead is captured and logged in your pipeline the moment it arrives — nothing slips through the cracks.",
   },
   {
     title: "Five roles, one build",

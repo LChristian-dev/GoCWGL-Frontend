@@ -14,19 +14,19 @@ const STEPS = [
   {
     number: "03",
     title: "The system takes over",
-    body: "A welcome message goes out immediately. Quiet leads get gentle reminders — automatically.",
+    body: "Every lead is captured, tagged, and added to your pipeline the moment it arrives. Quiet leads get gentle reminders — automatically.",
   },
 ];
 
 const FEATURED_STEP = {
   number: "04",
   title: "You get one email a day",
-  body: "Who reached out, who booked, what needs you. You never log in to find out.",
+  body: "New leads, calls booked, posts published, a quick summary of the emails you received — and what needs you. You never log in to find out.",
   note: "Using Claude AI? We can set it up to update you automatically every day.",
 };
 
 const YOU_DONTS = [
-  "remember to follow up with anyone.",
+  "track leads by hand.",
   "check five places for messages and bookings.",
   "build or manage any of it yourself.",
 ];
