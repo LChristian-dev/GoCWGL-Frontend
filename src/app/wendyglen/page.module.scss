@@ -744,11 +744,13 @@
   position: absolute;
   left: 50%;
   bottom: 30px;
-  transform: translateX(-50%);
+  // `translate`, not `transform`, so the fadeUp entrance (which animates
+  // `transform`) doesn't wipe out the centering offset.
+  translate: -50% 0;
   animation: fadeUp 0.8s v.$ease-standard 1.4s both;
 
   @media (max-width: v.$bp-md) {
-    display: none;
+    bottom: 36px;
   }
 }
 
@@ -779,6 +781,7 @@
   overflow: hidden;
   padding-block: 22px;
   background: v.$color-amber;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
@@ -787,8 +790,13 @@
   width: max-content;
   animation: marquee 34s linear infinite;
 
-  &:hover {
-    animation-play-state: paused;
+  // Pause on hover for mouse users only — on touch screens a tap leaves
+  // `:hover` stuck on, which would freeze the strip until another tap
+  // elsewhere on the page.
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      animation-play-state: paused;
+    }
   }
 }
 
