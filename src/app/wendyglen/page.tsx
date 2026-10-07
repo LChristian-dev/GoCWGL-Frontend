@@ -333,18 +333,29 @@ export default function WendyGlenPage() {
       </section>
 
       {/* ---- Tools marquee ---- */}
-      <div className={styles.marquee} aria-label="Tools I use">
-        <div className={styles.marqueeTrack}>
-          {[...TOOLS, ...TOOLS].map((tool, i) => (
-            <span key={`${tool.name}-${i}`} className={styles.marqueeItem} aria-hidden={i >= TOOLS.length}>
-              {tool.name}
-              <span aria-hidden="true" className={styles.marqueeStar}>
-                ✦
-              </span>
-            </span>
-          ))}
+      <section className={styles.marquee} aria-label="Tools I use every day">
+        {/* Items are doubled so the -50% loop lands exactly on the start
+            again; only the first copy is exposed to screen readers. */}
+        <div className={styles.marqueeRow}>
+          <ul className={styles.marqueeTrack}>
+            {[...TOOLS, ...TOOLS].map((tool, i) => (
+              <li
+                key={`${tool.name}-${i}`}
+                className={styles.marqueeItem}
+                aria-hidden={i >= TOOLS.length || undefined}
+              >
+                <span className={styles.marqueeChip}>
+                  <span className={styles.marqueeIcon}>
+                    <Icon name={tool.icon} size={18} />
+                  </span>
+                  <span className={styles.marqueeName}>{tool.name}</span>
+                  <span className={styles.marqueeUse}>{tool.use}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      </section>
 
       {/* ---- Stats ---- */}
       <section id="stats" className={styles.stats} aria-label="Highlights">
