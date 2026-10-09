@@ -68,6 +68,17 @@ export function Pricing() {
             The founding-client rate is a limited, time-bound offer for our first 10 Full Bundle
             clients — not our standard pricing going forward.
           </p>
+          <ul className={styles.payOnce} aria-label="Payment terms">
+            <li className={styles.payOnceItem}>
+              <span className={styles.check}>✓</span> One-time payment
+            </li>
+            <li className={styles.payOnceItem}>
+              <span className={styles.check}>✓</span> No monthly fees
+            </li>
+            <li className={styles.payOnceItem}>
+              <span className={styles.check}>✓</span> Only recurring cost: $99/year monitoring
+            </li>
+          </ul>
         </div>
 
         <div className={styles.grid}>
@@ -100,8 +111,9 @@ export function Pricing() {
               <div className={styles.featuredPriceRow}>
                 <span className={styles.featuredPrice}>$950</span>
                 <span className={styles.featuredPriceStrike}>$1,950</span>
+                <span className={styles.priceUnit}>one-time</span>
               </div>
-              <p className={styles.featuredNote}>First 10 clients only</p>
+              <p className={styles.featuredNote}>First 10 clients only · No monthly fees</p>
               <FeatureList features={FULL_BUNDLE_FEATURES} className={styles.featuredFeatures} />
               <Button
                 href="#book"
@@ -132,8 +144,10 @@ export function Pricing() {
 
         <div className={styles.feeNote} data-reveal="" style={{ animationName: "rise" }}>
           <p className={styles.feeNoteText}>
-            <strong className={styles.feeNoteStrong}>$99/year active-client fee.</strong> Hosting
-            is part of your one-time build — the annual fee is what keeps us actively watching,
+            <strong className={styles.feeNoteStrong}>
+              No monthly payments — the only recurring cost is $99/year.
+            </strong>{" "}
+            Hosting is part of your one-time build — the annual fee is what keeps us actively watching,
             updating and maintaining your system. Cancel any time; nothing shuts off overnight, we
             simply stop monitoring until it&apos;s renewed.
           </p>
