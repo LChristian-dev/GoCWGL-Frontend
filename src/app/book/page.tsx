@@ -24,16 +24,17 @@ export default function BookPage() {
         >
           {/* Calendar embed code, provided by the client as-is. */}
           <iframe
-            src="https://api.leadconnectorhq.com/widget/booking/KpivETvqggLFMHUpcKPP"
-            id="KpivETvqggLFMHUpcKPP_1789468081860"
-            title="Booking calendar"
-            allow="payment"
-            scrolling="no"
+            src="https://app.gocwgl.com/book/gocwgl-strategy-call?embed=1"
+            title="GoCWGL Strategy Call"
+            data-gocwgl-embed
+            width="100%"
+            height="720"
+            loading="lazy"
             className={styles.iframe}
-            style={{ border: "none", overflow: "hidden" }}
+            style={{ border: 0, maxWidth: "100%" }}
           />
           <Script
-            src="https://api.leadconnectorhq.com/js/form_embed.js"
+            src="https://app.gocwgl.com/embed.js"
             strategy="afterInteractive"
           />
         </SimplePageSection>
