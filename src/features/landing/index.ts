@@ -6,5 +6,6 @@ export { HowItWorks } from "./HowItWorks/HowItWorks";
 export { Benefits } from "./Benefits/Benefits";
 export { Pricing } from "./Pricing/Pricing";
 export { Timeline } from "./Timeline/Timeline";
+export { Crm } from "./Crm/Crm";
 export { Faq } from "./Faq/Faq";
 export { CtaBlock } from "./CtaBlock/CtaBlock";

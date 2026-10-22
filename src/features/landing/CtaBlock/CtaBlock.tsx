@@ -29,7 +29,7 @@ export function CtaBlock() {
               your bottleneck, and quote a real number. No pressure either way.
             </p>
             <Button
-              href="/survey"
+              href="/book"
               variant="amber"
               className={styles.cta}
               sheen

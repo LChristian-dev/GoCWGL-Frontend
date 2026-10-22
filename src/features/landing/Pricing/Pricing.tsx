@@ -65,8 +65,7 @@ export function Pricing() {
           <p className={styles.eyebrow}>Transparent pricing</p>
           <h2 className={styles.heading}>One-time build. Priced in the open.</h2>
           <p className={styles.lead}>
-            The founding-client rate is a limited, time-bound offer for our first 10 Full Bundle
-            clients — not our standard pricing going forward.
+            Pick the build that fits. Every price is a one-time payment, stated up front.
           </p>
           <ul className={styles.payOnce} aria-label="Payment terms">
             <li className={styles.payOnceItem}>
@@ -76,7 +75,7 @@ export function Pricing() {
               <span className={styles.check}>✓</span> No monthly fees
             </li>
             <li className={styles.payOnceItem}>
-              <span className={styles.check}>✓</span> Only recurring cost: $99/year monitoring
+              <span className={styles.check}>✓</span> Only recurring cost: $97/year monitoring
             </li>
           </ul>
         </div>
@@ -90,7 +89,7 @@ export function Pricing() {
               <span className={styles.priceUnit}>one-time</span>
             </div>
             <FeatureList features={FOUNDATION_FEATURES} className={styles.features} />
-            <Button href="#book" variant="outlineDark" className={styles.tierCta}>
+            <Button href="/book" variant="outlineDark" className={styles.tierCta}>
               Book a call
             </Button>
           </div>
@@ -104,26 +103,25 @@ export function Pricing() {
             <div className={styles.featuredContent}>
               <div className={styles.featuredBadge}>
                 <span aria-hidden="true" data-motion="" className={styles.featuredBadgeDot} />
-                Founding rate · 50% off
+                Everything connected
               </div>
               <h3 className={styles.tierName}>Full Bundle</h3>
               <p className={styles.tierTagline}>Everything connected, reporting included.</p>
               <div className={styles.featuredPriceRow}>
-                <span className={styles.featuredPrice}>$950</span>
-                <span className={styles.featuredPriceStrike}>$1,950</span>
+                <span className={styles.featuredPrice}>$1,950</span>
                 <span className={styles.priceUnit}>one-time</span>
               </div>
-              <p className={styles.featuredNote}>First 10 clients only · No monthly fees</p>
+              <p className={styles.featuredNote}>One-time payment · No monthly fees</p>
               <FeatureList features={FULL_BUNDLE_FEATURES} className={styles.featuredFeatures} />
               <Button
-                href="#book"
+                href="/book"
                 variant="amber"
                 className={styles.featuredCta}
                 sheen
                 sheenDuration="4.6s"
                 style={featuredCtaVars}
               >
-                Claim a founding spot
+                Book a call
               </Button>
             </div>
           </div>
@@ -136,7 +134,7 @@ export function Pricing() {
               <span className={styles.priceUnit}>per funnel</span>
             </div>
             <FeatureList features={VIP_FEATURES} className={styles.features} />
-            <Button href="#book" variant="outlineDark" className={styles.tierCta}>
+            <Button href="/book" variant="outlineDark" className={styles.tierCta}>
               Talk to us
             </Button>
           </div>
@@ -145,7 +143,7 @@ export function Pricing() {
         <div className={styles.feeNote} data-reveal="" style={{ animationName: "rise" }}>
           <p className={styles.feeNoteText}>
             <strong className={styles.feeNoteStrong}>
-              No monthly payments — the only recurring cost is $99/year.
+              No monthly payments — the only recurring cost is $97/year.
             </strong>{" "}
             Hosting is part of your one-time build — the annual fee is what keeps us actively watching,
             updating and maintaining your system. Cancel any time; nothing shuts off overnight, we

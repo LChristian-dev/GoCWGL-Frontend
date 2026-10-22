@@ -2,7 +2,7 @@ import styles from "./Stats.module.scss";
 
 const STATS = [
   { value: "2016", label: "Doing virtual assistant work since" },
-  { value: "7 of 10", label: "Founding spots left at 50% off", accent: true },
+  { value: "$97/yr", label: "The only recurring cost", accent: true },
   { value: "~3 weeks", label: "From kickoff call to live system" },
   { value: "1 email", label: "A day — instead of logging in" },
 ];

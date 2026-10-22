@@ -17,11 +17,26 @@ import styles from "./Header.module.scss";
 // often as it's won, landing anywhere from the very top to the wrong
 // section. A full page load has no such race — the browser performs a
 // single, reliable jump to the hash on initial paint.
-const NAV_LINKS = [
+interface NavLink {
+  href: string;
+  label: string;
+  /** Rendered as a hover/focus dropdown on desktop and as indented links
+   * in the mobile menu. */
+  children?: Array<{ href: string; label: string }>;
+}
+
+const NAV_LINKS: NavLink[] = [
   { href: "/about", label: "About" },
   { href: "/#how", label: "How it works" },
   { href: "/#included", label: "What you get" },
-  { href: "/#pricing", label: "Pricing" },
+  {
+    href: "/#pricing",
+    label: "Pricing",
+    children: [
+      { href: "/#pricing", label: "Funnel" },
+      { href: "/#crm", label: "CRM" },
+    ],
+  },
   { href: "/#faq", label: "FAQ" },
 ];
 
@@ -50,20 +65,38 @@ export function Header() {
         </a>
 
         <nav className={styles.nav} aria-label="Primary">
-          {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className={styles.link}>
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.children ? (
+              // Opens on hover and on :focus-within (see .dropdown), so the
+              // sub-links are reachable by keyboard without any JS state.
+              <div key={link.href} className={styles.dropdown}>
+                <a href={link.href} className={styles.link} aria-haspopup="true">
+                  {link.label}
+                  <span aria-hidden="true" className={styles.caret} />
+                </a>
+                <div className={styles.submenu}>
+                  {link.children.map((child) => (
+                    <a key={child.href} href={child.href} className={styles.submenuLink}>
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a key={link.href} href={link.href} className={styles.link}>
+                {link.label}
+              </a>
+            ),
+          )}
           <Button
-            href="/survey"
+            href="https://app.gocwgl.com"
             variant="amber"
             className={styles.cta}
             style={ctaStyleVars}
             sheen
             sheenDuration="4.2s"
           >
-            Book a call →
+            Login
           </Button>
         </nav>
 
@@ -89,18 +122,34 @@ export function Header() {
           className={styles.mobileNav}
           aria-label="Primary"
         >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={styles.mobileLink}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.children ? (
+              <div key={link.href} className={styles.mobileGroup}>
+                <span className={styles.mobileGroupLabel}>{link.label}</span>
+                {link.children.map((child) => (
+                  <a
+                    key={child.href}
+                    href={child.href}
+                    className={styles.mobileSubLink}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className={styles.mobileLink}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ),
+          )}
           <Button
-            href="/survey"
+            href="https://app.gocwgl.com"
             variant="amber"
             className={styles.mobileCta}
             style={ctaStyleVars}
@@ -108,7 +157,7 @@ export function Header() {
             sheenDuration="4.2s"
             onClick={() => setMenuOpen(false)}
           >
-            Book a call →
+            Login
           </Button>
         </nav>
       )}

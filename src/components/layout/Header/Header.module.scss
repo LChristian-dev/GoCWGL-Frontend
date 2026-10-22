@@ -71,6 +71,83 @@
   }
 }
 
+// ---- Pricing dropdown ----------------------------------------------------
+
+.dropdown {
+  position: relative;
+
+  // Invisible bridge across the gap between the link and the panel, so the
+  // pointer can travel down to the submenu without it closing.
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: -12px;
+    right: -12px;
+    height: 14px;
+  }
+
+  &:hover,
+  &:focus-within {
+    .submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .caret {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.caret {
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: 2px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform 0.25s v.$ease-standard;
+}
+
+.submenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  z-index: 1;
+  display: grid;
+  min-width: 150px;
+  padding: 6px;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-icon;
+  box-shadow: 0 18px 34px -20px rgba(13, 21, 32, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -6px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s v.$ease-standard,
+    visibility 0.2s;
+}
+
+.submenuLink {
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: v.$color-navy;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: v.$color-amber-tint;
+    color: v.$color-amber-deep;
+  }
+}
+
 .cta {
   padding: 12px 22px;
   font-size: 15px;
@@ -178,4 +255,28 @@
   margin-top: 14px;
   padding: 14px 22px;
   font-size: 15px;
+}
+
+.mobileGroup {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 4px 4px;
+  border-bottom: 1px solid v.$color-border;
+}
+
+.mobileGroupLabel {
+  color: v.$color-navy;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.mobileSubLink {
+  padding: 10px 0 10px 16px;
+  color: v.$color-text-muted;
+  font-size: 15px;
+  font-weight: 500;
+
+  &:hover {
+    color: v.$color-amber-deep;
+  }
 }

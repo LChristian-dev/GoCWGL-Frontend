@@ -14,7 +14,7 @@ export function Hero() {
           <div className={styles.column}>
             <div className={styles.badge}>
               <span aria-hidden="true" data-motion="" className={styles.badgeDot} />
-              Founding rate — first 10 clients
+              Custom-coded funnels &amp; CRMs
             </div>
 
             <h1 className={styles.heading}>
@@ -31,7 +31,7 @@ export function Hero() {
 
             <div className={styles.actions}>
               <Button
-                href="/survey"
+                href="/book"
                 variant="amber"
                 className={styles.ctaPrimary}
                 sheen
@@ -49,6 +49,14 @@ export function Hero() {
             </div>
 
             <p className={styles.trust}>Virtual assistants since 2016 · No long-term lock-in</p>
+
+            <p className={styles.crmNote}>
+              <span className={styles.crmNoteTag}>New</span>
+              Want your own CRM instead of renting one?{" "}
+              <a href="#crm" className={styles.crmNoteLink}>
+                See the GoCWGL CRM →
+              </a>
+            </p>
           </div>
 
           <div className={styles.reportColumn}>

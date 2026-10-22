@@ -23,6 +23,20 @@
   @include m.heading-2;
 }
 
+.group + .group {
+  margin-top: 48px;
+}
+
+.groupTitle {
+  margin: 0 0 16px;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+}
+
 .list {
   display: grid;
   gap: 12px;

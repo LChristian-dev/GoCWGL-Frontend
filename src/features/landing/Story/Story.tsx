@@ -15,7 +15,6 @@ export function Story() {
         <p className={styles.body} data-reveal="" style={{ animationName: "rise" }}>
           That gap is the whole reason this package exists. And we&apos;ll be upfront with you:
           this specific package is new, and you&apos;d be one of our first clients on it.
-          That&apos;s exactly why the first 10 get it at half price.
         </p>
         <div className={styles.rule} data-reveal="" style={{ animationName: "growLine" }} />
       </div>

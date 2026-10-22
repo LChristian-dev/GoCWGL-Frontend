@@ -9,6 +9,7 @@ import {
   Benefits,
   Pricing,
   Timeline,
+  Crm,
   Faq,
   CtaBlock,
 } from "@/features/landing";
@@ -26,6 +27,7 @@ export default function Home() {
         <Benefits />
         <Pricing />
         <Timeline />
+        <Crm />
         <Faq />
         <CtaBlock />
       </main>
