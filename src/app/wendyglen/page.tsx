@@ -5,7 +5,7 @@ import { CountUp } from "./CountUp";
 import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
-  title: "Wendy Glen Banzon — Virtual Assistant",
+  title: "Wendy Glen Banzon, Virtual Assistant",
   description:
     "Wendy Glen S. Banzon is a detail-oriented virtual assistant supporting US and Australian clients across executive support, accounts, customer service, and business registration since 2015.",
 };
@@ -24,7 +24,7 @@ const ROLES = [
 const STATS = [
   { to: 10, suffix: "+", label: "Years as a virtual assistant" },
   { to: 50, suffix: "", label: "US states filed with Secretary of State offices" },
-  { to: 2, suffix: "", label: "Client markets — United States & Australia" },
+  { to: 2, suffix: "", label: "Client markets: United States & Australia" },
   { to: 8, suffix: "+", label: "Business tools used every day" },
 ];
 
@@ -33,7 +33,7 @@ const EXPERIENCE = [
     role: "Virtual Assistant",
     company: "Infinite Edge",
     location: "Australia · Remote",
-    period: "Jul 2022 — Present",
+    period: "Jul 2022 to Present",
     current: true,
     summary: "Executive, accounts and customer support for an Australian business.",
     points: [
@@ -49,7 +49,7 @@ const EXPERIENCE = [
     role: "Virtual Assistant",
     company: "123Employee",
     location: "Davao City, Philippines",
-    period: "Jul 2015 — Mar 2022",
+    period: "Jul 2015 to Mar 2022",
     current: false,
     summary: "Business registration, marketing and customer care for US clients.",
     points: [
@@ -69,7 +69,7 @@ const SERVICES = [
   {
     icon: "calendar",
     title: "Executive support",
-    body: "Calendar and schedule management, meeting coordination, and travel booking — flights and co-working spaces handled end to end.",
+    body: "Calendar and schedule management, meeting coordination, and travel booking, with flights and co-working spaces handled end to end.",
   },
   {
     icon: "ledger",
@@ -79,7 +79,7 @@ const SERVICES = [
   {
     icon: "chat",
     title: "Customer support",
-    body: "Ticket-based support in Freshdesk and Zendesk, plus phone support through RingCentral — always client-first.",
+    body: "Ticket-based support in Freshdesk and Zendesk, plus phone support through RingCentral. Always client-first.",
   },
   {
     icon: "doc",
@@ -264,7 +264,7 @@ export default function WendyGlenPage() {
 
             <p className={styles.lead}>
               Detail-oriented virtual assistant supporting US and Australian clients across
-              executive support, accounts, customer service, and business registration — with
+              executive support, accounts, customer service, and business registration, with
               accuracy, strong written English, and a client-first approach to every task.
             </p>
 
@@ -412,7 +412,7 @@ export default function WendyGlenPage() {
               </p>
               <h2 className={styles.heading}>A decade of dependable remote work.</h2>
               <p className={styles.asideText}>
-                Two long-term roles supporting clients in the United States and Australia — from
+                Two long-term roles supporting clients in the United States and Australia, from
                 business filings to billing to the customer inbox.
               </p>
             </div>

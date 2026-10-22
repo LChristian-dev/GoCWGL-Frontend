@@ -6,7 +6,11 @@
 
 .section {
   position: relative;
-  overflow: hidden;
+  // `clip`, not `hidden`: `hidden` makes the section a scroll container, so
+  // every `[data-reveal]` inside measures its view() timeline against this
+  // (non-scrolling) box instead of the viewport and freezes part-way through
+  // its fade — on a section this tall the intro sat stuck at ~30% opacity.
+  overflow: clip;
   background: v.$color-ink;
   color: v.$color-text-on-dark;
 }

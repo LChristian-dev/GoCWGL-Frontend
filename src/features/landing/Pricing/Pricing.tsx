@@ -28,7 +28,7 @@ const FULL_BUNDLE_FEATURES: Feature[] = [
 const VIP_FEATURES: Feature[] = [
   { text: "An additional custom-coded funnel" },
   { text: "Hosted on the same infrastructure" },
-  { text: "Loyalty rate — accounts already in place" },
+  { text: "Loyalty rate, with accounts already in place" },
 ];
 
 function FeatureList({ features, className }: { features: Feature[]; className: string }) {
@@ -143,9 +143,9 @@ export function Pricing() {
         <div className={styles.feeNote} data-reveal="" style={{ animationName: "rise" }}>
           <p className={styles.feeNoteText}>
             <strong className={styles.feeNoteStrong}>
-              No monthly payments — the only recurring cost is $97/year.
+              No monthly payments. The only recurring cost is $97/year.
             </strong>{" "}
-            Hosting is part of your one-time build — the annual fee is what keeps us actively watching,
+            Hosting is part of your one-time build. The annual fee is what keeps us actively watching,
             updating and maintaining your system. Cancel any time; nothing shuts off overnight, we
             simply stop monitoring until it&apos;s renewed.
           </p>

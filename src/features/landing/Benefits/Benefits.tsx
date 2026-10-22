@@ -3,11 +3,11 @@ import styles from "./Benefits.module.scss";
 const BENEFITS = [
   {
     title: "Stop losing leads silently",
-    body: "Every lead is captured and logged in your pipeline the moment it arrives — nothing slips through the cracks.",
+    body: "Every lead is captured and logged in your pipeline the moment it arrives. Nothing slips through the cracks.",
   },
   {
     title: "Five roles, one build",
-    body: "A funnel builder, an automation specialist, a content person and someone tracking performance — replaced by one connected system.",
+    body: "A funnel builder, an automation specialist, a content person and someone tracking performance, replaced by one connected system.",
   },
   {
     title: "Know what's working without logging in",
@@ -15,7 +15,7 @@ const BENEFITS = [
   },
   {
     title: "A funnel that feels premium",
-    body: "Custom-coded design and animation — not a drag-and-drop template your competitors are also using.",
+    body: "Custom-coded design and animation, not a drag-and-drop template your competitors are also using.",
   },
 ];
 
@@ -61,7 +61,7 @@ export function Benefits() {
           >
             <h3 className={styles.cardTitle}>What we won&apos;t claim</h3>
             <p className={styles.cardBody}>
-              We don&apos;t generate leads for you — those come from your marketing, reputation
+              We don&apos;t generate leads for you. Those come from your marketing, reputation
               and referrals. We take over the moment one arrives.
             </p>
           </div>

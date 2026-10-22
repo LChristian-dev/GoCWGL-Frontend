@@ -7,7 +7,7 @@ const KEYWORDS = [
   "Automation",
   "Content system",
   "Daily reporting",
-  "VAs since 2016",
+  "VAs since 2015",
 ];
 
 function KeywordGroup() {

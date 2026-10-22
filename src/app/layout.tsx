@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | GoCWGL",
   },
   description:
-    "GoCWGL builds the pipeline, funnel, automation and daily reporting system that catches every lead — plus your own custom CRM and client portal that you own outright, instead of renting one by the month.",
+    "GoCWGL builds the pipeline, funnel, automation and daily reporting system that catches every lead, plus your own custom CRM and client portal that you own outright, instead of renting one by the month.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

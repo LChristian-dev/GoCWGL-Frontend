@@ -8,8 +8,8 @@ export function Story() {
           Why we built this
         </p>
         <p className={styles.quote} data-reveal="" style={{ animationName: "rise" }}>
-          My business partner and I have been virtual assistants since 2016. We kept watching the
-          same thing happen: leads came in, then fell through the cracks — because nothing was
+          My business partner and I have been virtual assistants since 2015. We kept watching the
+          same thing happen: leads came in, then fell through the cracks, because nothing was
           capturing them, organizing them, or reporting on what actually worked.
         </p>
         <p className={styles.body} data-reveal="" style={{ animationName: "rise" }}>

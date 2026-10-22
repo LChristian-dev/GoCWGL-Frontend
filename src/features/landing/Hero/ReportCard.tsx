@@ -47,7 +47,7 @@ export function ReportCard() {
         ))}
 
         <div className={styles.note}>
-          Needs you: one contact from Tuesday isn&apos;t tagged yet — everything after that runs
+          Needs you: one contact from Tuesday isn&apos;t tagged yet. Everything after that runs
           on its own.
         </div>
         <p className={styles.caption}>Illustrative example of the AI daily report</p>

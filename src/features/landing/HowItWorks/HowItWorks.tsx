@@ -4,7 +4,7 @@ const STEPS = [
   {
     number: "01",
     title: "Someone finds you",
-    body: "Website, social, or a referral — the same way people find you today.",
+    body: "Website, social, or a referral: the same way people find you today.",
   },
   {
     number: "02",
@@ -14,14 +14,14 @@ const STEPS = [
   {
     number: "03",
     title: "The system takes over",
-    body: "Every lead is captured, tagged, and added to your pipeline the moment it arrives. Quiet leads get gentle reminders — automatically.",
+    body: "Every lead is captured, tagged, and added to your pipeline the moment it arrives. Quiet leads get gentle reminders automatically.",
   },
 ];
 
 const FEATURED_STEP = {
   number: "04",
   title: "You get one email a day",
-  body: "New leads, calls booked, posts published, a quick summary of the emails you received — and what needs you. You never log in to find out.",
+  body: "New leads, calls booked, posts published, a quick summary of the emails you received, and what needs you. You never log in to find out.",
   note: "Using Claude AI? We can set it up to update you automatically every day.",
 };
 
@@ -41,7 +41,7 @@ export function HowItWorks() {
           <p className={styles.eyebrow}>How your system works</p>
           <h2 className={styles.heading}>Four steps. None of them yours.</h2>
           <p className={styles.lead}>
-            No tech jargon — just what happens, and when, once someone finds your business.
+            No tech jargon. Just what happens, and when, once someone finds your business.
           </p>
         </div>
 

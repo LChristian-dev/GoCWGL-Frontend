@@ -20,7 +20,7 @@ export default function SurveyPage() {
           fill
           eyebrow="Quick survey"
           title="Tell us about your business"
-          description="A few quick questions to help us understand where your leads come from today and where they're falling through — takes about 3 minutes."
+          description="A few quick questions to help us understand where your leads come from today and where they're falling through. It takes about 3 minutes."
         >
           {/* Survey embed code, provided by the client as-is. */}
           <iframe

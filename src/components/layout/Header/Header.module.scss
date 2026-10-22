@@ -10,6 +10,147 @@
   border-bottom: 1px solid v.$color-border;
 }
 
+// ---- CRM announcement bar ------------------------------------------------
+
+// Motion borrowed from the app.gocwgl.com login panel, scaled down to a
+// 38px strip on the brand orange: a slow blurred highlight, and a white beam
+// that sweeps across (sideways here, instead of top-to-bottom).
+// Keyframes live in this file so CSS Modules scopes them with their usages.
+@keyframes announceOrb {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-38%, -56%) scale(1.08);
+  }
+}
+
+@keyframes announceBeam {
+  0% {
+    transform: translateX(-30vw);
+  }
+  100% {
+    transform: translateX(120vw);
+  }
+}
+
+.announce {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 38px;
+  padding-inline: v.$container-pad;
+  background-color: v.$color-amber;
+  border-bottom: 1px solid rgba(169, 112, 10, 0.35);
+  color: v.$color-text-on-amber-strong;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+
+  // Blurred light highlight drifting behind the message.
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: 560px;
+    height: 220px;
+    background:
+      radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.34), transparent 60%),
+      radial-gradient(circle at 75% 50%, rgba(255, 210, 122, 0.5), transparent 55%);
+    filter: blur(20px);
+    transform: translate(-50%, -50%);
+    animation: announceOrb 18s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  // White beam sweeping left to right.
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 220px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.14) 70%,
+      rgba(255, 255, 255, 0.45) 98%,
+      transparent
+    );
+    animation: announceBeam 7s linear infinite;
+    pointer-events: none;
+  }
+
+  &:hover .announceLink {
+    text-decoration-color: currentColor;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before,
+    &::after {
+      animation: none;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.announceLong {
+  @media (max-width: v.$bp-sm) {
+    display: none;
+  }
+}
+
+.announceShort {
+  display: none;
+
+  @media (max-width: v.$bp-sm) {
+    display: inline;
+  }
+}
+
+.announceLink {
+  font-weight: 700;
+  color: v.$color-navy;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.25s ease;
+}
+
+// Small amber "New" pill beside CRM in both the desktop dropdown and the
+// mobile menu.
+.newTag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: v.$color-amber;
+  color: v.$color-text-on-amber-strong;
+  border-radius: v.$radius-pill;
+  font-family: v.$font-mono;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.submenuLink .newTag,
+.mobileSubLink .newTag {
+  margin-left: 8px;
+  vertical-align: 1px;
+}
+
 .inner {
   display: flex;
   align-items: center;

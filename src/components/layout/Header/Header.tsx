@@ -22,7 +22,7 @@ interface NavLink {
   label: string;
   /** Rendered as a hover/focus dropdown on desktop and as indented links
    * in the mobile menu. */
-  children?: Array<{ href: string; label: string }>;
+  children?: Array<{ href: string; label: string; isNew?: boolean }>;
 }
 
 const NAV_LINKS: NavLink[] = [
@@ -34,7 +34,7 @@ const NAV_LINKS: NavLink[] = [
     label: "Pricing",
     children: [
       { href: "/#pricing", label: "Funnel" },
-      { href: "/#crm", label: "CRM" },
+      { href: "/#crm", label: "CRM", isNew: true },
     ],
   },
   { href: "/#faq", label: "FAQ" },
@@ -59,6 +59,17 @@ export function Header() {
 
   return (
     <header className={styles.header}>
+      {/* Part of the sticky header on purpose, so the CRM launch stays in
+          view on every page while scrolling. Fixed at one line (see
+          .announce) — html's scroll-padding-top accounts for its height. */}
+      {/* Plain <a>, like NAV_LINKS — see the note above them. */}
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+      <a href="/#crm" className={styles.announce}>
+        <span className={styles.announceLong}>Get your own CRM, built for you and owned by you.</span>
+        <span className={styles.announceShort}>Your own CRM is here.</span>
+        <span className={styles.announceLink}>See the CRM →</span>
+      </a>
+
       <div className={styles.inner}>
         <a href="/" className={styles.logoLink} aria-label="GoCWGL home">
           <Logo height={46} priority />
@@ -78,6 +89,7 @@ export function Header() {
                   {link.children.map((child) => (
                     <a key={child.href} href={child.href} className={styles.submenuLink}>
                       {child.label}
+                      {child.isNew && <span className={styles.newTag}>New</span>}
                     </a>
                   ))}
                 </div>
@@ -134,6 +146,7 @@ export function Header() {
                     onClick={() => setMenuOpen(false)}
                   >
                     {child.label}
+                    {child.isNew && <span className={styles.newTag}>New</span>}
                   </a>
                 ))}
               </div>

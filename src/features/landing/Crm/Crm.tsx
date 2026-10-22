@@ -99,7 +99,7 @@ export function Crm() {
           <p className={styles.eyebrow}>New · Your own CRM</p>
           <h2 className={styles.heading}>Stop renting your CRM. Own it.</h2>
           <p className={styles.lead}>
-            We build you a private CRM and client portal on your own domain — custom-coded, and
+            We build you a private CRM and client portal on your own domain. Custom-coded, and
             yours outright. It&apos;s the same system we run GoCWGL on every day.
           </p>
         </div>
@@ -210,9 +210,9 @@ export function Crm() {
         <div className={pricingStyles.feeNote} data-reveal="" style={{ animationName: "rise" }}>
           <p className={pricingStyles.feeNoteText}>
             <strong className={pricingStyles.feeNoteStrong}>
-              Pay once for the build — the CRM is yours.
+              Pay once for the build. The CRM is yours.
             </strong>{" "}
-            No monthly fees — the only recurring cost is $97/year for hosting and monitoring your
+            No monthly fees. The only recurring cost is $97/year for hosting and monitoring your
             system after launch. Already set up in another CRM? We can import your contacts
             so you start with your history in place.
           </p>

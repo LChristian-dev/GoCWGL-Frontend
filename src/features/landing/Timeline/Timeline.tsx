@@ -55,7 +55,7 @@ export function Timeline() {
         </div>
 
         <p className={styles.disclaimer} data-reveal="" style={{ animationName: "fadein" }}>
-          Timelines are estimates, not guarantees — they depend on how quickly we get access to
+          Timelines are estimates, not guarantees. They depend on how quickly we get access to
           your accounts and brand materials.
         </p>
       </div>

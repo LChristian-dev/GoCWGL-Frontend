@@ -11,7 +11,7 @@ export function Footer() {
           <Logo height={46} />
         </a>
         <p className={styles.meta}>
-          Virtual assistants since 2016 ·{" "}
+          Virtual assistants since 2015 ·{" "}
           <a href="mailto:info@GoCWGL.com" className={styles.email}>
             info@GoCWGL.com
           </a>

@@ -8,7 +8,7 @@ type FaqItem = [question: string, answer: string];
 const FUNNEL_ITEMS: FaqItem[] = [
   [
     "Do you guarantee results?",
-    "No — that depends on your offer and your traffic too. We guarantee the system is built, tested and running exactly as specified.",
+    "No. That depends on your offer and your traffic too. We guarantee the system is built, tested and running exactly as specified.",
   ],
   [
     "I'm not tech-savvy. Can I still use it?",
@@ -16,7 +16,7 @@ const FUNNEL_ITEMS: FaqItem[] = [
   ],
   [
     "I already have a website or funnel.",
-    "Good — a lot of our work is auditing and fixing what's already there. We'll look at it before recommending a rebuild.",
+    "Good. A lot of our work is auditing and fixing what's already there. We'll look at it before recommending a rebuild.",
   ],
   [
     "What if I want to move providers later?",
@@ -24,7 +24,7 @@ const FUNNEL_ITEMS: FaqItem[] = [
   ],
   [
     "My business is too small for this.",
-    "A system matters more at low volume, not less — every lead counts when there are fewer of them. The Foundation Build scales down.",
+    "A system matters more at low volume, not less. Every lead counts when there are fewer of them. The Foundation Build scales down.",
   ],
   [
     "Is my data safe?",
@@ -32,18 +32,18 @@ const FUNNEL_ITEMS: FaqItem[] = [
   ],
   [
     "Are there hidden fees?",
-    "No. The build fee and the $97/year are stated up front. A funnel build can connect to a CRM you already pay for — any subscription like that is listed before we start — or you can drop that subscription and have a GoCWGL CRM of your own.",
+    "No. The build fee and the $97/year are stated up front. A funnel build can connect to a CRM you already pay for (any subscription like that is listed before we start), or you can drop that subscription and have a GoCWGL CRM of your own.",
   ],
   [
     "Do I have to do anything daily?",
-    "No. The one exception is a small manual step like tagging a contact — if it applies to you, we walk you through it clearly.",
+    "No. The one exception is a small manual step like tagging a contact. If it applies to you, we walk you through it clearly.",
   ],
 ];
 
 const CRM_ITEMS: FaqItem[] = [
   [
     "What's the difference between the Simple and Custom CRM?",
-    "Simple CRM is the full system — contacts, pipeline, booking, forms, email campaigns and automations, invoices, reporting and client portal — set up with your branding, domain, pipeline stages, email automations and imported contacts. Custom CRM includes all of that, plus features we design and build around how your business works.",
+    "Simple CRM is the full system (contacts, pipeline, booking, forms, email campaigns and automations, invoices, reporting and client portal), set up with your branding, domain, pipeline stages, email automations and imported contacts. Custom CRM includes all of that, plus features we design and build around how your business works.",
   ],
   [
     "If you build my CRM, do I own it?",
@@ -59,11 +59,11 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "Will it work with my existing website?",
-    "Yes. Booking calendars and forms come with embed codes that work on any website — inline, as a popup button, or as a link. Every form submission and booking lands in your CRM as a contact.",
+    "Yes. Booking calendars and forms come with embed codes that work on any website: inline, as a popup button, or as a link. Every form submission and booking lands in your CRM as a contact.",
   ],
   [
     "Does it sync with my Google Calendar?",
-    "Yes — Google Calendar, or any calendar with an iCal link. Your busy times block booking slots automatically, and every booking emails a calendar invite.",
+    "Yes. Google Calendar, or any calendar with an iCal link. Your busy times block booking slots automatically, and every booking emails a calendar invite.",
   ],
   [
     "Can my customers and my team log in?",
@@ -79,11 +79,11 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "Can I add features later?",
-    "Yes. Because it's custom code that you own, new features can be added later — by us or by your own developer.",
+    "Yes. Because it's custom code that you own, new features can be added later, by us or by your own developer.",
   ],
   [
     "Do I need a funnel to use the CRM?",
-    "With the Simple CRM, yes — you need a funnel for leads to land on. If you already have one, you're set: the CRM's forms and booking calendars embed on any website. If you don't, we can build one for you. With the Custom CRM, we can build a funnel feature into the CRM itself, so you can design your own funnels.",
+    "With the Simple CRM, yes. You need a funnel for leads to land on. If you already have one, you're set: the CRM's forms and booking calendars embed on any website. If you don't, we can build one for you. With the Custom CRM, we can build a funnel feature into the CRM itself, so you can design your own funnels.",
   ],
 ];
 

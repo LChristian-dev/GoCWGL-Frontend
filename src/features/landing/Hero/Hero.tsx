@@ -25,7 +25,7 @@ export function Hero() {
 
             <p className={styles.lead}>
               For most start-ups, nothing. Leads go unanswered, nothing gets logged, and no one can
-              say what worked. We build the system that captures every lead — pipeline, funnel,
+              say what worked. We build the system that captures every lead: pipeline, funnel,
               automation, and one daily report in your inbox.
             </p>
 
@@ -48,7 +48,7 @@ export function Hero() {
               </Button>
             </div>
 
-            <p className={styles.trust}>Virtual assistants since 2016 · No long-term lock-in</p>
+            <p className={styles.trust}>Virtual assistants since 2015 · No long-term lock-in</p>
 
             <p className={styles.crmNote}>
               <span className={styles.crmNoteTag}>New</span>

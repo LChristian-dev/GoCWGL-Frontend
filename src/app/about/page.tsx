@@ -9,7 +9,7 @@ import styles from "./page.module.scss";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Christian and Wendy have been virtual assistants since 2016. GoCWGL is the connected system they built after watching businesses drown in disconnected tools and assistants.",
+    "Christian and Wendy have been virtual assistants since 2015. GoCWGL is the connected system they built after watching businesses drown in disconnected tools and assistants.",
 };
 
 export default function AboutPage() {
@@ -38,13 +38,13 @@ export default function AboutPage() {
               Christian and Wendy have been virtual assistants since 2015. Over the years, we
               watched the same story play out with almost every small business and startup we
               worked with: they&apos;d hire one assistant to handle emails, then another for their
-              funnel, then a freelancer for automation, then someone else for reporting — and
+              funnel, then a freelancer for automation, then someone else for reporting. And
               somewhere along the way, the pieces stopped talking to each other. More people, more
               handoffs, more things falling through the cracks.
             </p>
             <p className={styles.body}>
               So we asked a different question: what if a business didn&apos;t need to hire a
-              string of assistants at all — what if they just needed one connected system that did
+              string of assistants at all? What if they just needed one connected system that did
               the work?
             </p>
             <p className={styles.body}>That&apos;s why we started GoCWGL.</p>

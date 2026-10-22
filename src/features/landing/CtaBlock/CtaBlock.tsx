@@ -25,7 +25,7 @@ export function CtaBlock() {
           <div className={styles.column} data-reveal="" style={{ animationName: "rise" }}>
             <h2 className={styles.heading}>Let&apos;s look at where your leads are leaking.</h2>
             <p className={styles.lead}>
-              A short discovery call — we map what you have now, tell you honestly whether this is
+              A short discovery call. We map what you have now, tell you honestly whether this is
               your bottleneck, and quote a real number. No pressure either way.
             </p>
             <Button
