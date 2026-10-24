@@ -17,11 +17,11 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Leads come in. Then what happens? | GoCWGL Revenue Engine & CRM",
+    default: "Stop renting your CRM. Own it. | GoCWGL CRM",
     template: "%s | GoCWGL",
   },
   description:
-    "GoCWGL builds the pipeline, funnel, automation and daily reporting system that catches every lead, plus your own custom CRM and client portal that you own outright, instead of renting one by the month.",
+    "GoCWGL builds your own CRM and client portal, on your domain and with your branding, that you own outright instead of renting one by the month. Plus custom-coded funnels, automation and a daily lead report.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

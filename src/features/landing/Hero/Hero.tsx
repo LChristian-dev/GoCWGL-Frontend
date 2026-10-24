@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button/Button";
-import { ReportCard } from "./ReportCard";
+import { CrmPreview } from "./CrmPreview";
 import styles from "./Hero.module.scss";
 
 export function Hero() {
@@ -14,19 +14,20 @@ export function Hero() {
           <div className={styles.column}>
             <div className={styles.badge}>
               <span aria-hidden="true" data-motion="" className={styles.badgeDot} />
-              Custom-coded funnels &amp; CRMs
+              New · The GoCWGL CRM
             </div>
 
             <h1 className={styles.heading}>
-              Leads come in.
+              Stop renting your CRM.
               <br />
-              <span className={styles.headingGradient}>Then what happens?</span>
+              <span className={styles.headingGradient}>Own it.</span>
             </h1>
 
             <p className={styles.lead}>
-              For most start-ups, nothing. Leads go unanswered, nothing gets logged, and no one can
-              say what worked. We build the system that captures every lead: pipeline, funnel,
-              automation, and one daily report in your inbox.
+              A CRM built for you, on your own domain, with your branding. Contacts, pipeline,
+              booking calendars, invoices, email automations and a client portal, plus one daily
+              report in your inbox at 7 AM your time. One build fee, no monthly seat bill, and the
+              code and data are yours.
             </p>
 
             <div className={styles.actions}>
@@ -43,24 +44,23 @@ export function Hero() {
               >
                 Book a discovery call
               </Button>
-              <Button href="#pricing" variant="outlineLight" className={styles.ctaSecondary}>
-                See the pricing
+              <Button href="#crm" variant="outlineLight" className={styles.ctaSecondary}>
+                See the CRM
               </Button>
             </div>
 
             <p className={styles.trust}>Virtual assistants since 2015 · No long-term lock-in</p>
 
-            <p className={styles.crmNote}>
-              <span className={styles.crmNoteTag}>New</span>
-              Want your own CRM instead of renting one?{" "}
-              <a href="#crm" className={styles.crmNoteLink}>
-                See the GoCWGL CRM →
+            <p className={styles.funnelNote}>
+              Just need a funnel?{" "}
+              <a href="#pricing" className={styles.funnelNoteLink}>
+                See the funnel packages →
               </a>
             </p>
           </div>
 
           <div className={styles.reportColumn}>
-            <ReportCard />
+            <CrmPreview />
           </div>
         </div>
       </div>

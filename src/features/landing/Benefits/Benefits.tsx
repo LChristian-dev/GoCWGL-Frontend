@@ -11,7 +11,7 @@ const BENEFITS = [
   },
   {
     title: "Know what's working without logging in",
-    body: "Your AI-powered daily report tells you what happened. No digging through a CRM to find it.",
+    body: "Your AI-powered daily report lands at 7 AM in your time zone and tells you what happened. No digging through a CRM to find it.",
   },
   {
     title: "A funnel that feels premium",

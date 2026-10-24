@@ -136,7 +136,7 @@
   animation: fadein 1s 0.55s both;
 }
 
-.crmNote {
+.funnelNote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -148,19 +148,7 @@
   animation: fadein 1s 0.65s both;
 }
 
-.crmNoteTag {
-  padding: 3px 9px;
-  background: v.$color-amber-tint;
-  border: 1px solid rgba(247, 168, 27, 0.42);
-  border-radius: v.$radius-pill;
-  font-family: v.$font-mono;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: v.$color-amber-ink;
-}
-
-.crmNoteLink {
+.funnelNoteLink {
   font-weight: 600;
   color: v.$color-navy;
   transition: color 0.25s ease;

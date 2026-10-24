@@ -1,0 +1,1958 @@
+@use "abstracts/variables" as v;
+
+// Colors from the GoCWGL admin app (gocwgl-admin abstracts/_variables.scss)
+// so the demo looks like the product people actually get.
+$ink: #0b1424;
+$ink-soft: #2e3d55;
+$ink-muted: #3b4a61;
+$muted: #4f6280;
+$muted-light: #6b7a92;
+$bg: #f6faff;
+$bg-soft: #f2f8fc;
+$cyan-700: #0e7490;
+$cyan-600: #0891b2;
+$orange: #ff9900;
+$orange-light: #ffb23f;
+$orange-ink: #8a4500;
+$red: #b42318;
+$line: rgba(8, 145, 178, 0.18);
+$line-faint: rgba(8, 145, 178, 0.11);
+$shadow-card: 0 0 0 1px rgba(8, 145, 178, 0.03), 0 8px 24px -8px rgba(8, 145, 178, 0.14);
+$radius: 16px;
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdropOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+// ------------------------------------------------------------------ Dialog
+.dialog {
+  width: min(1180px, calc(100vw - 40px));
+  height: min(800px, calc(100dvh - 40px));
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
+  color: $ink;
+  font-family: v.$font-heading;
+  overflow: visible;
+
+  &[open]:not([data-zoom]) {
+    animation: dialogIn 0.35s v.$ease-standard;
+  }
+
+  &::backdrop {
+    background: rgba(7, 12, 20, 0.55);
+    backdrop-filter: blur(6px);
+    animation: backdropIn 0.3s ease;
+  }
+
+  // Set by CrmDemo while it shrinks back into the hero preview.
+  &[data-closing]::backdrop {
+    animation: backdropOut 0.38s ease forwards;
+  }
+
+  @media (max-width: v.$bp-sm) {
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &[open],
+    &::backdrop,
+    & * {
+      animation: none !important;
+    }
+  }
+}
+
+.shell {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background: $bg;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 40px 120px -30px rgba(7, 12, 20, 0.7);
+}
+
+// ------------------------------------------------------------------ Top bar
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $line-faint;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 9px;
+  background: linear-gradient(135deg, $orange, $orange-light);
+  color: #1a0f00;
+  box-shadow: 0 6px 16px -6px rgba(255, 153, 0, 0.8);
+}
+
+.brandText {
+  font-family: v.$font-mono;
+  font-size: 13px;
+  color: $muted;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  strong {
+    color: $cyan-700;
+  }
+}
+
+.demoBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  padding: 4px 10px;
+  border-radius: v.$radius-pill;
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  font-size: 12px;
+  font-weight: 700;
+
+  @media (max-width: v.$bp-sm) {
+    display: none;
+  }
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.topbarSpacer {
+  flex: 1 1 auto;
+}
+
+.confirm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $ink-muted;
+}
+
+.hideSm {
+  @media (max-width: v.$bp-sm) {
+    display: none;
+  }
+}
+
+// ------------------------------------------------------------------ Layout
+.body {
+  display: grid;
+  grid-template-columns: 228px minmax(0, 1fr);
+  min-height: 0;
+
+  @media (max-width: v.$bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 16px 12px;
+  background: #fff;
+  border-right: 1px solid $line;
+  overflow-y: auto;
+
+  // Becomes a horizontal tab strip on smaller screens.
+  @media (max-width: v.$bp-md) {
+    flex-direction: row;
+    gap: 6px;
+    padding: 10px 12px;
+    border-right: 0;
+    border-bottom: 1px solid $line;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+}
+
+.navGroup {
+  display: grid;
+  gap: 3px;
+
+  & + & {
+    margin-top: 14px;
+  }
+
+  // On smaller screens the groups flatten into one scrolling tab strip.
+  @media (max-width: v.$bp-md) {
+    display: contents;
+  }
+}
+
+.navLabel {
+  padding: 0 10px 6px;
+  font-family: v.$font-mono;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $cyan-700;
+
+  @media (max-width: v.$bp-md) {
+    display: none;
+  }
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  min-height: 40px;
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: $ink-muted;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background: rgba(8, 145, 178, 0.06);
+  }
+
+  &[aria-current="page"] {
+    background: rgba(255, 153, 0, 0.14);
+    color: $orange-ink;
+    box-shadow: inset 0 0 0 1px rgba(255, 153, 0, 0.3);
+  }
+
+  // Slide in one after another as the demo opens.
+  animation: slideIn 0.45s v.$ease-standard both;
+
+  @for $i from 1 through 4 {
+    .navGroup:nth-child(#{$i}) & {
+      animation-delay: 0.2s + $i * 0.08s;
+    }
+  }
+
+  @media (max-width: v.$bp-md) {
+    min-height: 36px;
+    padding: 3px 12px 3px 4px;
+    border-radius: v.$radius-pill;
+    font-size: 13px;
+  }
+}
+
+.navPromo {
+  animation: fadeUp 0.5s v.$ease-standard 0.6s both;
+  display: grid;
+  gap: 6px;
+  margin-top: auto;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #0f2e56, #0b1e3a);
+  color: #d6dee9;
+  font-size: 12.5px;
+  line-height: 1.45;
+
+  strong {
+    color: #fff;
+    font-size: 14px;
+  }
+
+  @media (max-width: v.$bp-md) {
+    display: none;
+  }
+}
+
+.promoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  color: $orange-light;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    color: #ffd27a;
+  }
+}
+
+.main {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px 26px 32px;
+  background-color: $bg;
+  background-image:
+    radial-gradient(circle at 100% 0, rgba(165, 243, 252, 0.4), transparent 40%),
+    radial-gradient(circle at 0 100%, rgba(221, 214, 254, 0.45), transparent 40%),
+    linear-gradient(rgba(8, 145, 178, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 145, 178, 0.06) 1px, transparent 1px);
+  background-size:
+    160% 160%,
+    160% 160%,
+    32px 32px,
+    32px 32px;
+  background-attachment: local;
+  // The two color glows drift slowly so the workspace always feels alive.
+  animation: glowDrift 16s ease-in-out infinite alternate;
+
+  @media (max-width: v.$bp-sm) {
+    padding: 16px 14px 28px;
+  }
+}
+
+.notice {
+  animation: fadeUp 0.45s v.$ease-standard 0.25s both;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 153, 0, 0.35);
+  border-radius: 12px;
+  background: rgba(255, 241, 220, 0.75);
+  color: $orange-ink;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  svg {
+    flex: none;
+  }
+}
+
+// ------------------------------------------------------------- Primitives
+.icon {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.iconTile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  padding: 3px 10px;
+  border-radius: v.$radius-pill;
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stack {
+  display: grid;
+  gap: 18px;
+
+  // Each block of a section rises in on its own beat. Sections remount
+  // when you switch tabs, so this replays on every switch.
+  > * {
+    animation: fadeUp 0.5s v.$ease-standard both;
+  }
+
+  @for $i from 1 through 6 {
+    > :nth-child(#{$i}) {
+      animation-delay: 0.22s + $i * 0.07s;
+    }
+  }
+}
+
+.grow {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.muted {
+  color: $muted-light;
+  font-size: 13px;
+}
+
+.empty {
+  margin: 0;
+  padding: 18px 12px;
+  border: 1.5px dashed rgba(8, 145, 178, 0.25);
+  border-radius: 12px;
+  color: $muted;
+  font-size: 13px;
+  text-align: center;
+}
+
+.card {
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: $radius;
+  box-shadow: $shadow-card;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.cardSub {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: $muted;
+}
+
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 20px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.sectionSub {
+  margin: 4px 0 0;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $muted;
+}
+
+.sectionActions {
+  display: flex;
+  gap: 8px;
+}
+
+// ----------------------------------------------------------------- Buttons
+%button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  font: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btnPrimary {
+  @extend %button;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 11px;
+  background: linear-gradient(90deg, $orange, $orange-light);
+  color: #1a0f00;
+  font-size: 14px;
+  box-shadow: 0 8px 20px -10px rgba(255, 153, 0, 0.9);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px -10px rgba(255, 153, 0, 1);
+  }
+}
+
+.btnSmall {
+  @extend %button;
+  min-height: 30px;
+  padding: 0 11px;
+  border-radius: 9px;
+  background: $ink;
+  color: #fff;
+  font-size: 12px;
+
+  &:hover {
+    background: $ink-soft;
+  }
+}
+
+.btnGhost {
+  @extend %button;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: transparent;
+  color: $ink-muted;
+  font-size: 13px;
+  box-shadow: inset 0 0 0 1px $line;
+
+  &:hover {
+    background: rgba(8, 145, 178, 0.06);
+  }
+}
+
+.btnDanger {
+  @extend %button;
+  justify-self: start;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: #fde4e1;
+  color: $red;
+  font-size: 13px;
+
+  &:hover {
+    background: #fbd0cb;
+  }
+}
+
+.iconBtn,
+.iconBtnSm,
+.moveBtn {
+  @extend %button;
+  flex: none;
+  padding: 0;
+  background: transparent;
+  color: $muted;
+
+  &:hover {
+    background: rgba(8, 145, 178, 0.08);
+    color: $ink;
+  }
+}
+
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.iconBtnSm {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.moveBtn {
+  width: 28px;
+  height: 28px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+
+  &:hover {
+    background: var(--tone-solid);
+    color: #fff;
+  }
+}
+
+// ------------------------------------------------------------------ Forms
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: $ink-muted;
+}
+
+.input {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid rgba(8, 145, 178, 0.25);
+  border-radius: 10px;
+  background: #fff;
+  color: $ink;
+  font: inherit;
+  font-size: 14px;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $cyan-600;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+  }
+}
+
+textarea.input {
+  resize: vertical;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 14px;
+}
+
+.formActions {
+  display: flex;
+  align-items: flex-end;
+}
+
+.bookForm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  align-items: end;
+  gap: 14px;
+}
+
+.segmented {
+  display: flex;
+  padding: 3px;
+  border-radius: 11px;
+  background: $bg-soft;
+  box-shadow: inset 0 0 0 1px $line-faint;
+
+  button {
+    flex: 1 1 0;
+    min-height: 32px;
+    padding: 0 6px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: $muted;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+
+    &[aria-pressed="true"] {
+      background: #fff;
+      color: $ink;
+      box-shadow: 0 2px 8px -2px rgba(8, 145, 178, 0.3);
+    }
+  }
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid rgba(8, 145, 178, 0.25);
+  border-radius: 12px;
+  background: #fff;
+  color: $muted;
+
+  &:focus-within {
+    border-color: $cyan-600;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+  }
+}
+
+.searchInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 42px;
+  border: 0;
+  background: transparent;
+  color: $ink;
+  font: inherit;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// -------------------------------------------------------------- Dashboard
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 14px;
+}
+
+.kpi {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  overflow: hidden;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: $radius;
+  box-shadow: $shadow-card;
+
+  // Tone glow line along the top edge.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tone-solid), transparent);
+  }
+}
+
+.kpiTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.kpiLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: $muted;
+}
+
+.kpiValue {
+  // Keyed by value in Dashboard, so each change ticks in.
+  animation: fadeUp 0.4s v.$ease-standard both;
+  font-family: v.$font-mono;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.kpiFoot {
+  font-size: 12px;
+  color: $muted-light;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 14px;
+}
+
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 120px;
+  margin-top: 16px;
+}
+
+.barSlot {
+  display: flex;
+  align-items: flex-end;
+  flex: 1 1 0;
+  height: 100%;
+}
+
+.bar {
+  transform-origin: bottom;
+  animation: barGrow 0.7s v.$ease-standard both;
+  width: 100%;
+  border-radius: 5px 5px 2px 2px;
+  background: #a5f3fc;
+  transition: height 0.4s v.$ease-standard;
+
+  &[data-today] {
+    background: linear-gradient(180deg, #22d3ee, $cyan-600);
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+  }
+}
+
+.barAxis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-family: v.$font-mono;
+  font-size: 11px;
+  color: $muted-light;
+}
+
+.stacked {
+  display: flex;
+  gap: 4px;
+  height: 14px;
+  margin-top: 18px;
+
+  span {
+    border-radius: v.$radius-pill;
+    background: var(--tone-solid);
+    transition: flex-grow 0.4s v.$ease-standard;
+  }
+}
+
+.legend {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: $ink-muted;
+  }
+
+  strong {
+    margin-left: auto;
+    font-family: v.$font-mono;
+    color: $ink;
+  }
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tone-solid);
+}
+
+.activity {
+  display: grid;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    font-size: 14px;
+    color: $ink-soft;
+
+    & + li {
+      border-top: 1px solid $line-faint;
+    }
+  }
+}
+
+.activityDot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: $cyan-600;
+  box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.12);
+}
+
+// ------------------------------------------------------------------ Lists
+
+.list {
+  flex: 999 1 380px;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover:not([data-static]) {
+    background: $bg-soft;
+  }
+
+  &[data-static] {
+    cursor: default;
+  }
+
+  &[aria-current] {
+    background: rgba(255, 153, 0, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 153, 0, 0.35);
+  }
+
+  & + & {
+    margin-top: 0;
+  }
+
+  @media (max-width: v.$bp-sm) {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+}
+
+.rowMain {
+  display: grid;
+  flex: 1 1 auto;
+  min-width: 0;
+
+  > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.rowTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: $ink;
+}
+
+.rowSub {
+  font-size: 12.5px;
+  color: $muted;
+}
+
+.rowMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  font-size: 14px;
+
+  @media (max-width: v.$bp-sm) {
+    flex: 1 1 100%;
+    justify-content: flex-end;
+  }
+}
+
+
+
+
+// --------------------------------------------------------------- Pipeline
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  align-items: start;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.boardColumn {
+  display: grid;
+  gap: 10px;
+  min-height: 360px;
+  align-content: start;
+  padding: 14px;
+  border: 1px solid $line;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &[data-over] {
+    background: var(--tone-bg);
+    box-shadow: inset 0 0 0 2px var(--tone-solid);
+  }
+}
+
+.boardHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boardDot {
+  width: 10px;
+  height: 10px;
+  border: 2.5px solid var(--tone-solid);
+  border-radius: 50%;
+}
+
+.boardTitle {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.boardCount {
+  margin-left: auto;
+  min-width: 26px;
+  padding: 2px 8px;
+  border-radius: v.$radius-pill;
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.boardTotal {
+  margin: -4px 0 2px;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  color: $muted;
+}
+
+.dealCard {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 14px;
+  box-shadow: $shadow-card;
+  cursor: grab;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -14px rgba(8, 145, 178, 0.45);
+  }
+
+  &[data-dragging] {
+    opacity: 0.4;
+  }
+}
+
+.dealTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.dealBottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid $line-faint;
+  font-size: 14px;
+
+  strong {
+    font-family: v.$font-mono;
+  }
+}
+
+// --------------------------------------------------------------- Calendar
+.week {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.day {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 140px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid $line;
+  border-radius: 14px;
+
+  &[data-today] {
+    border-color: rgba(255, 153, 0, 0.55);
+    box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.12);
+  }
+
+  .empty {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+}
+
+.dayHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $muted;
+
+  strong {
+    font-size: 20px;
+    letter-spacing: 0;
+    color: $ink;
+  }
+
+  [data-today] > & strong {
+    color: #c2410c;
+  }
+}
+
+.event {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 4px;
+  padding: 9px 10px;
+  border-left: 3px solid #ea580c;
+  border-radius: 10px;
+  background: #fff1e6;
+
+  .iconBtnSm {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    align-self: center;
+  }
+
+  .avatar {
+    width: 22px;
+    height: 22px;
+    font-size: 9px;
+  }
+}
+
+.eventTime {
+  font-family: v.$font-mono;
+  font-size: 12px;
+  font-weight: 700;
+  color: #c2410c;
+}
+
+.eventWho {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+
+  .rowTitle {
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// --------------------------------------------------------------- Invoices
+.totals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+// ------------------------------------------------------------ Live motion
+@keyframes glowDrift {
+  from {
+    background-position:
+      100% 0,
+      0 100%,
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      60% 30%,
+      40% 70%,
+      0 0,
+      0 0;
+  }
+}
+
+@keyframes barGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes toastOut {
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+@for $i from 1 through 14 {
+  .barSlot:nth-child(#{$i}) .bar {
+    animation-delay: 0.3s + $i * 0.035s;
+  }
+}
+
+.toasts {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 5;
+  display: grid;
+  gap: 10px;
+  width: min(320px, calc(100% - 36px));
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid $line;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 40px -16px rgba(11, 20, 36, 0.4);
+  // Slides in, then fades out just before CrmDemo removes it (5.2s).
+  animation:
+    toastIn 0.45s v.$ease-standard both,
+    toastOut 0.4s ease-in 4.7s forwards;
+}
+
+.toastText {
+  display: grid;
+  min-width: 0;
+  font-size: 13px;
+  color: $ink-soft;
+
+  strong {
+    font-size: 13.5px;
+    color: $ink;
+  }
+}
+
+// ---------------------------------------------------------- Automations
+.flowList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 14px;
+}
+
+.flowCard {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: $radius;
+  box-shadow: $shadow-card;
+  transition: opacity 0.2s ease;
+
+  &[data-off] {
+    opacity: 0.6;
+  }
+}
+
+.flowHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.toggle {
+  position: relative;
+  flex: none;
+  width: 42px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: v.$radius-pill;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &[aria-checked="true"] {
+    background: #10b981;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+  }
+}
+
+.toggleKnob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(11, 20, 36, 0.3);
+  transition: transform 0.2s v.$ease-standard;
+
+  [aria-checked="true"] > & {
+    transform: translateX(18px);
+  }
+}
+
+// Trigger → wait → send, joined by a glowing rail.
+.flow {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    bottom: 12px;
+    left: 12px;
+    width: 2px;
+    border-radius: 1px;
+    background: linear-gradient(#22d3ee, #7c4dff);
+  }
+}
+
+.flowStep {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: $ink-soft;
+}
+
+.flowIcon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  color: #fff;
+
+  &[data-kind="trigger"] {
+    background: linear-gradient(135deg, $orange, $orange-light);
+    color: #1a0f00;
+  }
+
+  &[data-kind="wait"] {
+    background: #94a3b8;
+  }
+
+  &[data-kind="send"] {
+    background: linear-gradient(135deg, #0284c7, #22d3ee);
+  }
+
+  // A pulse travels down the flow on active automations.
+  .flowCard:not([data-off]) & {
+    animation: flowPulse 3s ease-in-out infinite;
+  }
+
+  .flowCard:not([data-off]) .flowStep:nth-child(2) & {
+    animation-delay: 0.5s;
+  }
+
+  .flowCard:not([data-off]) .flowStep:nth-child(3) & {
+    animation-delay: 1s;
+  }
+}
+
+@keyframes flowPulse {
+  0%,
+  60%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+  }
+  20% {
+    box-shadow: 0 0 0 5px rgba(34, 211, 238, 0.25);
+  }
+}
+
+.flowSubject {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.flowDelete {
+  @extend %button;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: $muted-light;
+  opacity: 0;
+
+  .flowCard:hover &,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  // No hover on touch screens, so keep it visible there.
+  @media (hover: none) {
+    opacity: 1;
+  }
+
+  &:hover {
+    background: #fde4e1;
+    color: $red;
+  }
+}
+
+// ---------------------------------------------------------------- Contacts
+// Layout modeled on GoHighLevel's contacts page, in the demo's own style.
+.contactsHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 20px;
+}
+
+.countBadge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  margin-left: 6px;
+  padding: 2px 10px;
+  border-radius: v.$radius-pill;
+  background: #f3eeff;
+  color: #6d28d9;
+  font-size: 14px;
+  font-weight: 800;
+  vertical-align: middle;
+}
+
+.tableCard {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 18px;
+  box-shadow: $shadow-card;
+}
+
+.listTabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 14px;
+  border-bottom: 1px solid $line-faint;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.listTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  padding: 14px 10px 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  color: $muted;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    color: $ink;
+  }
+
+  &[aria-selected="true"] {
+    color: $ink;
+    border-bottom-color: $orange;
+  }
+}
+
+.listCount {
+  padding: 1px 8px;
+  border-radius: v.$radius-pill;
+  background: $bg-soft;
+  color: $muted;
+  font-size: 11.5px;
+
+  [aria-selected="true"] > & {
+    background: rgba(255, 153, 0, 0.16);
+    color: $orange-ink;
+  }
+}
+
+.toolbar,
+.bulkBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  min-height: 66px;
+  padding: 12px 14px;
+  border-bottom: 1px solid $line-faint;
+}
+
+.bulkBar {
+  background: linear-gradient(90deg, rgba(255, 153, 0, 0.1), rgba(255, 153, 0, 0.03));
+  font-size: 14px;
+  animation: fadeUp 0.25s v.$ease-standard both;
+}
+
+.bulkTag {
+  display: flex;
+  gap: 6px;
+}
+
+.inputSm {
+  min-height: 38px;
+  padding: 6px 10px;
+  border: 1px solid rgba(8, 145, 178, 0.25);
+  border-radius: 10px;
+  background: #fff;
+  color: $ink;
+  font: inherit;
+  font-size: 13px;
+
+  &:focus {
+    outline: none;
+    border-color: $cyan-600;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+  }
+}
+
+.tableScroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+
+  th {
+    position: sticky;
+    top: 0;
+    padding: 10px 14px;
+    background: $bg-soft;
+    color: $muted;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 10px 14px;
+    border-top: 1px solid $line-faint;
+    color: $ink-soft;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+
+    &:hover {
+      background: rgba(8, 145, 178, 0.04);
+    }
+
+    &[data-selected] {
+      background: rgba(255, 153, 0, 0.07);
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: $orange;
+    cursor: pointer;
+  }
+}
+
+.checkCell {
+  width: 44px;
+  padding-right: 0 !important;
+}
+
+.hideMd {
+  @media (max-width: v.$bp-md) {
+    display: none;
+  }
+}
+
+.hideSm {
+  @media (max-width: v.$bp-sm) {
+    display: none;
+  }
+}
+
+.mono {
+  font-family: v.$font-mono;
+  font-size: 12.5px;
+}
+
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  .rowSub {
+    margin-top: 3px;
+  }
+
+  .pill {
+    padding: 1px 8px;
+    font-size: 11px;
+  }
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 7px;
+  background: $bg-soft;
+  box-shadow: inset 0 0 0 1px $line-faint;
+  color: $ink-soft;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  button {
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: $muted-light;
+    cursor: pointer;
+
+    &:hover {
+      color: $red;
+    }
+  }
+}
+
+.tagMore {
+  padding: 3px 7px;
+  color: $muted;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-top: 1px solid $line-faint;
+}
+
+.pagerBtns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageNum {
+  font-family: v.$font-mono;
+  font-size: 12px;
+  color: $muted;
+}
+
+// Slide-in contact drawer over the right side of the demo.
+@keyframes drawerIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  background: rgba(11, 20, 36, 0.28);
+  animation: backdropIn 0.25s ease both;
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(440px, 100%);
+  background: #fff;
+  border-left: 1px solid $line;
+  box-shadow: -24px 0 60px -20px rgba(11, 20, 36, 0.35);
+  animation: drawerIn 0.4s v.$ease-standard both;
+}
+
+.drawerHead,
+.drawerFoot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+}
+
+.drawerHead {
+  border-bottom: 1px solid $line-faint;
+}
+
+.drawerFoot {
+  justify-content: flex-end;
+  border-top: 1px solid $line-faint;
+  background: $bg-soft;
+
+  .btnDanger {
+    margin-right: auto;
+  }
+}
+
+.drawerBody {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.drawerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  gap: 14px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(165, 243, 252, 0.5), transparent 60%),
+    $bg-soft;
+
+  .avatar {
+    width: 52px;
+    height: 52px;
+    font-size: 17px;
+  }
+}
+
+.profileName {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.quickBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px $line;
+  color: $ink-muted;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(8, 145, 178, 0.06);
+    color: $cyan-700;
+  }
+
+  &[aria-disabled="true"] {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+}
+
+.tagEditor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 6px 8px;
+  border: 1px solid rgba(8, 145, 178, 0.25);
+  border-radius: 10px;
+
+  &:focus-within {
+    border-color: $cyan-600;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+  }
+}
+
+.tagForm {
+  flex: 1 1 100px;
+}
+
+.tagInput {
+  width: 100%;
+  min-height: 28px;
+  border: 0;
+  background: transparent;
+  color: $ink;
+  font: inherit;
+  font-size: 13px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
