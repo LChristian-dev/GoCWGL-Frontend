@@ -172,6 +172,14 @@
   margin-left: auto;
   font-size: 15px;
   font-weight: 500;
+  white-space: nowrap;
+
+  // Just above the collapse point the full nav is tight; pull it in so
+  // every label stays on one line.
+  @media (max-width: 1040px) {
+    gap: 18px;
+    font-size: 14.5px;
+  }
 
   // Below $bp-md there isn't room for five links plus the CTA — rather
   // than let them wrap into a ragged second row, the whole nav is hidden
@@ -286,6 +294,33 @@
   &:focus-visible {
     background: v.$color-amber-tint;
     color: v.$color-amber-deep;
+  }
+}
+
+// Quiet secondary action next to the CTA: a hairline divider sets it apart
+// from the page links, and it fills softly on hover.
+.signIn {
+  position: relative;
+  padding: 10px 16px;
+  border-radius: v.$radius-pill;
+  color: v.$color-navy;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    width: 1px;
+    height: 20px;
+    background: v.$color-border-outline;
+    transform: translateY(-50%);
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(15, 46, 86, 0.07);
   }
 }
 

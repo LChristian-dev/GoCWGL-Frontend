@@ -41,6 +41,9 @@ const NAV_LINKS: NavLink[] = [
   { href: "/#faq", label: "FAQ" },
 ];
 
+/** The client app, where clients sign in (or create an account). */
+const APP_URL = "https://app.gocwgl.com";
+
 // Matches the logo file's exact sampled yellow (#f7ae0e) rather than the
 // $color-amber design token (#f7a81b) — close, but a visibly different
 // shade next to the real logo mark shown right beside this button.
@@ -101,15 +104,20 @@ export function Header() {
               </a>
             ),
           )}
+          {/* Existing clients sign in (sign-up lives on the same app page);
+              new visitors get one clear next step: the discovery call. */}
+          <a href={APP_URL} className={styles.signIn}>
+            Sign in
+          </a>
           <Button
-            href="https://app.gocwgl.com"
+            href="/book"
             variant="amber"
             className={styles.cta}
             style={ctaStyleVars}
             sheen
             sheenDuration="4.2s"
           >
-            Login
+            Get started
           </Button>
         </nav>
 
@@ -162,8 +170,11 @@ export function Header() {
               </a>
             ),
           )}
+          <a href={APP_URL} className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+            Sign in
+          </a>
           <Button
-            href="https://app.gocwgl.com"
+            href="/book"
             variant="amber"
             className={styles.mobileCta}
             style={ctaStyleVars}
@@ -171,7 +182,7 @@ export function Header() {
             sheenDuration="4.2s"
             onClick={() => setMenuOpen(false)}
           >
-            Login
+            Get started
           </Button>
         </nav>
       )}
