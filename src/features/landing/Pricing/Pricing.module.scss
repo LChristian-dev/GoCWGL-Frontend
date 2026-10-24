@@ -92,6 +92,28 @@
   }
 }
 
+// Product label on every card, so a funnel package is never mistaken for
+// a CRM package (or the other way round).
+.productTag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: v.$radius-pill;
+  background: rgba(247, 168, 27, 0.14);
+  border: 1px solid rgba(247, 168, 27, 0.4);
+  font-family: v.$font-mono;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: v.$color-amber;
+}
+
+.productTagCrm {
+  background: rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.4);
+  color: #67e8f9;
+}
+
 .tierName {
   margin: 0 0 8px;
   font-size: 21px;

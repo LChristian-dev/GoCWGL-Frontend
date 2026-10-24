@@ -53,7 +53,7 @@ export function Hero() {
 
             <p className={styles.funnelNote}>
               Just need a funnel?{" "}
-              <a href="#pricing" className={styles.funnelNoteLink}>
+              <a href="/pricing/funnel" className={styles.funnelNoteLink}>
                 See the funnel packages →
               </a>
             </p>

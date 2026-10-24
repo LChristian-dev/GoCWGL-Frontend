@@ -7,9 +7,8 @@ import {
   Story,
   HowItWorks,
   Benefits,
-  Pricing,
+  Packages,
   Timeline,
-  Crm,
   Faq,
   CtaBlock,
 } from "@/features/landing";
@@ -25,9 +24,9 @@ export default function Home() {
         <Story />
         <HowItWorks />
         <Benefits />
-        <Pricing />
+        {/* Full price lists live on /pricing/crm and /pricing/funnel. */}
+        <Packages />
         <Timeline />
-        <Crm />
         <Faq />
         <CtaBlock />
       </main>

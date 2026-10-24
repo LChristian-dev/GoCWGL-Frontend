@@ -1,0 +1,192 @@
+@use "abstracts/variables" as v;
+@use "abstracts/mixins" as m;
+@use "abstracts/keyframes" as k;
+
+@include k.keyframes-drift;
+@include k.keyframes-rise;
+@include k.keyframes-riseIn;
+
+// Two looks from one component: [data-product="crm"] is deep navy with cyan
+// light (premium, "own it"); [data-product="funnel"] is light with amber
+// warmth (fast, approachable). Colors are set as custom properties here so
+// the rules below stay shared.
+.hero {
+  --hero-bg: #{v.$color-surface};
+  --hero-text: #{v.$color-text};
+  --hero-muted: #{v.$color-text-muted};
+  --hero-accent: #{v.$color-amber-deep};
+  --hero-grid: rgba(13, 21, 32, 0.05);
+  --switch-bg: rgba(13, 21, 32, 0.05);
+  --switch-text: #{v.$color-text-muted};
+  --switch-active-bg: #fff;
+  --switch-active-text: #{v.$color-text};
+  --point-bg: #{v.$color-amber-tint};
+  --point-border: rgba(247, 168, 27, 0.4);
+  --point-text: #{v.$color-note-text};
+  --check: #{v.$color-amber-deep};
+
+  position: relative;
+  overflow: hidden;
+  background: var(--hero-bg);
+  color: var(--hero-text);
+
+  &[data-product="crm"] {
+    --hero-bg: linear-gradient(160deg, #0b1e3a 0%, #0f2e56 55%, #0a1a33 100%);
+    --hero-text: #fff;
+    --hero-muted: #{v.$color-text-on-dark-muted};
+    --hero-accent: #67e8f9;
+    --hero-grid: rgba(103, 232, 249, 0.07);
+    --switch-bg: rgba(255, 255, 255, 0.08);
+    --switch-text: #{v.$color-text-on-dark-muted};
+    --switch-active-bg: #fff;
+    --switch-active-text: #0b1e3a;
+    --point-bg: rgba(34, 211, 238, 0.1);
+    --point-border: rgba(34, 211, 238, 0.35);
+    --point-text: #d6f6fb;
+    --check: #67e8f9;
+  }
+}
+
+.glowA,
+.glowB {
+  [data-product="funnel"] & {
+    @include m.drift-glow(620px, rgba(247, 168, 27, 0.28), rgba(247, 168, 27, 0), 66%, 16s);
+  }
+
+  [data-product="crm"] & {
+    @include m.drift-glow(620px, rgba(34, 211, 238, 0.22), rgba(34, 211, 238, 0), 66%, 18s);
+  }
+}
+
+.glowA {
+  top: -240px;
+  right: -160px;
+}
+
+.glowB {
+  bottom: -320px;
+  left: -200px;
+
+  [data-product="crm"] & {
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.22), rgba(124, 58, 237, 0) 66%);
+  }
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 80%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  @include m.container($max: v.$container-narrow);
+  padding-block: 56px 88px;
+  text-align: center;
+}
+
+.switch {
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 36px;
+  padding: 4px;
+  border-radius: v.$radius-pill;
+  background: var(--switch-bg);
+  animation: rise 0.6s v.$ease-standard both;
+}
+
+.switchItem {
+  padding: 9px 18px;
+  border-radius: v.$radius-pill;
+  color: var(--switch-text);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    color: var(--hero-text);
+  }
+
+  &[aria-current="page"] {
+    background: var(--switch-active-bg);
+    color: var(--switch-active-text);
+    box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.eyebrow {
+  @include m.eyebrow(var(--hero-accent));
+  animation: rise 0.7s v.$ease-standard 0.05s both;
+}
+
+.title {
+  margin: 0 auto 20px;
+  max-width: 760px;
+  font-size: clamp(38px, 5.6vw, 64px);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  animation: riseIn 0.8s v.$ease-standard 0.1s both;
+}
+
+.lead {
+  margin: 0 auto 28px;
+  max-width: 600px;
+  font-size: 18.5px;
+  line-height: 1.6;
+  color: var(--hero-muted);
+  text-wrap: pretty;
+  animation: rise 0.8s v.$ease-standard 0.18s both;
+}
+
+.points {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 34px;
+  padding: 0;
+  list-style: none;
+  animation: rise 0.8s v.$ease-standard 0.26s both;
+}
+
+.point {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: v.$radius-pill;
+  background: var(--point-bg);
+  border: 1px solid var(--point-border);
+  color: var(--point-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.check {
+  color: var(--check);
+  font-weight: 800;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  animation: rise 0.8s v.$ease-standard 0.34s both;
+}
+
+.cta,
+.ctaSecondary {
+  padding: 17px 30px;
+  font-size: 16px;
+}

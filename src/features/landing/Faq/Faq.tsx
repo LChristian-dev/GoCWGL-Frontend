@@ -24,7 +24,7 @@ const FUNNEL_ITEMS: FaqItem[] = [
   ],
   [
     "My business is too small for this.",
-    "A system matters more at low volume, not less. Every lead counts when there are fewer of them. The Foundation Build scales down.",
+    "A system matters more at low volume, not less. Every lead counts when there are fewer of them. The Foundation Funnel scales down.",
   ],
   [
     "Is my data safe?",
@@ -87,15 +87,19 @@ const CRM_ITEMS: FaqItem[] = [
   ],
 ];
 
-const FAQ_GROUPS: Array<{ title: string; items: FaqItem[] }> = [
-  { title: "Funnel builds", items: FUNNEL_ITEMS },
-  { title: "Your own CRM", items: CRM_ITEMS },
+type FaqTopic = "crm" | "funnel";
+
+// CRM first, matching the order the site presents the two offers in.
+const FAQ_GROUPS: Array<{ topic: FaqTopic; title: string; items: FaqItem[] }> = [
+  { topic: "crm", title: "Your own CRM", items: CRM_ITEMS },
+  { topic: "funnel", title: "Funnel builds", items: FUNNEL_ITEMS },
 ];
 
 /** First item open by default; opening one closes the others (across both
  * groups), and clicking the open one closes it. */
-export function Faq() {
+export function Faq({ only }: { only?: FaqTopic } = {}) {
   const [openKey, setOpenKey] = useState("0-0");
+  const groups = only ? FAQ_GROUPS.filter((g) => g.topic === only) : FAQ_GROUPS;
   const idPrefix = useId();
 
   return (
@@ -106,7 +110,7 @@ export function Faq() {
           <h2 className={styles.heading}>Straight answers.</h2>
         </div>
 
-        {FAQ_GROUPS.map((group, groupIndex) => (
+        {groups.map((group, groupIndex) => (
           <div key={group.title} className={styles.group}>
             <h3 className={styles.groupTitle} data-reveal="" style={{ animationName: "rise" }}>
               {group.title}

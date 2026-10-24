@@ -30,11 +30,12 @@ const NAV_LINKS: NavLink[] = [
   { href: "/#how", label: "How it works" },
   { href: "/#included", label: "What you get" },
   {
-    href: "/#pricing",
+    href: "/pricing/crm",
     label: "Pricing",
+    // CRM first: it's the lead offer.
     children: [
-      { href: "/#pricing", label: "Funnel" },
-      { href: "/#crm", label: "CRM", isNew: true },
+      { href: "/pricing/crm", label: "CRM pricing", isNew: true },
+      { href: "/pricing/funnel", label: "Funnel pricing" },
     ],
   },
   { href: "/#faq", label: "FAQ" },
@@ -64,7 +65,7 @@ export function Header() {
           .announce) — html's scroll-padding-top accounts for its height. */}
       {/* Plain <a>, like NAV_LINKS — see the note above them. */}
       {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      <a href="/#crm" className={styles.announce}>
+      <a href="/pricing/crm" className={styles.announce}>
         <span className={styles.announceLong}>Get your own CRM, built for you and owned by you.</span>
         <span className={styles.announceShort}>Your own CRM is here.</span>
         <span className={styles.announceLink}>See the CRM →</span>

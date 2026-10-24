@@ -7,5 +7,6 @@ export { Benefits } from "./Benefits/Benefits";
 export { Pricing } from "./Pricing/Pricing";
 export { Timeline } from "./Timeline/Timeline";
 export { Crm } from "./Crm/Crm";
+export { Packages } from "./Packages/Packages";
 export { Faq } from "./Faq/Faq";
 export { CtaBlock } from "./CtaBlock/CtaBlock";

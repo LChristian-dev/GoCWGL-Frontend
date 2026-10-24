@@ -91,12 +91,12 @@ const featuredCtaVars = {
 
 export function Crm() {
   return (
-    <section id="crm" className={styles.section}>
+    <section id="crm-pricing" className={styles.section}>
       <div aria-hidden="true" data-motion="" className={styles.glow} />
 
       <div className={styles.container}>
         <div className={styles.intro} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrow}>New · Your own CRM</p>
+          <p className={styles.eyebrow}>CRM packages</p>
           <h2 className={styles.heading}>Stop renting your CRM. Own it.</h2>
           <p className={styles.lead}>
             We build you a private CRM and client portal on your own domain. Custom-coded, and
@@ -156,6 +156,9 @@ export function Crm() {
 
         <div className={styles.tiers}>
           <div className={pricingStyles.tier} data-reveal="" style={{ animationName: "riseIn" }}>
+            <span className={[pricingStyles.productTag, pricingStyles.productTagCrm].join(" ")}>
+              CRM package
+            </span>
             <h3 className={pricingStyles.tierName}>Simple CRM</h3>
             <p className={pricingStyles.tierTagline}>The full CRM, set up for your business.</p>
             <div className={[pricingStyles.priceRow, styles.priceRow].join(" ")}>
@@ -183,6 +186,9 @@ export function Crm() {
                 />
                 Built around your business
               </div>
+              <span className={[pricingStyles.productTag, pricingStyles.productTagCrm].join(" ")}>
+                CRM package
+              </span>
               <h3 className={pricingStyles.tierName}>Custom CRM</h3>
               <p className={pricingStyles.tierTagline}>
                 Simple CRM, plus features made for the way you work.

@@ -17,7 +17,7 @@ const FOUNDATION_FEATURES: Feature[] = [
 ];
 
 const FULL_BUNDLE_FEATURES: Feature[] = [
-  { text: "Everything in Foundation Build" },
+  { text: "Everything in the Foundation Funnel" },
   { text: "Campaign email prompt templates" },
   { text: "Social media post templates" },
   { text: "Canva graphic prompt templates" },
@@ -57,15 +57,15 @@ const featuredCtaVars = {
 
 export function Pricing() {
   return (
-    <section id="pricing" className={styles.section}>
+    <section id="funnel-pricing" className={styles.section}>
       <div aria-hidden="true" data-motion="" className={styles.glow} />
 
       <div className={styles.container}>
         <div className={styles.intro} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrow}>Transparent pricing</p>
-          <h2 className={styles.heading}>One-time build. Priced in the open.</h2>
+          <p className={styles.eyebrow}>Funnel packages</p>
+          <h2 className={styles.heading}>One-time funnel build. Priced in the open.</h2>
           <p className={styles.lead}>
-            Pick the build that fits. Every price is a one-time payment, stated up front.
+            Pick the funnel build that fits. Every price is a one-time payment, stated up front.
           </p>
           <ul className={styles.payOnce} aria-label="Payment terms">
             <li className={styles.payOnceItem}>
@@ -82,7 +82,8 @@ export function Pricing() {
 
         <div className={styles.grid}>
           <div className={styles.tier} data-reveal="" style={{ animationName: "riseIn" }}>
-            <h3 className={styles.tierName}>Foundation Build</h3>
+            <span className={styles.productTag}>Funnel package</span>
+            <h3 className={styles.tierName}>Foundation Funnel</h3>
             <p className={styles.tierTagline}>The plumbing on its own.</p>
             <div className={styles.priceRow}>
               <span className={styles.price}>$1,500</span>
@@ -105,7 +106,8 @@ export function Pricing() {
                 <span aria-hidden="true" data-motion="" className={styles.featuredBadgeDot} />
                 Everything connected
               </div>
-              <h3 className={styles.tierName}>Full Bundle</h3>
+              <span className={styles.productTag}>Funnel package</span>
+              <h3 className={styles.tierName}>Full Funnel Bundle</h3>
               <p className={styles.tierTagline}>Everything connected, reporting included.</p>
               <div className={styles.featuredPriceRow}>
                 <span className={styles.featuredPrice}>$1,950</span>
@@ -127,8 +129,9 @@ export function Pricing() {
           </div>
 
           <div className={styles.tier} data-reveal="" style={{ animationName: "riseIn" }}>
+            <span className={styles.productTag}>Funnel package</span>
             <h3 className={styles.tierName}>VIP Repeat Funnel</h3>
-            <p className={styles.tierTagline}>For existing Full Bundle clients.</p>
+            <p className={styles.tierTagline}>For existing Full Funnel Bundle clients.</p>
             <div className={styles.priceRow}>
               <span className={styles.price}>$1,450</span>
               <span className={styles.priceUnit}>per funnel</span>
