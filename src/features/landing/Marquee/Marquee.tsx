@@ -2,10 +2,12 @@ import { Fragment } from "react";
 import styles from "./Marquee.module.scss";
 
 const KEYWORDS = [
+  "Own your CRM",
   "Pipeline",
-  "Funnel",
-  "Automation",
-  "Content system",
+  "Booking calendars",
+  "Invoices",
+  "Email automations",
+  "Client portal",
   "Daily reporting",
   "VAs since 2015",
 ];

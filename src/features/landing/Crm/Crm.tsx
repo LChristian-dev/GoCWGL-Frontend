@@ -69,6 +69,7 @@ const CUSTOM_FEATURES = [
   "Custom modules designed for your business",
   "Workflows built around how your team works",
   "Optional funnel builder to design your own funnels",
+  "Live in about 8 weeks, with new features through month 6",
   "Scoped together on your discovery call",
 ];
 

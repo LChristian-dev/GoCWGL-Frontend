@@ -1,10 +1,10 @@
 import styles from "./Stats.module.scss";
 
 const STATS = [
-  { value: "2015", label: "Doing virtual assistant work since" },
-  { value: "$97/yr", label: "The only recurring cost", accent: true },
-  { value: "~3 weeks", label: "From kickoff call to live system" },
-  { value: "1 email", label: "A day, instead of logging in" },
+  { value: "~8 weeks", label: "From kickoff call to your CRM going live" },
+  { value: "6 months", label: "To add any feature on a Custom CRM", accent: true },
+  { value: "$97/yr", label: "The only recurring cost, no seat fees" },
+  { value: "100%", label: "Of the code and data are yours" },
 ];
 
 export function Stats() {

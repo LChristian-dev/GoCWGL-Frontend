@@ -8,26 +8,26 @@ const STEPS = [
   },
   {
     number: "02",
-    title: "They reach out or book",
-    body: "A short form, or a time on your calendar. No back-and-forth messages.",
+    title: "They fill a form or book",
+    body: "Your CRM's own forms and booking calendars, embedded on your website. No back-and-forth messages.",
   },
   {
     number: "03",
-    title: "The system takes over",
-    body: "Every lead is captured, tagged, and added to your pipeline the moment it arrives. Quiet leads get gentle reminders automatically.",
+    title: "Your CRM takes over",
+    body: "Every lead becomes a contact, gets tagged and lands in your pipeline the moment it arrives. Quiet leads get gentle follow-ups automatically.",
   },
 ];
 
 const FEATURED_STEP = {
   number: "04",
   title: "You get one email a day",
-  body: "New leads, calls booked, posts published, a quick summary of the emails you received, and what needs you. You never log in to find out.",
+  body: "Your CRM sends it: new leads, calls booked, invoices paid, a quick summary of the emails you received, and what needs you. You never log in to find out.",
   note: "Using Claude AI? We can set it up to update you automatically every day.",
 };
 
 const YOU_DONTS = [
-  "track leads by hand.",
-  "check five places for messages and bookings.",
+  "pay a monthly seat bill for your CRM.",
+  "check five tools for leads, bookings and invoices.",
   "build or manage any of it yourself.",
 ];
 
@@ -38,8 +38,8 @@ export function HowItWorks() {
 
       <div className={styles.container}>
         <div className={styles.intro} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrow}>How your system works</p>
-          <h2 className={styles.heading}>Four steps. None of them yours.</h2>
+          <p className={styles.eyebrow}>How your CRM works</p>
+          <h2 className={styles.heading}>Four steps. Your CRM handles every one.</h2>
           <p className={styles.lead}>
             No tech jargon. Just what happens, and when, once someone finds your business.
           </p>

@@ -75,11 +75,11 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "How long does a CRM build take?",
-    "It depends on the package and how much custom work is involved. We'll give you a timeline on your discovery call, once we know what you need.",
+    "About 8 weeks from kickoff to launch. A Custom CRM comes with a 6-month contract: your CRM goes live in about 8 weeks, and for the rest of the 6 months you can bring us any new features you want built. We'll confirm the timeline on your discovery call.",
   ],
   [
     "Can I add features later?",
-    "Yes. Because it's custom code that you own, new features can be added later, by us or by your own developer.",
+    "Yes. With a Custom CRM, any feature you think of during your 6-month contract is part of the build. After that, because it's custom code you own, new features can be added by us or by your own developer.",
   ],
   [
     "Do I need a funnel to use the CRM?",

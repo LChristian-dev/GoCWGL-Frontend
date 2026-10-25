@@ -10,6 +10,7 @@ const CRM_POINTS = [
   "Contacts, pipeline and booking in one place",
   "Invoices, email automations and a client portal",
   "On your own domain, with your branding",
+  "Live in about 8 weeks; Custom CRM adds 6 months of feature requests",
   "The code and the data are yours",
 ];
 

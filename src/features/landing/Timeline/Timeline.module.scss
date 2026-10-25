@@ -84,6 +84,26 @@
   color: v.$color-text-on-dark-muted;
 }
 
+.extension {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: 12px 28px;
+  margin-top: 22px;
+  padding: 26px 24px;
+  background: v.$color-surface-2;
+  border: 1px dashed v.$color-amber-deep;
+  border-radius: v.$radius-md;
+
+  @media (max-width: 640px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.extensionContent {
+  min-width: 0;
+  max-width: 680px;
+}
+
 .disclaimer {
   max-width: 740px;
   margin: 28px 0 0;

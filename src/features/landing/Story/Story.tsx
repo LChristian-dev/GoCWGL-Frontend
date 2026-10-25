@@ -13,8 +13,9 @@ export function Story() {
           capturing them, organizing them, or reporting on what actually worked.
         </p>
         <p className={styles.body} data-reveal="" style={{ animationName: "rise" }}>
-          That gap is the whole reason this package exists. And we&apos;ll be upfront with you:
-          this specific package is new, and you&apos;d be one of our first clients on it.
+          So we built our own CRM to close that gap, and we run GoCWGL on it every day. Now we
+          build one for you. We&apos;ll be upfront: the CRM package is new, and you&apos;d be one
+          of our first clients on it.
         </p>
         <div className={styles.rule} data-reveal="" style={{ animationName: "growLine" }} />
       </div>
