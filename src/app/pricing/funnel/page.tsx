@@ -20,7 +20,7 @@ export default function FunnelPricingPage() {
           eyebrow="Funnel pricing"
           title="A funnel that catches every lead."
           lead="A custom-coded funnel, hosted by us, with email automation and booking built in. Leads land, get followed up, and book a call on their own."
-          points={["One-time build", "Hosted by us", "Only $97/year to keep it monitored"]}
+          points={["One-time build", "Hosted by us", "Only $300/year to keep it monitored"]}
         />
         <Pricing />
         <Faq only="funnel" />

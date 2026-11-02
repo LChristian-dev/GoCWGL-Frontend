@@ -3,7 +3,7 @@ import styles from "./Stats.module.scss";
 const STATS = [
   { value: "~8 weeks", label: "From kickoff call to your CRM going live" },
   { value: "6 months", label: "To add any feature on a Custom CRM", accent: true },
-  { value: "$97/yr", label: "The only recurring cost, no seat fees" },
+  { value: "$300/yr", label: "The only recurring cost, no seat fees" },
   { value: "100%", label: "Of the code and data are yours" },
 ];
 
