@@ -32,7 +32,7 @@ const FUNNEL_ITEMS: FaqItem[] = [
   ],
   [
     "Are there hidden fees?",
-    "No. The build fee and the $300/year are stated up front. A funnel build can connect to a CRM you already pay for (any subscription like that is listed before we start), or you can drop that subscription and have a GoCWGL CRM of your own.",
+    "No. The build fee is stated up front. Your first year is free and we cover everything, from hosting to monitoring; after that it's $300/year. A funnel build can connect to a CRM you already pay for (any subscription like that is listed before we start), or you can drop that subscription and have a GoCWGL CRM of your own.",
   ],
   [
     "Do I have to do anything daily?",
@@ -51,7 +51,7 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "Is there a monthly fee?",
-    "No. The build is a one-time fee, and there's no monthly subscription. The only recurring cost is $300/year for hosting your CRM and monitoring the system.",
+    "No. The build is a one-time fee, and there's no monthly subscription. Your first year is free and we cover everything, from hosting your CRM to monitoring the system. After that, the only recurring cost is $300/year.",
   ],
   [
     "Can you import my contacts from GoHighLevel or HubSpot?",

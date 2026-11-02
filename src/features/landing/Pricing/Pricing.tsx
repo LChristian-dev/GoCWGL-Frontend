@@ -75,7 +75,7 @@ export function Pricing() {
               <span className={styles.check}>✓</span> No monthly fees
             </li>
             <li className={styles.payOnceItem}>
-              <span className={styles.check}>✓</span> Only recurring cost: $300/year monitoring
+              <span className={styles.check}>✓</span> First year free, then $300/year
             </li>
           </ul>
         </div>
@@ -146,7 +146,8 @@ export function Pricing() {
         <div className={styles.feeNote} data-reveal="" style={{ animationName: "rise" }}>
           <p className={styles.feeNoteText}>
             <strong className={styles.feeNoteStrong}>
-              No monthly payments. The only recurring cost is $300/year.
+              No monthly payments. Your first year is free, and we cover everything from hosting to
+              monitoring. After that, the only recurring cost is $300/year.
             </strong>{" "}
             Hosting is part of your one-time build. The annual fee is what keeps us actively watching,
             updating and maintaining your system. Cancel any time; nothing shuts off overnight, we
