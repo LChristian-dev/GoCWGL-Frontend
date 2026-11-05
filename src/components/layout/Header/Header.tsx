@@ -22,7 +22,7 @@ interface NavLink {
   label: string;
   /** Rendered as a hover/focus dropdown on desktop and as indented links
    * in the mobile menu. */
-  children?: Array<{ href: string; label: string; isNew?: boolean }>;
+  children?: Array<{ href: string; label: string }>;
 }
 
 const NAV_LINKS: NavLink[] = [
@@ -34,7 +34,7 @@ const NAV_LINKS: NavLink[] = [
     label: "Pricing",
     // CRM first: it's the lead offer.
     children: [
-      { href: "/pricing/crm", label: "CRM pricing", isNew: true },
+      { href: "/pricing/crm", label: "CRM pricing" },
       { href: "/pricing/funnel", label: "Funnel pricing" },
     ],
   },
@@ -93,7 +93,6 @@ export function Header() {
                   {link.children.map((child) => (
                     <a key={child.href} href={child.href} className={styles.submenuLink}>
                       {child.label}
-                      {child.isNew && <span className={styles.newTag}>New</span>}
                     </a>
                   ))}
                 </div>
@@ -155,7 +154,6 @@ export function Header() {
                     onClick={() => setMenuOpen(false)}
                   >
                     {child.label}
-                    {child.isNew && <span className={styles.newTag}>New</span>}
                   </a>
                 ))}
               </div>

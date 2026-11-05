@@ -129,28 +129,6 @@
   transition: text-decoration-color 0.25s ease;
 }
 
-// Small amber "New" pill beside CRM in both the desktop dropdown and the
-// mobile menu.
-.newTag {
-  display: inline-block;
-  padding: 2px 8px;
-  background: v.$color-amber;
-  color: v.$color-text-on-amber-strong;
-  border-radius: v.$radius-pill;
-  font-family: v.$font-mono;
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
-.submenuLink .newTag,
-.mobileSubLink .newTag {
-  margin-left: 8px;
-  vertical-align: 1px;
-}
-
 .inner {
   display: flex;
   align-items: center;
