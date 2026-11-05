@@ -200,7 +200,7 @@ export function Crm() {
               Pay once for the build. The CRM is yours.
             </strong>{" "}
             No monthly fees. Your first year is free and we cover everything, from hosting to
-            monitoring. After that, the only recurring cost is $300/year. Already set up in another CRM? We can import your contacts
+            monitoring. After that, the only recurring cost is $500/year for hosting and monitoring. Already set up in another CRM? We can import your contacts
             so you start with your history in place.
           </p>
         </div>
