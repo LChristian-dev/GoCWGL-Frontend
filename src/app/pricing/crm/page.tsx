@@ -7,7 +7,7 @@ import { PricingHero } from "@/features/pricing";
 export const metadata: Metadata = {
   title: "CRM Pricing",
   description:
-    "Own your CRM instead of renting one. The Simple CRM and Custom CRM are one-time builds on your own domain, with no monthly software fees.",
+    "Own your CRM instead of renting one. The Custom CRM is a one-time build on your own domain, with no monthly software fees.",
 };
 
 export default function CrmPricingPage() {

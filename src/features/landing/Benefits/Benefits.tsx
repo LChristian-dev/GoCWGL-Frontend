@@ -19,7 +19,7 @@ const BENEFITS = [
   },
   {
     title: "Built around how you work",
-    body: "With a Custom CRM, you have 6 months to bring us any feature you want. Not a template your competitors also rent.",
+    body: "You have 6 months to bring us any feature you want. Not a template your competitors also rent.",
   },
 ];
 

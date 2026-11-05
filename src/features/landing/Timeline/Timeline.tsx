@@ -57,7 +57,7 @@ export function Timeline() {
         {/* Custom CRM contracts run 6 months: the build is live by ~week 8 and
             the remaining months are for new feature requests. */}
         <div className={styles.extension} data-reveal="" style={{ animationName: "riseIn" }}>
-          <div className={styles.week}>MONTHS 3–6 · CUSTOM CRM</div>
+          <div className={styles.week}>MONTHS 3–6</div>
           <div className={styles.extensionContent}>
             <h3 className={styles.title}>Keep building until it&apos;s exactly right.</h3>
             <p className={styles.body}>

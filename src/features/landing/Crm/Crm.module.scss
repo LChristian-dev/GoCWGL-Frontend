@@ -156,7 +156,8 @@
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: 24px;
   align-items: start;
-  max-width: 820px;
+  max-width: 460px;
+  margin-inline: auto;
 }
 
 // Five-figure prices are wider than the Pricing section's — let the

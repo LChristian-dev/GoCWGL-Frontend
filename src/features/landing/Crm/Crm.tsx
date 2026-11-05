@@ -56,16 +56,12 @@ const FEATURE_GROUPS = [
   },
 ];
 
-const SIMPLE_FEATURES = [
+const CUSTOM_FEATURES = [
   "Every feature listed above",
   "Set up with your branding and domain",
   "Your pipeline stages configured",
   "Your email automations set up",
   "Your existing contacts imported",
-];
-
-const CUSTOM_FEATURES = [
-  "Everything in Simple CRM",
   "Custom modules designed for your business",
   "Workflows built around how your team works",
   "Optional funnel builder to design your own funnels",
@@ -97,7 +93,7 @@ export function Crm() {
 
       <div className={styles.container}>
         <div className={styles.intro} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrow}>CRM packages</p>
+          <p className={styles.eyebrow}>CRM package</p>
           <h2 className={styles.heading}>Stop renting your CRM. Own it.</h2>
           <p className={styles.lead}>
             We build you a private CRM and client portal on your own domain. Custom-coded, and
@@ -133,7 +129,7 @@ export function Crm() {
         </div>
 
         <h3 className={styles.subheading} data-reveal="" style={{ animationName: "rise" }}>
-          What every CRM includes
+          What your CRM includes
         </h3>
         <div className={styles.groups}>
           {FEATURE_GROUPS.map((group) => (
@@ -156,22 +152,6 @@ export function Crm() {
         </div>
 
         <div className={styles.tiers}>
-          <div className={pricingStyles.tier} data-reveal="" style={{ animationName: "riseIn" }}>
-            <span className={[pricingStyles.productTag, pricingStyles.productTagCrm].join(" ")}>
-              CRM package
-            </span>
-            <h3 className={pricingStyles.tierName}>Simple CRM</h3>
-            <p className={pricingStyles.tierTagline}>The full CRM, set up for your business.</p>
-            <div className={[pricingStyles.priceRow, styles.priceRow].join(" ")}>
-              <span className={pricingStyles.price}>$10,000</span>
-              <span className={pricingStyles.priceUnit}>one-time</span>
-            </div>
-            <FeatureList features={SIMPLE_FEATURES} className={pricingStyles.features} />
-            <Button href="/book" variant="outlineDark" className={pricingStyles.tierCta}>
-              Book a discovery call
-            </Button>
-          </div>
-
           <div
             className={pricingStyles.tierFeatured}
             data-reveal=""
@@ -192,7 +172,7 @@ export function Crm() {
               </span>
               <h3 className={pricingStyles.tierName}>Custom CRM</h3>
               <p className={pricingStyles.tierTagline}>
-                Simple CRM, plus features made for the way you work.
+                The full CRM, plus features made for the way you work.
               </p>
               <div className={[pricingStyles.featuredPriceRow, styles.priceRow].join(" ")}>
                 <span className={pricingStyles.featuredPrice}>$15,000</span>

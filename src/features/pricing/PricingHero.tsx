@@ -73,7 +73,7 @@ export function PricingHero({ product, eyebrow, title, lead, points }: PricingHe
             variant={product === "crm" ? "outlineDark" : "outlineLight"}
             className={styles.ctaSecondary}
           >
-            See the packages ↓
+            {product === "crm" ? "See the package ↓" : "See the packages ↓"}
           </Button>
         </div>
       </div>

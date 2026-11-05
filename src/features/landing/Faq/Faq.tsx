@@ -42,8 +42,8 @@ const FUNNEL_ITEMS: FaqItem[] = [
 
 const CRM_ITEMS: FaqItem[] = [
   [
-    "What's the difference between the Simple and Custom CRM?",
-    "Simple CRM is the full system (contacts, pipeline, booking, forms, email campaigns and automations, invoices, reporting and client portal), set up with your branding, domain, pipeline stages, email automations and imported contacts. Custom CRM includes all of that, plus features we design and build around how your business works.",
+    "What's included in the Custom CRM?",
+    "The full system (contacts, pipeline, booking, forms, email campaigns and automations, invoices, reporting and client portal), set up with your branding, domain, pipeline stages, email automations and imported contacts, plus features we design and build around how your business works.",
   ],
   [
     "If you build my CRM, do I own it?",
@@ -79,11 +79,11 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "Can I add features later?",
-    "Yes. With a Custom CRM, any feature you think of during your 6-month contract is part of the build. After that, because it's custom code you own, new features can be added by us or by your own developer.",
+    "Yes. Any feature you think of during your 6-month contract is part of the build. After that, because it's custom code you own, new features can be added by us or by your own developer.",
   ],
   [
     "Do I need a funnel to use the CRM?",
-    "With the Simple CRM, yes. You need a funnel for leads to land on. If you already have one, you're set: the CRM's forms and booking calendars embed on any website. If you don't, we can build one for you. With the Custom CRM, we can build a funnel feature into the CRM itself, so you can design your own funnels.",
+    "You need somewhere for leads to land. If you already have a funnel, you're set: the CRM's forms and booking calendars embed on any website. If you don't, we can build one for you, or build a funnel feature into the CRM itself so you can design your own.",
   ],
 ];
 
