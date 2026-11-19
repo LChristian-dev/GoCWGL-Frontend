@@ -51,10 +51,10 @@ export function Hero() {
 
             <p className={styles.trust}>Virtual assistants since 2015 · No long-term lock-in</p>
 
-            <p className={styles.funnelNote}>
-              Just need a funnel?{" "}
-              <a href="/pricing/funnel" className={styles.funnelNoteLink}>
-                See the funnel packages →
+            <p className={styles.vaNote}>
+              Need a virtual assistant?{" "}
+              <a href="/pricing/va" className={styles.vaNoteLink}>
+                See the VA plans →
               </a>
             </p>
           </div>

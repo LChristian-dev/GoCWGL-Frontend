@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | GoCWGL",
   },
   description:
-    "GoCWGL builds your own CRM and client portal, on your domain and with your branding, that you own outright instead of renting one by the month. Plus custom-coded funnels, automation and a daily lead report.",
+    "GoCWGL builds your own CRM and client portal, on your domain and with your branding, that you own outright instead of renting one by the month. Plus trained virtual assistants, automation and a daily lead report.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

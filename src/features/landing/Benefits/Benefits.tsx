@@ -19,7 +19,7 @@ const BENEFITS = [
   },
   {
     title: "Built around how you work",
-    body: "You have 6 months to bring us any feature you want. Not a template your competitors also rent.",
+    body: "Your stages, your records, your automations, set up the way your team already works. Not a template your competitors also rent.",
   },
 ];
 

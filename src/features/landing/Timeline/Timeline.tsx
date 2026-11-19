@@ -1,27 +1,29 @@
 import styles from "./Timeline.module.scss";
 
+// The four steps of a Custom CRM build, as the client app lists them
+// (gocwgl-admin src/data/portal.ts: CRM_STEPS).
 const PHASES = [
   {
-    week: "WEEK 1",
-    title: "Kickoff call",
-    body: "We map your pipeline, your contacts and how your team works, and confirm access to what we need.",
+    week: "STEP 1",
+    title: "Discovery call",
+    body: "We learn how you find, sell to and serve your clients.",
   },
   {
-    week: "WEEKS 2–4",
-    title: "Core CRM build",
-    body: "Contacts, pipeline stages and booking calendars, set up with your branding on your own domain.",
+    week: "STEP 2",
+    title: "Blueprint",
+    body: "You get a plan of every screen and automation, and the final quote, to approve.",
   },
   {
-    week: "WEEKS 5–7",
-    title: "Automations & portal",
-    body: "Email automations, invoices, your client portal and daily reporting, plus your contacts imported.",
+    week: "STEP 3",
+    title: "Build",
+    body: "We design, build and test it, and post weekly updates in Build progress.",
   },
 ];
 
 const FINAL_PHASE = {
-  week: "WEEK 8",
-  title: "Review & launch",
-  body: "You and your team test everything, we refine, then your CRM goes live.",
+  week: "STEP 4",
+  title: "Training & launch",
+  body: "We move your data in, train your team and go live together.",
 };
 
 export function Timeline() {
@@ -30,7 +32,7 @@ export function Timeline() {
       <div className={styles.container}>
         <div className={styles.intro} data-reveal="" style={{ animationName: "rise" }}>
           <p className={styles.eyebrow}>Your CRM build timeline</p>
-          <h2 className={styles.heading}>Live in about eight weeks.</h2>
+          <h2 className={styles.heading}>Live in about 12–15 weeks.</h2>
         </div>
 
         <div className={styles.grid}>
@@ -54,16 +56,17 @@ export function Timeline() {
           </div>
         </div>
 
-        {/* Custom CRM contracts run 6 months: the build is live by ~week 8 and
-            the remaining months are for new feature requests. */}
+        {/* After launch: 90 days of priority support, a free first year of
+            the Care plan, and new features quoted from $100. */}
         <div className={styles.extension} data-reveal="" style={{ animationName: "riseIn" }}>
-          <div className={styles.week}>MONTHS 3–6</div>
+          <div className={styles.week}>AFTER LAUNCH</div>
           <div className={styles.extensionContent}>
-            <h3 className={styles.title}>Keep building until it&apos;s exactly right.</h3>
+            <h3 className={styles.title}>Supported, kept up to date, and still growing.</h3>
             <p className={styles.body}>
-              A Custom CRM comes with a 6-month contract. Your CRM is live in about 8 weeks, and
-              for the rest of the 6 months you can bring us any feature you want added. We build
-              it, test it and ship it into the CRM you already use every day.
+              You get 90 days of priority support after launch, and your first year of the Care
+              plan is free: security updates, backups, monitoring and unlimited revisions to
+              what&apos;s built. After that it&apos;s $500 a year. Want something new? Once your
+              CRM is marked complete, new features start at $100, quoted before any work starts.
             </p>
           </div>
         </div>

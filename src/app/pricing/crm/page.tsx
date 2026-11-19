@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
-import { Crm, CtaBlock, Faq } from "@/features/landing";
-import { PricingHero } from "@/features/pricing";
+import { CrmCost, Faq } from "@/features/landing";
+import { CrmHero, CrmInvite, CrmPackage, CrmSteps, WhyOwn } from "@/features/crm-pricing";
 
 export const metadata: Metadata = {
   title: "CRM Pricing",
   description:
-    "Own your CRM instead of renting one. The Custom CRM is a one-time build on your own domain, with no monthly software fees.",
+    "Own your CRM instead of renting one. A one-time Custom CRM build with unlimited logins and no monthly fees. Compare it to HubSpot, GoHighLevel and Zoho, then sign up and request yours.",
 };
 
 export default function CrmPricingPage() {
@@ -15,16 +15,13 @@ export default function CrmPricingPage() {
     <>
       <Header />
       <main>
-        <PricingHero
-          product="crm"
-          eyebrow="CRM pricing"
-          title="Your own CRM. Pay once. Keep it forever."
-          lead="A private CRM and client portal built on your domain, with your branding. No per-seat bill every month, and the code and data are yours."
-          points={["One-time build", "No monthly software fees", "You own the code and data"]}
-        />
-        <Crm />
+        <CrmHero />
+        <WhyOwn />
+        <CrmCost />
+        <CrmPackage />
+        <CrmSteps />
         <Faq only="crm" />
-        <CtaBlock />
+        <CrmInvite />
       </main>
       <Footer />
     </>

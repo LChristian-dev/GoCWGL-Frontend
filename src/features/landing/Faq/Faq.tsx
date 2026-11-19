@@ -5,94 +5,80 @@ import styles from "./Faq.module.scss";
 
 type FaqItem = [question: string, answer: string];
 
-const FUNNEL_ITEMS: FaqItem[] = [
+// Mirrors the client app's VA agreement (gocwgl-admin
+// src/features/portal/components/VaRequestModal.tsx and lib/vaAgreement.ts).
+const VA_ITEMS: FaqItem[] = [
   [
-    "Do you guarantee results?",
-    "No. That depends on your offer and your traffic too. We guarantee the system is built, tested and running exactly as specified.",
+    "How do I hire a VA?",
+    "Become a client: create your free account at app.gocwgl.com, then request a VA from your client portal with the role, the hours a week and the pay range you have in mind. We match you with a VA for your business.",
   ],
   [
-    "I'm not tech-savvy. Can I still use it?",
-    "Yes. We build and maintain the technical side. What gets handed to you is plug-and-play templates, not code.",
+    "How much will I pay my VA?",
+    "Each VA sets their own hourly rate. As a guide, at typical rates of $6–$9 an hour, 10 hours a week is about $260–$390 a month, 20 hours about $520–$780, and 40 hours about $1,040–$1,560. These are estimates; your VA's actual pay depends on who you hire and the hours they log.",
   ],
   [
-    "I already have a website or funnel.",
-    "Good. A lot of our work is auditing and fixing what's already there. We'll look at it before recommending a rebuild.",
+    "How do I pay my VA?",
+    "Directly. Your VA sends you their own invoices for their hours, and you pay them to your VA's payment method. You'll see the full terms in your client portal before you request a VA.",
   ],
   [
-    "What if I want to move providers later?",
-    "It's custom code, so we hand the full codebase to you or your new developer. You're not locked into our hosting.",
+    "What if I only need one project done?",
+    "Request an open project instead of set weekly hours. Tell us what it is, your estimated budget and when it's due; GoCWGL sends you a quote, and assigns your VA as soon as the invoice is paid.",
   ],
   [
-    "My business is too small for this.",
-    "A system matters more at low volume, not less. Every lead counts when there are fewer of them. The Foundation Funnel scales down.",
+    "Can I change the hours later?",
+    "Yes. Change the hours on your request in your client portal.",
   ],
   [
-    "Is my data safe?",
-    "Yes. Your business information and account access are treated as confidential and handled carefully on our end.",
-  ],
-  [
-    "Are there hidden fees?",
-    "No. The build fee is stated up front. Your first year is free and we cover everything, from hosting to monitoring; after that it's $500/year for hosting and monitoring. A funnel build can connect to a CRM you already pay for (any subscription like that is listed before we start), or you can drop that subscription and have a GoCWGL CRM of your own.",
-  ],
-  [
-    "Do I have to do anything daily?",
-    "No. The one exception is a small manual step like tagging a contact. If it applies to you, we walk you through it clearly.",
+    "How do I work with my VA day to day?",
+    "From your client portal: assign tasks with a main VA and backups, share logins safely in Assets, add your own SOPs, see clock-ins in Attendance and what they logged in the VA tracker, and rate their work.",
   ],
 ];
 
 const CRM_ITEMS: FaqItem[] = [
   [
     "What's included in the Custom CRM?",
-    "The full system (contacts, pipeline, booking, forms, email campaigns and automations, invoices, reporting and client portal), set up with your branding, domain, pipeline stages, email automations and imported contacts, plus features we design and build around how your business works.",
+    "Contacts, companies and sales pipelines; custom records for your business (jobs, properties, cases, orders…); automations, email campaigns, booking and forms; SMS reminders and call logging; AI helpers; invoicing and online payments; a client portal for your customers; roles and permissions with unlimited team logins; integrations; and custom reports. All on your own domain, with your branding, your data moved over, team training and 90 days of priority support.",
   ],
   [
     "If you build my CRM, do I own it?",
-    "Yes. The code and the data are yours. It runs on your own domain, and if you ever leave, we hand everything to you or your new developer.",
+    "Yes. Everything we build and every record in it is yours, and you can export your data at any time. It runs on your own domain, with your branding.",
   ],
   [
     "Is there a monthly fee?",
-    "No. The build is a one-time fee, and there's no monthly subscription. Your first year is free and we cover everything, from hosting your CRM to monitoring the system. After that, the only recurring cost is $500/year for hosting and monitoring.",
+    "No monthly or per-login fees. The build is a one-time price. Your first year after launch is free: security updates, backups and monitoring, keeping your code up to date, and unlimited revisions. After that, the Care plan is $500 a year.",
   ],
   [
-    "Can you import my contacts from GoHighLevel or HubSpot?",
-    "Yes. Export your contacts from your current CRM and we'll bring them into your new one, so you start with your history in place.",
+    "What's the difference between a revision and a new feature?",
+    "A revision changes something already in your CRM: wording, fields, layout, pipeline stages, an automation's timing. A new feature adds something it doesn't do yet: a new menu, record type, integration or report. Revisions are unlimited with the Care plan; new features are quoted.",
+  ],
+  [
+    "Can you move my data from my current CRM?",
+    "Yes. We import your spreadsheets and move your data over from your current CRM, whether that's GoHighLevel, HubSpot, Zoho or something else, so you start with your history in place.",
   ],
   [
     "Will it work with my existing website?",
     "Yes. Booking calendars and forms come with embed codes that work on any website: inline, as a popup button, or as a link. Every form submission and booking lands in your CRM as a contact.",
   ],
   [
-    "Does it sync with my Google Calendar?",
-    "Yes. Google Calendar, or any calendar with an iCal link. Your busy times block booking slots automatically, and every booking emails a calendar invite.",
-  ],
-  [
-    "Can my customers and my team log in?",
-    "Yes. Your customers get a client portal where they can see build progress, files, billing and support tickets. Your team gets their own logins with roles, Google sign-in and 2-step verification.",
-  ],
-  [
-    "Can I send invoices and track payments?",
-    "Yes. Create invoices with PDF downloads, record payments as they come in, see everything in one Transactions view, and set up yearly subscriptions.",
-  ],
-  [
     "How long does a CRM build take?",
-    "About 8 weeks from kickoff to launch. A Custom CRM comes with a 6-month contract: your CRM goes live in about 8 weeks, and for the rest of the 6 months you can bring us any new features you want built. We'll confirm the timeline on your discovery call.",
+    "About 12–15 weeks of design, building and testing. It starts with a discovery call and a blueprint of every screen and automation that you approve, then we build it with weekly updates in Build progress, move your data in, train your team and go live together.",
   ],
   [
-    "Can I add features later?",
-    "Yes. Any feature you think of during your 6-month contract is part of the build. After that, because it's custom code you own, new features can be added by us or by your own developer.",
+    "Can I add features after my CRM is built?",
+    "Yes. Once your CRM is launched and you and GoCWGL both mark it complete, each new feature starts at $100, depending on how complex it is. We quote it before any work starts.",
   ],
   [
-    "Do I need a funnel to use the CRM?",
-    "You need somewhere for leads to land. If you already have a funnel, you're set: the CRM's forms and booking calendars embed on any website. If you don't, we can build one for you, or build a funnel feature into the CRM itself so you can design your own.",
+    "How do I pay?",
+    "Book a call first. You approve the plan and the quote before anything is billed, then we send you an invoice for the agreed package.",
   ],
 ];
 
-type FaqTopic = "crm" | "funnel";
+type FaqTopic = "crm" | "va";
 
 // CRM first, matching the order the site presents the two offers in.
 const FAQ_GROUPS: Array<{ topic: FaqTopic; title: string; items: FaqItem[] }> = [
   { topic: "crm", title: "Your own CRM", items: CRM_ITEMS },
-  { topic: "funnel", title: "Funnel builds", items: FUNNEL_ITEMS },
+  { topic: "va", title: "Virtual assistants", items: VA_ITEMS },
 ];
 
 /** First item open by default; opening one closes the others (across both

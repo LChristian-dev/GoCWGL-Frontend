@@ -35,7 +35,7 @@ const NAV_LINKS: NavLink[] = [
     // CRM first: it's the lead offer.
     children: [
       { href: "/pricing/crm", label: "CRM pricing" },
-      { href: "/pricing/funnel", label: "Funnel pricing" },
+      { href: "/pricing/va", label: "Virtual Assistant" },
     ],
   },
   { href: "/#faq", label: "FAQ" },

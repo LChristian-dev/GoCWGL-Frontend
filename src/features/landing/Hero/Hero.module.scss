@@ -136,7 +136,7 @@
   animation: fadein 1s 0.55s both;
 }
 
-.funnelNote {
+.vaNote {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -148,7 +148,7 @@
   animation: fadein 1s 0.65s both;
 }
 
-.funnelNoteLink {
+.vaNoteLink {
   font-weight: 600;
   color: v.$color-navy;
   transition: color 0.25s ease;

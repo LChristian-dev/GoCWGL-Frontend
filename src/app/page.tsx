@@ -24,7 +24,7 @@ export default function Home() {
         <Story />
         <HowItWorks />
         <Benefits />
-        {/* Full price lists live on /pricing/crm and /pricing/funnel. */}
+        {/* Full price lists live on /pricing/crm and /pricing/va. */}
         <Packages />
         <Timeline />
         <Faq />

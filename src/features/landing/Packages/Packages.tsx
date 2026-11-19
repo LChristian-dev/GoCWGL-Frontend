@@ -3,22 +3,22 @@ import { Button } from "@/components/ui/Button/Button";
 import styles from "./Packages.module.scss";
 
 // The landing page's pitch for the two offers, CRM first. Prices live on
-// their own pages (/pricing/crm, /pricing/funnel); this section's job is to
+// their own pages (/pricing/crm, /pricing/va); this section's job is to
 // hook the visitor and send them to the right one.
 
 const CRM_POINTS = [
   "Contacts, pipeline and booking in one place",
   "Invoices, email automations and a client portal",
   "On your own domain, with your branding",
-  "Live in about 8 weeks, with feature requests through month 6",
+  "Live in about 12–15 weeks, with 90 days of priority support",
   "The code and the data are yours",
 ];
 
-const FUNNEL_POINTS = [
-  "A custom-coded funnel, hosted by us",
-  "Email follow-up that starts the moment a lead lands",
-  "Booking built in, so leads schedule themselves",
-  "Plugs into the CRM you already use",
+const VA_POINTS = [
+  "10, 20 or 40 hours a week, or a one-off project",
+  "Become a client and request a VA from your portal",
+  "You pay your VA directly for their hours",
+  "Tasks, SOPs, attendance and logins in your client portal",
 ];
 
 const ctaVars = {
@@ -37,10 +37,10 @@ export function Packages() {
         <div className={styles.intro} data-reveal="" style={{ animationName: "rise" }}>
           <p className={styles.eyebrow}>Two ways to start</p>
           <h2 className={styles.heading}>
-            Own your CRM. <span className={styles.headingSoft}>Or start with a funnel.</span>
+            Own your CRM. <span className={styles.headingSoft}>Add a virtual assistant.</span>
           </h2>
           <p className={styles.lead}>
-            Both are one-time builds with no monthly software fees. Start where your business is
+            A CRM you pay for once, and trained VAs to help run it. Start where your business is
             today, and add the other whenever you&apos;re ready.
           </p>
         </div>
@@ -88,20 +88,20 @@ export function Packages() {
             </div>
           </article>
 
-          <article className={styles.cardFunnel} data-reveal="" style={{ animationName: "riseIn" }}>
+          <article className={styles.cardVa} data-reveal="" style={{ animationName: "riseIn" }}>
             <div className={styles.cardTop}>
-              <span className={styles.tagFunnel}>Funnel</span>
+              <span className={styles.tagVa}>Virtual Assistant</span>
             </div>
-            <h3 className={styles.cardTitle}>A funnel that catches every lead</h3>
-            <p className={styles.cardHookFunnel}>
-              Happy with your current CRM? Start with a custom-coded funnel that feeds it, follows
-              up for you, and books the call.
+            <h3 className={styles.cardTitle}>A trained VA for your business</h3>
+            <p className={styles.cardHookVa}>
+              We match you with a virtual assistant and keep them trained and supported. You pay
+              your VA directly for their hours.
             </p>
 
             <ul className={styles.points}>
-              {FUNNEL_POINTS.map((point) => (
-                <li key={point} className={styles.pointFunnel}>
-                  <span aria-hidden="true" className={styles.checkFunnel}>
+              {VA_POINTS.map((point) => (
+                <li key={point} className={styles.pointVa}>
+                  <span aria-hidden="true" className={styles.checkVa}>
                     ✓
                   </span>
                   {point}
@@ -110,8 +110,8 @@ export function Packages() {
             </ul>
 
             <div className={styles.actions}>
-              <Button href="/pricing/funnel" variant="outlineLight" className={styles.ctaFunnel}>
-                See funnel pricing →
+              <Button href="/pricing/va" variant="outlineLight" className={styles.ctaVa}>
+                Hire a VA →
               </Button>
             </div>
           </article>
