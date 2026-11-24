@@ -360,6 +360,71 @@ $glass-line: rgba(255, 255, 255, 0.12);
   line-height: 1.05;
 }
 
+.offerOr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: -6px 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: v.$color-text-on-dark-muted;
+
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: $glass-line;
+  }
+}
+
+.offerPlans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.offerPlan {
+  display: grid;
+  gap: 2px;
+  padding: 13px 16px;
+  border-radius: 14px;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(124, 77, 255, 0.24), rgba(124, 77, 255, 0.07));
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: $violet-soft;
+  }
+}
+
+.offerPlanAmount {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+
+  small {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: v.$color-text-on-dark-muted;
+  }
+}
+
+.offerPlanTerm {
+  font-size: 13px;
+  color: v.$color-text-on-dark-muted;
+}
+
 .facts {
   display: grid;
   gap: 10px;
@@ -494,12 +559,129 @@ $glass-line: rgba(255, 255, 255, 0.12);
 }
 
 .pkgPrice {
-  margin: 2px 0 20px;
+  margin: 4px 0 8px;
   font-size: 56px;
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
+  white-space: nowrap;
   color: v.$color-amber;
+
+  small {
+    margin-left: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: v.$color-text-on-dark-muted;
+  }
+}
+
+.pkgPriceNote {
+  margin: 0;
+  font-size: 14px;
+  color: v.$color-text-on-dark-body;
+}
+
+// One-time, 12-month or 6-month: native radios styled as cards.
+.picker {
+  align-self: stretch;
+  margin-bottom: 24px;
+}
+
+.plans {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  margin: 22px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.plansLegend {
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: v.$color-text-on-dark-subtle;
+}
+
+.plan {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 62px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $glass-line;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.32);
+  }
+
+  &:has(:checked) {
+    background: rgba(247, 168, 27, 0.12);
+    border-color: v.$color-amber;
+  }
+
+  &:has(:focus-visible) {
+    outline: 2px solid $cyan;
+    outline-offset: 2px;
+  }
+}
+
+.planInput {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.planDot {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+
+  :checked + & {
+    border: 5px solid v.$color-amber;
+    background: #17123a;
+  }
+}
+
+.planName {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 700;
+
+  small {
+    display: block;
+    margin-top: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    color: v.$color-text-on-dark-muted;
+  }
+}
+
+.planAmount {
+  font-size: 16px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+
+  small {
+    font-size: 14px;
+    font-weight: 600;
+    color: v.$color-text-on-dark-muted;
+  }
 }
 
 .pkgFacts {
@@ -538,15 +720,28 @@ $glass-line: rgba(255, 255, 255, 0.12);
 }
 
 .pkgBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   padding: 34px 32px;
+
+  @media (max-width: 480px) {
+    padding: 28px 20px;
+  }
 }
 
+// Fills the height beside the buy panel, so the cards end level with it.
 .groups {
-  @include m.auto-grid(250px, 26px 30px);
+  @include m.auto-grid(250px, 16px);
+  flex: 1;
 }
 
 .group {
   min-width: 0;
+  padding: 24px 22px;
+  border-radius: v.$radius-lg;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .groupHead {

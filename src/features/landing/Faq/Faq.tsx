@@ -45,7 +45,7 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "Is there a monthly fee?",
-    "No monthly or per-login fees. The build is a one-time price. Your first year after launch is free: security updates, backups and monitoring, keeping your code up to date, and unlimited revisions. After that, the Care plan is $500 a year.",
+    "No subscription or per-login fees. You pay for the build once, or spread it over 6 or 12 monthly payments that end when the plan does. Your first year after launch is free: security updates, backups and monitoring, keeping your code up to date, and unlimited revisions. After that, the Care plan is $500 a year.",
   ],
   [
     "What's the difference between a revision and a new feature?",
@@ -69,7 +69,7 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "How do I pay?",
-    "Book a call first. You approve the plan and the quote before anything is billed, then we send you an invoice for the agreed package.",
+    "You choose when you request: one payment of $15,000, or the custom package option, either $1,397 a month for 12 months ($16,764 in total) or $2,697 a month for 6 months ($16,182 in total). Book a call first: nothing is billed until you approve the quote. Then we send your invoice; on a monthly plan you get one invoice per payment.",
   ],
 ];
 

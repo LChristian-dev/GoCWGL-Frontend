@@ -9,11 +9,14 @@ import {
   FEATURE_FROM,
   FEATURE_GROUPS,
   HERO_FACTS,
+  PAYMENT_PLANS,
   PRICE,
   PRICE_COVERS,
   STEPS,
   WHY_OWN,
+  usd,
 } from "./data";
+import { PlanPicker } from "./PlanPicker";
 import styles from "@/features/pricing-ui/PricingPage.module.scss";
 
 const amberVars = {
@@ -61,8 +64,22 @@ export function CrmHero() {
             <span className={styles.offerTag}>Custom CRM</span>
             <span className={styles.offerTime}>About 12–15 weeks</span>
           </div>
-          <p className={styles.offerLabel}>One-time build</p>
+          <p className={styles.offerLabel}>One-time payment</p>
           <p className={styles.offerPrice}>{PRICE}</p>
+          <p className={styles.offerOr}>or pay monthly</p>
+          <ul className={styles.offerPlans}>
+            {PAYMENT_PLANS.filter((p) => p.payments > 1).map((p) => (
+              <li key={p.key}>
+                <a href="#crm-pricing" className={styles.offerPlan}>
+                  <span className={styles.offerPlanAmount}>
+                    {usd(p.paymentCents)}
+                    <small>/month</small>
+                  </span>
+                  <span className={styles.offerPlanTerm}>for {p.payments} months</span>
+                </a>
+              </li>
+            ))}
+          </ul>
           <dl className={styles.facts}>
             {HERO_FACTS.map((f) => (
               <div key={f.label} className={styles.fact}>
@@ -118,10 +135,10 @@ export function CrmPackage() {
       <div className={styles.container}>
         <header className={styles.head} data-reveal="" style={{ animationName: "rise" }}>
           <p className={styles.eyebrowDark}>Your build</p>
-          <h2 className={styles.heading}>One price. Built once. Yours for good.</h2>
+          <h2 className={styles.heading}>Built once. Paid your way. Yours for good.</h2>
           <p className={styles.headLead}>
             Big companies pay partners tens of thousands just to set up a CRM they still rent. Your
-            price covers the whole build.
+            price covers the whole build: pay it once, or spread it over 6 or 12 months.
           </p>
         </header>
 
@@ -129,11 +146,10 @@ export function CrmPackage() {
           <div className={styles.pkgBuy}>
             <span className={styles.offerTag}>Custom CRM</span>
             <h3 className={styles.pkgName}>Built around exactly how your business runs.</h3>
-            <p className={styles.offerLabel}>One-time build</p>
-            <p className={styles.pkgPrice}>{PRICE}</p>
+            <PlanPicker />
             <ul className={styles.pkgFacts}>
               <li>
-                <Icon name="check" size={15} /> No monthly or per-login fees
+                <Icon name="check" size={15} /> No subscription or per-login fees
               </li>
               <li>
                 <Icon name="check" size={15} /> Unlimited team logins

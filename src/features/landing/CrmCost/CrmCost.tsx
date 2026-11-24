@@ -198,7 +198,7 @@ export function CrmCost() {
                   />
                 </div>
                 <span className={styles.detail}>
-                  {money(BUILD_CENTS)} one-time build · first year of care free, then{" "}
+                  {money(BUILD_CENTS)} one-time payment (6- and 12-month plans available) · first year of care free, then{" "}
                   {money(CARE_CENTS)}/year · unlimited logins · yours to keep
                 </span>
               </div>

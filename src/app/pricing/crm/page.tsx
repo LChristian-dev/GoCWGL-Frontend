@@ -7,7 +7,7 @@ import { CrmHero, CrmInvite, CrmPackage, CrmSteps, WhyOwn } from "@/features/crm
 export const metadata: Metadata = {
   title: "CRM Pricing",
   description:
-    "Own your CRM instead of renting one. A one-time Custom CRM build with unlimited logins and no monthly fees. Compare it to HubSpot, GoHighLevel and Zoho, then sign up and request yours.",
+    "Own your CRM instead of renting one. A Custom CRM with unlimited logins and no subscription: pay once, or over 6 or 12 months. Compare it to HubSpot, GoHighLevel and Zoho, then sign up and request yours.",
 };
 
 export default function CrmPricingPage() {

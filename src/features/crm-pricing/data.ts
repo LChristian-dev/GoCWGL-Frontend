@@ -1,18 +1,32 @@
 // Copy for the CRM pricing page. Package details mirror the client portal's
 // "Get a CRM" page (gocwgl-admin src/data/portal.ts: CRM_PACKAGES.custom,
-// CRM_WHY_OWN, CRM_CARE_PLAN, CRM_PRICE_BREAKDOWN, CRM_STEPS). Update both together.
+// CRM_PAYMENT_PLANS, CRM_WHY_OWN, CRM_CARE_PLAN, CRM_PRICE_BREAKDOWN, CRM_STEPS). Update both together.
 
+import { BUILD_CENTS } from "@/features/landing/CrmCost/data";
 import type { IconName } from "@/features/pricing-ui/Icon";
 
 /** The client app, where new clients sign up and request their CRM. */
 export const APP_URL = "https://app.gocwgl.com";
 
-export const PRICE = "$15,000";
+export type PaymentPlanKey = "one_time" | "12_months" | "6_months";
+
+/** How a client pays for the Custom CRM: once, or a set monthly payment. Same as the portal's CRM_PAYMENT_PLANS. */
+export const PAYMENT_PLANS: Array<{ key: PaymentPlanKey; label: string; payments: number; paymentCents: number }> = [
+  { key: "one_time", label: "One-time payment", payments: 1, paymentCents: BUILD_CENTS },
+  { key: "12_months", label: "12-month plan", payments: 12, paymentCents: 139_700 },
+  { key: "6_months", label: "6-month plan", payments: 6, paymentCents: 269_700 },
+];
+
+/** Cents as whole dollars, e.g. 139700 → "$1,397". */
+export const usd = (cents: number) => `$${(cents / 100).toLocaleString("en-US")}`;
+export const planTotalCents = (p: { payments: number; paymentCents: number }) => p.payments * p.paymentCents;
+
+export const PRICE = usd(BUILD_CENTS);
 export const CARE_PRICE = "$500";
 export const FEATURE_FROM = "$100";
 
 export const HERO_FACTS = [
-  { value: "$0", label: "monthly or per-login fees" },
+  { value: "$0", label: "subscription or per-login fees" },
   { value: "Unlimited", label: "team logins" },
   { value: "100%", label: "yours: the system and the data" },
 ];
@@ -101,7 +115,7 @@ export const STEPS = [
   },
   {
     title: "Request your CRM",
-    body: "Tell us what you need from Get a CRM in your portal, and pick a time for your discovery call.",
+    body: "Tell us what you need from Get a CRM in your portal, choose how you'll pay, and pick a time for your discovery call.",
   },
   {
     title: "Approve the blueprint",
