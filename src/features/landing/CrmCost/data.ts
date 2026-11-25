@@ -96,5 +96,5 @@ export const COMPARISON = {
 
 /** The Custom CRM build, and the Care plan after its free first year. */
 export const BUILD_CENTS = 1_500_000;
-export const CARE_CENTS = 50_000;
+export const CARE_CENTS = 80_000;
 export const CARE_FREE_YEARS = 1;

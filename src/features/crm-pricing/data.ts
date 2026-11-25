@@ -22,7 +22,7 @@ export const usd = (cents: number) => `$${(cents / 100).toLocaleString("en-US")}
 export const planTotalCents = (p: { payments: number; paymentCents: number }) => p.payments * p.paymentCents;
 
 export const PRICE = usd(BUILD_CENTS);
-export const CARE_PRICE = "$500";
+export const CARE_PRICE = "$800";
 export const FEATURE_FROM = "$100";
 
 export const HERO_FACTS = [

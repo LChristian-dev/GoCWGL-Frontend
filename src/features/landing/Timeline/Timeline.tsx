@@ -65,7 +65,7 @@ export function Timeline() {
             <p className={styles.body}>
               You get 90 days of priority support after launch, and your first year of the Care
               plan is free: security updates, backups, monitoring and unlimited revisions to
-              what&apos;s built. After that it&apos;s $500 a year. Want something new? Once your
+              what&apos;s built. After that it&apos;s $800 a year. Want something new? Once your
               CRM is marked complete, new features start at $100, quoted before any work starts.
             </p>
           </div>

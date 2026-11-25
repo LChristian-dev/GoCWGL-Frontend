@@ -70,7 +70,7 @@ export function CrmCost() {
           <p className={styles.lead}>
             Move the slider to your team size and pick how long you&apos;ll use it. HubSpot,
             GoHighLevel and Zoho bill every month, for every login, for as long as you use them.
-            Yours is built once, with the first year of care free and $500 a year after that.
+            Yours is built once, with the first year of care free and $800 a year after that.
           </p>
         </div>
 

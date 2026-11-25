@@ -3,7 +3,7 @@ import styles from "./Stats.module.scss";
 const STATS = [
   { value: "12–15 wks", label: "From discovery call to your CRM going live" },
   { value: "90 days", label: "Of priority support after launch", accent: true },
-  { value: "$500/yr", label: "Care plan after a free first year, the only recurring cost" },
+  { value: "$800/yr", label: "Care plan after a free first year, the only recurring cost" },
   { value: "100%", label: "Of the code and data are yours" },
 ];
 
