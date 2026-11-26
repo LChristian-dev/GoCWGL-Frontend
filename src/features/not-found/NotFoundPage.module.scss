@@ -1,0 +1,230 @@
+@use "abstracts/variables" as v;
+
+// =============================================================================
+// 404 page (src/app/not-found.tsx): a big glowing 404 on grid paper, with
+// links home and back. Mirrors the admin CRM's 404
+// (gocwgl-admin/src/styles/pages/_not-found.scss), so its colors are the
+// admin palette rather than this site's tokens.
+// =============================================================================
+
+$ink: #0b1424;
+$muted: #4f6280;
+$muted-light: #6b7a92;
+$bg: #f6faff;
+$cyan-700: #0e7490;
+$cyan-800: #155e75;
+$orange: #ff9900;
+$orange-light: #ffb23f;
+$on-orange: #1a0f00;
+$grad-orange: linear-gradient(90deg, $orange, $orange-light);
+$line-strong: rgba(8, 145, 178, 0.3);
+$glow-orange: 0 0 0 1px rgba(255, 153, 0, 0.4), 0 0 18px rgba(255, 153, 0, 0.35);
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: $bg;
+  background-image:
+    linear-gradient(rgba(8, 145, 178, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 145, 178, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  font-family: v.$font-heading;
+}
+
+// Soft cyan and orange light behind the number.
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(900px, 120vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -55%);
+  background:
+    radial-gradient(circle at 38% 45%, rgba(34, 211, 238, 0.22), transparent 55%),
+    radial-gradient(circle at 64% 58%, rgba(255, 153, 0, 0.16), transparent 50%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.bar,
+.body,
+.foot {
+  position: relative;
+}
+
+.bar {
+  padding: 22px 44px;
+
+  @media (max-width: v.$bp-md) {
+    padding: 16px;
+  }
+}
+
+.logo {
+  display: block;
+  width: auto;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  text-align: center;
+  animation: not-found-rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.label {
+  margin: 0 0 8px;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: $cyan-700;
+}
+
+.code {
+  display: flex;
+  gap: 0.04em;
+  font-family: v.$font-mono;
+  font-size: clamp(112px, 22vw, 200px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, $ink 10%, $cyan-700 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+// The zero is an orange ring that floats.
+.zero {
+  background: $grad-orange;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 8px 24px rgba(255, 153, 0, 0.35));
+  animation: not-found-float 4s ease-in-out infinite;
+}
+
+.title {
+  margin: 12px 0 0;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: $ink;
+}
+
+.text {
+  max-width: 460px;
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: $muted;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+// Same shape as the admin's <Button size="lg">.
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    filter 0.15s,
+    box-shadow 0.15s,
+    background-color 0.15s;
+
+  &:hover {
+    filter: brightness(1.03);
+  }
+}
+
+.primary {
+  background: $grad-orange;
+  color: $on-orange;
+  box-shadow: $glow-orange;
+  font-weight: 800;
+}
+
+.secondary {
+  background: #ffffff;
+  border-color: $line-strong;
+  color: $ink;
+
+  &:hover {
+    background: $bg;
+  }
+}
+
+.foot {
+  padding: 20px 16px 28px;
+  text-align: center;
+  font-size: 13px;
+  color: $muted-light;
+
+  a {
+    color: $cyan-700;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+      color: $cyan-800;
+      text-decoration: underline;
+    }
+  }
+}
+
+@keyframes not-found-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes not-found-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .body,
+  .zero {
+    animation: none;
+  }
+}
