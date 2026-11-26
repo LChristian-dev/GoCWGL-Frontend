@@ -1,8 +1,12 @@
-import Link from "next/link";
+/* eslint-disable @next/next/no-html-link-for-pages -- full page loads on purpose; see the note below */
 import { Logo } from "@/components/ui/Logo/Logo";
 import { ArrowIcon } from "./ArrowIcon";
 import { BackButton } from "./BackButton";
 import styles from "./NotFoundPage.module.scss";
+
+// Home links are plain <a> (a full page load), not next/link: a client-side
+// transition into the long landing page fights the site-wide smooth scroll
+// and can land partway down, even at the footer. See Header.tsx.
 
 const STATUS_URL = "https://app.gocwgl.com/status";
 
@@ -12,9 +16,9 @@ export function NotFoundPage() {
       <div className={styles.glow} aria-hidden />
 
       <header className={styles.bar}>
-        <Link href="/" aria-label="GoCWGL home">
+        <a href="/" aria-label="GoCWGL home">
           <Logo height={40} priority className={styles.logo} />
-        </Link>
+        </a>
       </header>
 
       <section className={styles.body}>
@@ -32,10 +36,10 @@ export function NotFoundPage() {
         </p>
 
         <div className={styles.actions}>
-          <Link href="/" className={`${styles.btn} ${styles.primary}`}>
+          <a href="/" className={`${styles.btn} ${styles.primary}`}>
             <ArrowIcon direction="right" />
             Go to home
-          </Link>
+          </a>
           <BackButton className={`${styles.btn} ${styles.secondary}`} />
         </div>
       </section>
