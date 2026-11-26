@@ -1,1 +1,1 @@
-export { CrmHero, WhyOwn, CrmPackage, CrmSteps, CrmInvite } from "./sections";
+export { CrmHero, WhatIsCrm, WhyOwn, CrmPackage, CrmSteps, CrmInvite } from "./sections";

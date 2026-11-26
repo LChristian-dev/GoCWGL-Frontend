@@ -13,6 +13,8 @@ import {
   PRICE,
   PRICE_COVERS,
   STEPS,
+  WHAT_IS_COMPARE,
+  WHAT_IS_DOES,
   WHY_OWN,
   usd,
 } from "./data";
@@ -95,6 +97,57 @@ export function CrmHero() {
             Compare it to HubSpot, GoHighLevel and Zoho ↓
           </a>
         </aside>
+      </div>
+    </section>
+  );
+}
+
+// ---- What is a custom CRM -------------------------------------------------
+
+export function WhatIsCrm() {
+  return (
+    <section id="what-is-a-crm" className={styles.whatIs}>
+      <div className={styles.container}>
+        <header className={styles.head} data-reveal="" style={{ animationName: "rise" }}>
+          <p className={styles.eyebrow}>New to CRMs? Start here</p>
+          <h2 className={styles.heading}>What is a custom CRM?</h2>
+          <p className={styles.whatIsLead}>
+            CRM stands for <strong>Customer Relationship Manager</strong>. Think of it as a smart
+            address book and to-do list for your business, kept safe on the computer instead of in a
+            drawer. It holds everyone you do business with, and it helps you remember what to do
+            next for each of them.
+          </p>
+        </header>
+
+        <div className={styles.whatIsGrid}>
+          {WHAT_IS_DOES.map((d) => (
+            <article key={d.title} className={styles.whatIsCard} data-reveal="" style={{ animationName: "riseIn" }}>
+              <span className={styles.iconTile}>
+                <Icon name={d.icon} size={22} />
+              </span>
+              <h3 className={styles.whatIsTitle}>{d.title}</h3>
+              <p className={styles.whatIsBody}>{d.body}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className={styles.whatIsCompare} data-reveal="" style={{ animationName: "riseIn" }}>
+          <div className={styles.whatIsSide}>
+            <h3 className={styles.whatIsTitle}>{WHAT_IS_COMPARE.rented.title}</h3>
+            <p className={styles.whatIsBody}>{WHAT_IS_COMPARE.rented.body}</p>
+          </div>
+          <div className={[styles.whatIsSide, styles.whatIsSideCustom].join(" ")}>
+            <h3 className={styles.whatIsTitle}>
+              <Icon name="check" size={20} className={styles.checkIcon} /> {WHAT_IS_COMPARE.custom.title}
+            </h3>
+            <p className={styles.whatIsBody}>{WHAT_IS_COMPARE.custom.body}</p>
+          </div>
+        </div>
+
+        <p className={styles.whatIsNote}>
+          <strong>In short:</strong> we build it for you, we teach you and your team how to use it,
+          and we look after it once it&apos;s running. You don&apos;t need to be good with computers.
+        </p>
       </div>
     </section>
   );

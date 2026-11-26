@@ -1111,3 +1111,96 @@ $glass-line: rgba(255, 255, 255, 0.12);
     color: v.$color-text;
   }
 }
+
+// ---- What is a custom CRM (plain words, larger type for easy reading) ----
+
+.whatIs {
+  background: #fff;
+  color: v.$color-text;
+}
+
+.whatIsLead {
+  margin: 18px 0 0;
+  font-size: 17.5px;
+  line-height: 1.6;
+  color: v.$color-text;
+  text-wrap: pretty;
+
+  strong {
+    font-weight: 800;
+  }
+}
+
+// One column, or all three side by side: never two plus a lone card.
+.whatIsGrid {
+  display: grid;
+  gap: 20px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.whatIsCard {
+  min-width: 0;
+  padding: 30px 28px;
+  border-radius: v.$radius-lg;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+}
+
+.whatIsTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 10px;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.whatIsBody {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: v.$color-text;
+}
+
+.whatIsCompare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.whatIsSide {
+  padding: 28px;
+  border-radius: v.$radius-lg;
+  border: 1px solid v.$color-border;
+  background: #fff;
+
+  .whatIsTitle {
+    margin-top: 0;
+  }
+}
+
+.whatIsSideCustom {
+  border: 2px solid rgba(124, 77, 255, 0.45);
+  background: rgba(124, 77, 255, 0.05);
+}
+
+.whatIsNote {
+  margin: 28px 0 0;
+  padding: 22px 26px;
+  border-radius: v.$radius-md;
+  font-size: 16px;
+  line-height: 1.65;
+  color: v.$color-note-text;
+  background: v.$color-amber-tint;
+  border: 1px solid rgba(247, 168, 27, 0.35);
+
+  strong {
+    color: v.$color-text;
+  }
+}

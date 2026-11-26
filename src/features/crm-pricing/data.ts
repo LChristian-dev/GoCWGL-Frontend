@@ -31,6 +31,36 @@ export const HERO_FACTS = [
   { value: "100%", label: "yours: the system and the data" },
 ];
 
+/** "What is a custom CRM?": plain words for someone who has never used one. */
+export const WHAT_IS_DOES: Array<{ icon: IconName; title: string; body: string }> = [
+  {
+    icon: "book",
+    title: "It remembers everyone",
+    body: "Every customer's name, phone number, and what you last talked about, all in one place. No more sticky notes or digging through old emails.",
+  },
+  {
+    icon: "clock",
+    title: "It reminds you",
+    body: "It tells you who to call back today, whose appointment is tomorrow, and which bill hasn't been paid yet, so nothing slips through the cracks.",
+  },
+  {
+    icon: "users",
+    title: "It keeps your team on the same page",
+    body: "Everyone who works with you sees the same up-to-date list, so no one has to ask, \u201cDid anyone call Mrs. Smith back?\u201d",
+  },
+];
+
+export const WHAT_IS_COMPARE = {
+  rented: {
+    title: "A rented CRM is like a suit off the rack",
+    body: "It's made for everybody, so it never quite fits. You pay for it every single month, and the bill goes up each time you add a person.",
+  },
+  custom: {
+    title: "A custom CRM is like a suit made by a tailor",
+    body: "It's measured and made just for your business. You pay for it once (or over a few months), and then it's yours to keep.",
+  },
+};
+
 export const WHY_OWN: Array<{ icon: IconName; title: string; body: string }> = [
   {
     icon: "shield",
