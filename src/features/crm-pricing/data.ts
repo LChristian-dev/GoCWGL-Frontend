@@ -226,7 +226,6 @@ export const COMPARE_SECTIONS: Array<{ title: string; rows: CompareRow[] }> = [
 ];
 
 export const CARE_PRICE = "$800";
-export const FEATURE_FROM = "$100";
 
 /** "What is a custom CRM?": plain words for someone who has never used one. */
 export const WHAT_IS_DOES: Array<{ icon: IconName; title: string; body: string }> = [

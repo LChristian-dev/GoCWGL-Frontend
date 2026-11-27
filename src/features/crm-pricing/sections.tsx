@@ -4,7 +4,6 @@ import {
   CARE_PLAN,
   CARE_PRICE,
   COMPARE_SECTIONS,
-  FEATURE_FROM,
   PACKAGES,
   PRICE_COVERS,
   STEPS,
@@ -268,18 +267,6 @@ export function CrmPackage() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className={s.extra} data-reveal="" style={{ animationName: "riseIn" }}>
-            <p className={s.miniLabel}>Growing later</p>
-            <p className={s.extraPrice}>
-              {FEATURE_FROM}
-              <small> per new feature, from</small>
-            </p>
-            <p className={s.extraText}>
-              Once your CRM is launched and you and GoCWGL both mark it complete, a new menu, record
-              type, integration or report starts at {FEATURE_FROM}, depending on how complex it is.
-              We quote it before any work starts.
-            </p>
           </div>
         </div>
       </div>
