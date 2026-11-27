@@ -4,7 +4,7 @@ import type { DemoStore } from "../useDemoStore";
 import { Avatar, Empty, Field, Icon, Pill, SectionHead } from "../ui";
 import styles from "../CrmDemo.module.scss";
 
-export function Invoices({ store }: { store: DemoStore }) {
+export function Invoices({ store, title = "Invoices" }: { store: DemoStore; title?: string }) {
   const { contacts, invoices } = store.state;
   const now = today();
   const [contactId, setContactId] = useState(contacts[0]?.id ?? "");
@@ -23,7 +23,7 @@ export function Invoices({ store }: { store: DemoStore }) {
   return (
     <div className={styles.stack}>
       <SectionHead
-        title="Invoices"
+        title={title}
         subtitle="Send an invoice, then mark it paid. The contact moves to “Paid” on its own."
         actions={
           <div className={styles.totals}>

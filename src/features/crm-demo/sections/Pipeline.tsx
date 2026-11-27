@@ -5,7 +5,7 @@ import { toneVars } from "../theme";
 import { Avatar, Empty, Icon, SectionHead } from "../ui";
 import styles from "../CrmDemo.module.scss";
 
-export function Pipeline({ store }: { store: DemoStore }) {
+export function Pipeline({ store, title = "Sales pipeline" }: { store: DemoStore; title?: string }) {
   const { contacts, bookings } = store.state;
   const [dragId, setDragId] = useState<string | null>(null);
   const [overStage, setOverStage] = useState<Stage | null>(null);
@@ -20,7 +20,7 @@ export function Pipeline({ store }: { store: DemoStore }) {
   return (
     <div className={styles.stack}>
       <SectionHead
-        title="Sales pipeline"
+        title={title}
         subtitle="Drag a card to another column, or use the arrow to move it forward."
       />
 

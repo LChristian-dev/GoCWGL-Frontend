@@ -355,9 +355,10 @@ $crm-shadow-card: 0 0 0 1px rgba(8, 145, 178, 0.03), 0 6px 22px rgba(8, 145, 178
   }
 }
 
+// The GoCWGL brand primary (navy) at a light opacity, like the demo.
 .navItemActive {
-  background: rgba(255, 153, 0, 0.14);
-  color: $crm-orange-ink;
+  background: rgba(v.$color-navy, 0.1);
+  color: v.$color-navy;
 }
 
 .navLabel {
@@ -833,3 +834,15 @@ $crm-shadow-card: 0 0 0 1px rgba(8, 145, 178, 0.03), 0 6px 22px rgba(8, 145, 178
   animation: land 0.6s ease-in-out;
 }
 
+
+// Same menu look as the demo (CrmDemo): regular-weight labels, plain black icons.
+.sidebar {
+  .navItem {
+    font-weight: 400;
+  }
+
+  .iconTile {
+    background: transparent;
+    color: $crm-ink;
+  }
+}

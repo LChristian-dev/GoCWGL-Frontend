@@ -4,7 +4,7 @@ import type { DemoStore } from "../useDemoStore";
 import { Avatar, Empty, Field, Icon, SectionHead } from "../ui";
 import styles from "../CrmDemo.module.scss";
 
-export function Calendar({ store }: { store: DemoStore }) {
+export function Calendar({ store, title = "Booking" }: { store: DemoStore; title?: string }) {
   const { contacts, bookings } = store.state;
   const now = today();
   const days = Array.from({ length: 7 }, (_, i) => addDays(now, i));
@@ -23,7 +23,7 @@ export function Calendar({ store }: { store: DemoStore }) {
   return (
     <div className={styles.stack}>
       <SectionHead
-        title="Booking"
+        title={title}
         subtitle="Your booking page fills this in. Booking a call moves the lead to “Call booked”."
       />
 

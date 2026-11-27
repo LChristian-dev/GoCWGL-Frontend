@@ -4,6 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ICONS, toneVars, type IconName, type Tone } from "@/features/crm-demo/theme";
+import { NAV_SETS, type NavSet } from "@/features/crm-demo/nav";
 import { usePreviewLoop, type PreviewStage } from "./usePreviewLoop";
 import styles from "./CrmPreview.module.scss";
 
@@ -14,23 +15,6 @@ const CrmDemo = dynamic(() => import("@/features/crm-demo/CrmDemo"), { ssr: fals
 // Mirrors the real GoCWGL admin app (gocwgl-admin): white sidebar with
 // tinted icon tiles, grid-paper main column, mono kicker, stat tiles with a
 // glowing bar and a pipeline board with toned count chips.
-type NavItem = { label: string; icon: IconName; tone: Tone; active?: boolean };
-
-// Same groups as the demo's sidebar (CrmDemo); the first has no heading.
-const NAV_GROUPS: Array<{ title?: string; items: NavItem[] }> = [
-  { items: [{ label: "Dashboard", icon: "grid", tone: "cyan" }] },
-  {
-    title: "Sales",
-    items: [
-      { label: "Contacts", icon: "users", tone: "purple" },
-      { label: "Pipeline", icon: "pipeline", tone: "pink", active: true },
-      { label: "Booking", icon: "calendar", tone: "orange" },
-    ],
-  },
-  { title: "Payments", items: [{ label: "Invoices", icon: "invoice", tone: "green" }] },
-  { title: "Marketing", items: [{ label: "Email automations", icon: "mail", tone: "sky" }] },
-];
-
 const STAGES: Array<{ id: PreviewStage; title: string; tone: Tone }> = [
   { id: "lead", title: "Lead", tone: "purple" },
   { id: "booked", title: "Booked", tone: "orange" },
@@ -57,7 +41,7 @@ function NavIcon({ icon, tone }: { icon: IconName; tone: Tone }) {
  * plays a looping pipeline story (see usePreviewLoop). Clicking it opens the
  * hands-on demo (CrmDemo) in a modal.
  */
-export function CrmPreview() {
+export function CrmPreview({ navSet = "classic", className }: { navSet?: NavSet; className?: string } = {}) {
   const [demoOpen, setDemoOpen] = useState(false);
   // Brief bounce when the demo shrinks back into the preview.
   const [landed, setLanded] = useState(false);
@@ -107,7 +91,7 @@ export function CrmPreview() {
   const getOrigin = useCallback(() => windowRef.current, []);
 
   return (
-    <div ref={wrapRef} className={styles.wrap}>
+    <div ref={wrapRef} className={[styles.wrap, className].filter(Boolean).join(" ")}>
       <span aria-hidden="true" data-motion="" className={styles.floatChip}>
         <span className={styles.floatDot} />
         {/* Keyed so each new message pops in. */}
@@ -157,13 +141,13 @@ export function CrmPreview() {
 
         <div aria-hidden="true" className={styles.app}>
           <div className={styles.sidebar}>
-            {NAV_GROUPS.map((group) => (
+            {NAV_SETS[navSet].map((group) => (
               <div key={group.title ?? "main"} className={styles.sidebarGroup}>
                 {group.title && <span className={styles.sidebarLabel}>{group.title}</span>}
                 {group.items.map((item) => (
                   <span
-                    key={item.label}
-                    className={[styles.navItem, item.active && styles.navItemActive]
+                    key={item.id}
+                    className={[styles.navItem, (item.id === "pipeline" || item.children?.some((c) => c.id === "pipeline")) && styles.navItemActive]
                       .filter(Boolean)
                       .join(" ")}
                   >
@@ -273,6 +257,7 @@ export function CrmPreview() {
 
       {demoOpen && (
         <CrmDemo
+          navSet={navSet}
           getOrigin={getOrigin}
           onClose={() => {
             setDemoOpen(false);

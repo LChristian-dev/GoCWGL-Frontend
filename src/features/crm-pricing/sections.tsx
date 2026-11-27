@@ -6,19 +6,17 @@ import {
   APP_URL,
   CARE_PLAN,
   CARE_PRICE,
+  COMPARE_SECTIONS,
   FEATURE_FROM,
-  FEATURE_GROUPS,
-  HERO_FACTS,
-  PAYMENT_PLANS,
-  PRICE,
+  PACKAGES,
   PRICE_COVERS,
   STEPS,
   WHAT_IS_COMPARE,
   WHAT_IS_DOES,
   WHY_OWN,
-  usd,
 } from "./data";
 import { PlanPicker } from "./PlanPicker";
+import { CrmPreview } from "@/features/landing/Hero/CrmPreview";
 import styles from "@/features/pricing-ui/PricingPage.module.scss";
 
 const amberVars = {
@@ -49,9 +47,10 @@ export function CrmHero() {
             Stop renting the system <span className={styles.heroAccent}>your business runs on.</span>
           </h1>
           <p className={styles.heroLead}>
-            Your CRM holds every lead, deal and client you&apos;ve ever won. Most businesses rent theirs
-            month after month and pay more every time they hire. Sign up, tell us how you sell, and
-            we&apos;ll build one that&apos;s yours for good.
+            A modern CRM for coaches, consultants, and coaching and consulting firms. It holds every
+            lead, client, session and invoice you have. Most businesses rent theirs month after month
+            and pay more every time they hire. Sign up, tell us how you work, and we&apos;ll build one
+            that&apos;s yours for good.
           </p>
           <Ctas label={CRM_SIGN_UP} />
           <p className={styles.reassure}>
@@ -61,42 +60,10 @@ export function CrmHero() {
           </p>
         </div>
 
-        <aside className={styles.offer} aria-label="Custom CRM at a glance">
-          <div className={styles.offerTop}>
-            <span className={styles.offerTag}>Custom CRM</span>
-            <span className={styles.offerTime}>About 12–15 weeks</span>
-          </div>
-          <p className={styles.offerLabel}>One-time payment</p>
-          <p className={styles.offerPrice}>{PRICE}</p>
-          <p className={styles.offerOr}>or pay monthly</p>
-          <ul className={styles.offerPlans}>
-            {PAYMENT_PLANS.filter((p) => p.payments > 1).map((p) => (
-              <li key={p.key}>
-                <a href="#crm-pricing" className={styles.offerPlan}>
-                  <span className={styles.offerPlanAmount}>
-                    {usd(p.paymentCents)}
-                    <small>/month</small>
-                  </span>
-                  <span className={styles.offerPlanTerm}>for {p.payments} months</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          <dl className={styles.facts}>
-            {HERO_FACTS.map((f) => (
-              <div key={f.label} className={styles.fact}>
-                <dt>{f.value}</dt>
-                <dd>{f.label}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className={styles.offerCare}>
-            <Icon name="shield" size={16} /> First year of care free, then {CARE_PRICE}/year
-          </p>
-          <a href="#crm-cost" className={styles.offerLink}>
-            Compare it to HubSpot, GoHighLevel and Zoho ↓
-          </a>
-        </aside>
+        {/* The live demo, with the full CRM menu; prices are in the package section. */}
+        <div className={styles.heroDemo}>
+          <CrmPreview navSet="full" />
+        </div>
       </div>
     </section>
   );
@@ -187,69 +154,131 @@ export function CrmPackage() {
       <div aria-hidden="true" data-motion="" className={styles.pkgGlow} />
       <div className={styles.container}>
         <header className={styles.head} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrowDark}>Your build</p>
+          <p className={styles.eyebrowDark}>Two packages</p>
           <h2 className={styles.heading}>Built once. Paid your way. Yours for good.</h2>
           <p className={styles.headLead}>
-            Big companies pay partners tens of thousands just to set up a CRM they still rent. Your
-            price covers the whole build: pay it once, or spread it over 6 or 12 months.
+            Both packages share the same modern design and are built around how your business runs.
+            Flagship gives you a complete CRM; Premium adds advanced automation, custom modules and
+            a full course platform. Pay once, or spread it over 6 or 12 months.
           </p>
         </header>
 
-        <div className={styles.pkg} data-reveal="" style={{ animationName: "riseIn" }}>
-          <div className={styles.pkgBuy}>
-            <span className={styles.offerTag}>Custom CRM</span>
-            <h3 className={styles.pkgName}>Built around exactly how your business runs.</h3>
-            <PlanPicker />
-            <ul className={styles.pkgFacts}>
-              <li>
-                <Icon name="check" size={15} /> No subscription or per-login fees
-              </li>
-              <li>
-                <Icon name="check" size={15} /> Unlimited team logins
-              </li>
-              <li>
-                <Icon name="check" size={15} /> About 12–15 weeks to launch
-              </li>
-              <li>
-                <Icon name="check" size={15} /> First year of care free
-              </li>
-            </ul>
-            <Button href={APP_URL} variant="amber" className={styles.pkgCta} sheen sheenDuration="4.6s" style={amberVars}>
-              Sign up and request your CRM
-              <Icon name="arrow" size={18} />
-            </Button>
-            <p className={styles.pkgFine}>
-              Questions first?{" "}
-              <a href="/book" className={styles.inlineLink}>
-                Book a free discovery call
-              </a>
-              . Nothing is billed until you approve the quote.
-            </p>
-          </div>
-
-          <div className={styles.pkgBody}>
-            <p className={styles.miniLabel}>Everything included</p>
-            <div className={styles.groups}>
-              {FEATURE_GROUPS.map((g) => (
-                <div key={g.title} className={styles.group}>
-                  <div className={styles.groupHead}>
-                    <span className={styles.iconTileDark}>
-                      <Icon name={g.icon} size={17} />
-                    </span>
-                    <span className={styles.groupTitle}>{g.title}</span>
-                  </div>
-                  <ul className={styles.checkList}>
-                    {g.items.map((item) => (
-                      <li key={item}>
-                        <Icon name="check" size={14} className={styles.checkIcon} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+        <div className={styles.pkgStack}>
+          {PACKAGES.map((pkg) => (
+            <div
+              key={pkg.key}
+              id={`crm-${pkg.key}`}
+              className={[styles.pkg, pkg.featured ? styles.pkgFeatured : ""].join(" ")}
+              data-reveal=""
+              style={{ animationName: "riseIn" }}
+            >
+              <div className={styles.pkgBuy}>
+                <div className={styles.pkgTags}>
+                  <span className={styles.offerTag}>{pkg.subtitle}</span>
+                  {pkg.featured && <span className={styles.pkgBadge}>Most advanced</span>}
                 </div>
-              ))}
+                <h3 className={styles.pkgTitle}>{pkg.name}</h3>
+                <p className={styles.pkgFor}>{pkg.bestFor}</p>
+                <PlanPicker plans={pkg.plans} name={pkg.key} />
+                <ul className={styles.pkgFacts}>
+                  <li>
+                    <Icon name="check" size={15} /> No subscription or per-login fees
+                  </li>
+                  <li>
+                    <Icon name="check" size={15} /> Unlimited team logins
+                  </li>
+                  <li>
+                    <Icon name="check" size={15} /> About 12–15 weeks to launch
+                  </li>
+                  <li>
+                    <Icon name="check" size={15} /> First year of care free
+                  </li>
+                </ul>
+                <Button href={APP_URL} variant="amber" className={styles.pkgCta} sheen sheenDuration="4.6s" style={amberVars}>
+                  Request {pkg.name}
+                  <Icon name="arrow" size={18} />
+                </Button>
+                <p className={styles.pkgFine}>
+                  Questions first?{" "}
+                  <a href="/book" className={styles.inlineLink}>
+                    Book a free discovery call
+                  </a>
+                  . Nothing is billed until you approve the quote.
+                </p>
+              </div>
+    
+              <div className={styles.pkgBody}>
+                <p className={styles.miniLabel}>What&apos;s included</p>
+                <div className={styles.groups}>
+                  {pkg.groups.map((g) => (
+                    <div key={g.title} className={styles.group}>
+                      <div className={styles.groupHead}>
+                        <span className={styles.iconTileDark}>
+                          <Icon name={g.icon} size={17} />
+                        </span>
+                        <span className={styles.groupTitle}>{g.title}</span>
+                      </div>
+                      <ul className={styles.checkList}>
+                        {g.items.map((item) => (
+                          <li key={item}>
+                            <Icon name="check" size={14} className={styles.checkIcon} />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+                <p className={styles.pkgNote}>{pkg.note}</p>
+              </div>
             </div>
+          ))}
+        </div>
+
+        <div className={styles.compare} data-reveal="" style={{ animationName: "riseIn" }}>
+          <p className={styles.miniLabel}>Flagship vs Premium</p>
+          <div className={styles.compareScroll}>
+            <table className={styles.compareTable}>
+              <thead>
+                <tr>
+                  <th scope="col">Capability</th>
+                  {PACKAGES.map((p) => (
+                    <th key={p.key} scope="col">
+                      {p.name.replace(" CRM", "")}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              {COMPARE_SECTIONS.map((section) => (
+                <tbody key={section.title}>
+                  <tr className={styles.compareGroup}>
+                    <th scope="rowgroup" colSpan={PACKAGES.length + 1}>
+                      {section.title}
+                    </th>
+                  </tr>
+                  {section.rows.map(([capability, ...levels]) => (
+                    <tr key={capability}>
+                      <th scope="row">{capability}</th>
+                      {levels.map((level, i) => (
+                        <td
+                          key={PACKAGES[i].key}
+                          data-level={level.startsWith("Not") || level === "—" ? "none" : undefined}
+                          aria-label={level === "—" ? "Not included" : undefined}
+                        >
+                          {level === "Included" ? <span className={styles.compareYes}>Included</span> : level}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              ))}
+            </table>
           </div>
+          <p className={styles.compareNote}>
+            Both packages share the same design, menu and app; Premium unlocks more on each page.
+            Third-party costs, such as email, SMS, payment or video hosting services, are estimated
+            in your blueprint.
+          </p>
         </div>
 
         <div className={styles.extras}>

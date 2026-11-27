@@ -36,8 +36,20 @@ const VA_ITEMS: FaqItem[] = [
 
 const CRM_ITEMS: FaqItem[] = [
   [
-    "What's included in the Custom CRM?",
-    "Contacts, companies and sales pipelines; custom records for your business (jobs, properties, cases, orders…); automations, email campaigns, booking and forms; SMS reminders and call logging; AI helpers; invoicing and online payments; a client portal for your customers; roles and permissions with unlimited team logins; integrations; and custom reports. All on your own domain, with your branding, your data moved over, team training and 90 days of priority support.",
+    "Who is the CRM for?",
+    "Coaches, consultants, and coaching and consulting firms. Flagship suits independent business, executive and online coaches, business consultants, and small coaching or consulting firms. Premium suits established coaching companies, growing consulting firms, multi-coach organizations, businesses with several teams, and coaches or consultants selling online courses or memberships.",
+  ],
+  [
+    "What's the difference between Flagship and Premium?",
+    "It's one CRM at two levels: both have the same modern design and menu, unlimited team logins, your branding, team training and 90 days of priority support. Flagship ($8,500) is a complete CRM: leads, contacts, companies, sales pipeline and deals; clients, onboarding, programs & services, appointments & sessions and client progress; course sales pages; tasks, calendar, forms, pages and documents; email campaigns and standard automations; invoices, payment tracking and standard reports. Premium (from $15,000) adds custom modules, advanced automations with conditions and branching, a full course platform with student accounts and learning progress, an advanced client portal (Flagship includes a simple one), subscriptions and recurring payments, custom dashboards and reports, custom roles and permissions, more integrations, and moving your data over.",
+  ],
+  [
+    "Can I sell online courses?",
+    "Yes. Flagship includes course sales pages with descriptions, pricing and inquiry or registration forms. Premium adds a full course platform: lessons, student accounts, enrollments, course access and learning progress, with quizzes, assignments, certificates, memberships and subscription courses available as scoped.",
+  ],
+  [
+    "Can I use my own words and hide menus I don't need?",
+    "Yes. Your CRM uses your terminology, such as “Coaching Sessions” or “Consultations”, and “Coaching Clients” or “Business Clients”. Menus you don't use stay hidden: a coach who doesn't sell courses won't see Courses & Learning.",
   ],
   [
     "If you build my CRM, do I own it?",
@@ -53,7 +65,7 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "Can you move my data from my current CRM?",
-    "Yes. We import your spreadsheets and move your data over from your current CRM, whether that's GoHighLevel, HubSpot, Zoho or something else, so you start with your history in place.",
+    "Yes. We import your spreadsheets and data from your current CRM, whether that's GoHighLevel, HubSpot, Zoho or something else, so you start with your history in place. Large or complex moves come with Premium, or are quoted separately for Flagship.",
   ],
   [
     "Will it work with my existing website?",
@@ -69,7 +81,7 @@ const CRM_ITEMS: FaqItem[] = [
   ],
   [
     "How do I pay?",
-    "You choose when you request: one payment of $15,000, or the custom package option, either $1,397 a month for 12 months ($16,764 in total) or $2,697 a month for 6 months ($16,182 in total). Book a call first: nothing is billed until you approve the quote. Then we send your invoice; on a monthly plan you get one invoice per payment.",
+    "You choose your package and how to pay when you request. Flagship: one payment of $8,500, or $797 a month for 12 months ($9,564 in total), or $1,527 a month for 6 months ($9,162 in total). Premium: one payment of $15,000, or $1,397 a month for 12 months ($16,764 in total), or $2,697 a month for 6 months ($16,182 in total). Book a call first: nothing is billed until you approve the quote. Then we send your invoice; on a monthly plan you get one invoice per payment.",
   ],
 ];
 

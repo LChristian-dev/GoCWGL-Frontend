@@ -4,12 +4,13 @@ import { useState } from "react";
 import type { CSSProperties } from "react";
 import { Button } from "@/components/ui/Button/Button";
 import {
-  BUILD_CENTS,
   CARE_CENTS,
   CARE_FREE_YEARS,
   COMPARISON,
   CRM_LOGOS,
+  PACKAGE_BUILDS,
   RENTED_OPTIONS,
+  type CrmPackageKey,
 } from "./data";
 import styles from "./CrmCost.module.scss";
 
@@ -27,8 +28,8 @@ function breakEvenYears(months: number) {
 }
 
 /** Owning: the one-time build plus the Care plan after its free first year. */
-const ownAfter = (months: number) =>
-  BUILD_CENTS + (CARE_CENTS / 12) * Math.max(0, months - CARE_FREE_YEARS * 12);
+const ownAfter = (buildCents: number, months: number) =>
+  buildCents + (CARE_CENTS / 12) * Math.max(0, months - CARE_FREE_YEARS * 12);
 
 const ctaVars = {
   "--btn-hover-lift": "translateY(-2px)",
@@ -36,21 +37,24 @@ const ctaVars = {
 
 /**
  * Renting vs owning: what HubSpot, GoHighLevel and Zoho cost over the years
- * for the visitor's team size, next to the one-time Custom CRM build. The same
+ * for the visitor's team size, next to the one-time build of the chosen Custom
+ * CRM package (Flagship or Premium). The same
  * comparison clients see under "Get a CRM" in the client portal.
  */
 export function CrmCost() {
   const { defaultSeats, maxSeats, periods } = COMPARISON;
   const [seats, setSeats] = useState(defaultSeats);
   const [years, setYears] = useState<(typeof periods)[number]>(periods[0]);
+  const [pkgKey, setPkgKey] = useState<CrmPackageKey>("flagship");
+  const pkg = PACKAGE_BUILDS.find((p) => p.key === pkgKey) ?? PACKAGE_BUILDS[0];
 
-  const ownCents = ownAfter(years * 12);
+  const ownCents = ownAfter(pkg.buildCents, years * 12);
   const rented = RENTED_OPTIONS.map((o) => {
     const monthlyCents = o.flatMonthlyCents + o.perSeatMonthlyCents * seats;
     const totalCents = o.setupCents + monthlyCents * 12 * years;
     // The first month renting has cost more than owning, within 20 years.
     const month = Array.from({ length: 240 }, (_, i) => i + 1).find(
-      (m) => o.setupCents + monthlyCents * m > ownAfter(m),
+      (m) => o.setupCents + monthlyCents * m > ownAfter(pkg.buildCents, m),
     );
     return { ...o, totalCents, breakEven: month ?? Infinity };
   }).sort((a, b) => b.totalCents - a.totalCents);
@@ -96,6 +100,26 @@ export function CrmCost() {
               <div className={styles.scale}>
                 <span>1</span>
                 <span>{maxSeats}</span>
+              </div>
+            </div>
+
+            <div className={styles.control}>
+              <span className={styles.label} id="crm-cost-package">
+                Your package
+              </span>
+              <div className={styles.years} role="radiogroup" aria-labelledby="crm-cost-package">
+                {PACKAGE_BUILDS.map((p) => (
+                  <button
+                    key={p.key}
+                    type="button"
+                    role="radio"
+                    aria-checked={p.key === pkgKey}
+                    className={styles.year}
+                    onClick={() => setPkgKey(p.key)}
+                  >
+                    {p.name}
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -185,7 +209,7 @@ export function CrmCost() {
               <div className={styles.body}>
                 <div className={styles.rowHead}>
                   <span className={styles.name}>
-                    Your own CRM <span className={styles.plan}>GoCWGL Custom CRM</span>
+                    Your own CRM <span className={styles.plan}>GoCWGL {pkg.name} CRM</span>
                   </span>
                   <span className={[styles.amount, styles.amountOwn].join(" ")}>
                     {money(ownCents)}
@@ -198,7 +222,7 @@ export function CrmCost() {
                   />
                 </div>
                 <span className={styles.detail}>
-                  {money(BUILD_CENTS)} one-time payment (6- and 12-month plans available) · first year of care free, then{" "}
+                  {money(pkg.buildCents)} one-time payment (6- and 12-month plans available) · first year of care free, then{" "}
                   {money(CARE_CENTS)}/year · unlimited logins · yours to keep
                 </span>
               </div>

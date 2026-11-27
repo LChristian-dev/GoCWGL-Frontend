@@ -38,6 +38,7 @@ export const ICONS = {
   trash: "M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3",
   check: "M5 12l5 5 9-10",
   arrowRight: "M5 12h14M13 6l6 6-6 6",
+  chevronRight: "M9 6l6 6-6 6",
   refresh: "M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5",
   mail: "M3 6h18v12H3zM3 7l9 6 9-6",
   phone:
@@ -46,6 +47,22 @@ export const ICONS = {
   sparkle: "M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z",
   bolt: "M13 2L4 14h7l-1 8 9-12h-7z",
   clock: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M12 7v5l3 2",
+  building: "M4 21V5l8-3v19M12 8h8v13M2 21h20M7 8h2M7 12h2M7 16h2M15 12h2M15 16h2",
+  briefcase: "M3 8h18v12H3zM9 8V5h6v3M3 13h18",
+  graduation: "M2.5 9L12 4.5 21.5 9 12 13.5zM6.5 11v4.5c1.5 1.5 3.5 2.5 5.5 2.5s4-1 5.5-2.5V11M21.5 9v5",
+  box: "M12 2l9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10",
+  tasks: "M4 4h16v16H4zM8 12l3 3 5-6",
+  form: "M5 3h14v18H5zM8 8h8M8 12h8M8 16h5",
+  file: "M6 2h8l5 5v15H6zM14 2v5h5",
+  megaphone: "M3 10v4h4l7 5V5L7 10zM18 8a5 5 0 0 1 0 8",
+  shield: "M12 3l7 3v5.5c0 4.4-2.9 7.9-7 9.5-4.1-1.6-7-5.1-7-9.5V6zM9 12l2 2 4-4",
+  plug: "M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0zM12 17v5",
+  gear: "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1",
+  target: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8M12 12v.01",
+  tag: "M3 12V3h9l9 9-9 9zM7.5 7.5v.01",
+  flag: "M5 21V4h12l-2.5 4.5L17 13H5",
+  trend: "M3 17l6-6 4 4 8-8M15 7h6v6",
+  help: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01",
 } as const;
 
 export type IconName = keyof typeof ICONS;

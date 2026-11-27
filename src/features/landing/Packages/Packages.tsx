@@ -7,8 +7,9 @@ import styles from "./Packages.module.scss";
 // hook the visitor and send them to the right one.
 
 const CRM_POINTS = [
+  "Two packages: Flagship and Premium",
   "Contacts, pipeline and booking in one place",
-  "Invoices, email automations and a client portal",
+  "Clients, sessions, invoices and email automations",
   "On your own domain, with your branding",
   "Live in about 12–15 weeks, with 90 days of priority support",
   "The code and the data are yours",

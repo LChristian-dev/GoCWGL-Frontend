@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { PAYMENT_PLANS, planTotalCents, usd, type PaymentPlanKey } from "./data";
+import { planTotalCents, usd, type PaymentPlan, type PaymentPlanKey } from "./data";
 import styles from "@/features/pricing-ui/PricingPage.module.scss";
 
-/** The package price, and the ways to pay it: once, or a set monthly payment. */
-export function PlanPicker() {
+/** A package's price, and the ways to pay it: once, or a set monthly payment. */
+export function PlanPicker({ plans, name }: { plans: PaymentPlan[]; name: string }) {
   const [key, setKey] = useState<PaymentPlanKey>("one_time");
-  const plan = PAYMENT_PLANS.find((p) => p.key === key) ?? PAYMENT_PLANS[0];
+  const plan = plans.find((p) => p.key === key) ?? plans[0];
   const monthly = plan.payments > 1;
 
   return (
@@ -27,11 +27,11 @@ export function PlanPicker() {
 
       <fieldset className={styles.plans}>
         <legend className={styles.plansLegend}>Choose how to pay</legend>
-        {PAYMENT_PLANS.map((p) => (
+        {plans.map((p) => (
           <label key={p.key} className={styles.plan}>
             <input
               type="radio"
-              name="crm-payment-plan"
+              name={`crm-payment-plan-${name}`}
               value={p.key}
               checked={p.key === key}
               onChange={() => setKey(p.key)}

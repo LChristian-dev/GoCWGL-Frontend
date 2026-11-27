@@ -11,26 +11,9 @@ import { Pipeline } from "./sections/Pipeline";
 import { Calendar } from "./sections/Calendar";
 import { Invoices } from "./sections/Invoices";
 import { Automations } from "./sections/Automations";
+import { Module } from "./sections/Module";
+import { NAV_SETS, type NavSet, type Section } from "./nav";
 import styles from "./CrmDemo.module.scss";
-
-type Section = "dashboard" | "contacts" | "pipeline" | "calendar" | "invoices" | "automations";
-
-type NavItem = { id: Section; label: string; icon: IconName; tone: Tone };
-
-// Grouped like the real admin's sidebar; the first group has no heading.
-const NAV_GROUPS: Array<{ title?: string; items: NavItem[] }> = [
-  { items: [{ id: "dashboard", label: "Dashboard", icon: "grid", tone: "cyan" }] },
-  {
-    title: "Sales",
-    items: [
-      { id: "contacts", label: "Contacts", icon: "users", tone: "purple" },
-      { id: "pipeline", label: "Pipeline", icon: "pipeline", tone: "pink" },
-      { id: "calendar", label: "Booking", icon: "calendar", tone: "orange" },
-    ],
-  },
-  { title: "Payments", items: [{ id: "invoices", label: "Invoices", icon: "invoice", tone: "green" }] },
-  { title: "Marketing", items: [{ id: "automations", label: "Email automations", icon: "mail", tone: "sky" }] },
-];
 
 /** When simulated leads arrive while the demo is open, in ms after opening. */
 const ARRIVALS = [7000, 24000, 45000, 70000];
@@ -45,6 +28,8 @@ interface Toast {
 
 interface CrmDemoProps {
   initialSection?: Section;
+  /** Which sidebar to show: the short classic menu, or the full CRM menu. */
+  navSet?: NavSet;
   /** The element the demo grows out of and shrinks back into (the hero preview). */
   getOrigin?: () => HTMLElement | null;
   onClose: () => void;
@@ -56,7 +41,7 @@ interface CrmDemoProps {
  * useDemoStore), so visitors can click around freely. While open, a few
  * leads "arrive" on their own so it behaves like a live account.
  */
-export default function CrmDemo({ initialSection = "dashboard", getOrigin, onClose }: CrmDemoProps) {
+export default function CrmDemo({ initialSection = "dashboard", navSet = "classic", getOrigin, onClose }: CrmDemoProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closingRef = useRef(false);
   // Effects run twice in development; the zoom must only play once.
@@ -146,14 +131,29 @@ export default function CrmDemo({ initialSection = "dashboard", getOrigin, onClo
     };
   }, [getOrigin]);
 
-  const content = {
-    dashboard: <Dashboard store={store} />,
-    contacts: <Contacts store={store} />,
-    pipeline: <Pipeline store={store} />,
-    calendar: <Calendar store={store} />,
-    invoices: <Invoices store={store} />,
-    automations: <Automations store={store} />,
-  }[section];
+  const groups = NAV_SETS[navSet];
+  // The menu item whose second sidebar holds the current page, if any.
+  const openParent = groups
+    .flatMap((g) => g.items)
+    .find((item) => item.children?.some((child) => child.id === section));
+
+  // In the full menu, a hands-on screen takes its menu label as its title
+  // (e.g. "Appointments & Sessions"); the classic menu keeps the originals.
+  const label =
+    navSet === "full"
+      ? groups
+          .flatMap((g) => g.items.flatMap((i) => i.children ?? [i]))
+          .find((i) => i.id === section)?.label
+      : undefined;
+
+  const content =
+    section === "dashboard" ? <Dashboard store={store} />
+    : section === "contacts" ? <Contacts store={store} />
+    : section === "pipeline" ? <Pipeline store={store} title={label} />
+    : section === "calendar" ? <Calendar store={store} title={label} />
+    : section === "invoices" ? <Invoices store={store} title={label} />
+    : section === "automations" ? <Automations store={store} title={label} />
+    : <Module id={section} />;
 
   return (
     <dialog
@@ -213,23 +213,32 @@ export default function CrmDemo({ initialSection = "dashboard", getOrigin, onClo
           </button>
         </header>
 
-        <div className={styles.body}>
+        <div className={styles.body} data-sub={openParent ? "" : undefined}>
           <nav className={styles.nav} aria-label="Demo sections">
-            {NAV_GROUPS.map((group) => (
-              <div key={group.title ?? "main"} className={styles.navGroup} role="group" aria-label={group.title}>
+            {groups.map((group, gi) => (
+              <div key={group.title ?? gi} className={styles.navGroup} role="group" aria-label={group.title}>
                 {group.title && <span className={styles.navLabel}>{group.title}</span>}
-                {group.items.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className={styles.navItem}
-                    aria-current={section === item.id ? "page" : undefined}
-                    onClick={() => setSection(item.id)}
-                  >
-                    <IconTile name={item.icon} tone={item.tone} size={14} />
-                    <span>{item.label}</span>
-                  </button>
-                ))}
+                {group.items.map((item) => {
+                  const current = item.children ? item === openParent : section === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className={styles.navItem}
+                      aria-current={current ? "page" : undefined}
+                      aria-expanded={item.children ? current : undefined}
+                      onClick={() => setSection(item.id)}
+                    >
+                      <IconTile name={item.icon} tone={item.tone} size={14} />
+                      <span className={styles.navText}>{item.label}</span>
+                      {item.children && (
+                        <span className={styles.navChevron}>
+                          <Icon name="chevronRight" size={14} />
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             ))}
 
@@ -242,6 +251,28 @@ export default function CrmDemo({ initialSection = "dashboard", getOrigin, onClo
               </a>
             </div>
           </nav>
+
+          {openParent?.children && (
+            // Keyed so it slides in each time it opens.
+            <nav key={openParent.id} className={styles.subnav} aria-label={`${openParent.label} pages`}>
+              <div className={styles.subnavHead}>
+                <IconTile name={openParent.icon} tone={openParent.tone} size={15} />
+                <span className={styles.subnavTitle}>{openParent.label}</span>
+              </div>
+              {openParent.children.map((child) => (
+                <button
+                  key={child.id}
+                  type="button"
+                  className={styles.subnavItem}
+                  aria-current={section === child.id ? "page" : undefined}
+                  onClick={() => setSection(child.id)}
+                >
+                  <IconTile name={child.icon} tone={child.tone} size={13} />
+                  <span className={styles.navText}>{child.label}</span>
+                </button>
+              ))}
+            </nav>
+          )}
 
           <main className={styles.main}>
             <p className={styles.notice}>

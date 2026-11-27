@@ -1,6 +1,6 @@
 // Renting vs owning: the same figures as the "Get a CRM" cost comparison in
 // the client portal (gocwgl-admin src/data/portal.ts: CRM_RENTED_OPTIONS,
-// CRM_COMPARISON, CRM_PACKAGES.custom, CRM_CARE_PLAN). Update both together.
+// CRM_COMPARISON, CRM_PACKAGES, CRM_CARE_PLAN). Update both together.
 
 export interface CrmLogo {
   viewBox: string;
@@ -94,7 +94,13 @@ export const COMPARISON = {
   periods: [5, 7, 10] as const,
 };
 
-/** The Custom CRM build, and the Care plan after its free first year. */
-export const BUILD_CENTS = 1_500_000;
+/** The two Custom CRM packages, by one-time build price. */
+export type CrmPackageKey = "flagship" | "premium";
+export const PACKAGE_BUILDS: Array<{ key: CrmPackageKey; name: string; buildCents: number }> = [
+  { key: "flagship", name: "Flagship", buildCents: 850_000 },
+  { key: "premium", name: "Premium", buildCents: 1_500_000 },
+];
+
+/** The Care plan after its free first year (the same for both packages). */
 export const CARE_CENTS = 80_000;
 export const CARE_FREE_YEARS = 1;

@@ -8,7 +8,7 @@ const BLANK = { name: "", trigger: "lead" as AutomationTrigger, delayHours: 0, s
 
 const DELAYS = [0, 1, 24, 48, 72, 168];
 
-export function Automations({ store }: { store: DemoStore }) {
+export function Automations({ store, title = "Email automations" }: { store: DemoStore; title?: string }) {
   const { automations, activity } = store.state;
   const [adding, setAdding] = useState(false);
   const [draft, setDraft] = useState(BLANK);
@@ -28,7 +28,7 @@ export function Automations({ store }: { store: DemoStore }) {
   return (
     <div className={styles.stack}>
       <SectionHead
-        title="Email automations"
+        title={title}
         subtitle="Emails that send themselves. Add a lead, book a call or mark an invoice paid and watch them fire."
         actions={
           <button type="button" className={styles.btnPrimary} onClick={() => setAdding((v) => !v)}>

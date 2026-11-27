@@ -209,6 +209,13 @@ $glass-line: rgba(255, 255, 255, 0.12);
   pointer-events: none;
 }
 
+// The live CRM demo in the CRM page's hero, in place of a price card.
+.heroDemo {
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+}
+
 .heroInner {
   position: relative;
   @include m.container;
@@ -550,12 +557,158 @@ $glass-line: rgba(255, 255, 255, 0.12);
   }
 }
 
-.pkgName {
-  margin: 16px 0 24px;
-  font-size: 22px;
-  line-height: 1.3;
+// Flagship then Premium, one full package card each.
+.pkgStack {
+  display: grid;
+  gap: 24px;
+
+  > * {
+    scroll-margin-top: 96px;
+  }
+}
+
+.pkgFeatured {
+  border-color: rgba(247, 168, 27, 0.45);
+  box-shadow:
+    0 50px 100px -50px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(247, 168, 27, 0.15);
+}
+
+.pkgTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pkgBadge {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: v.$radius-pill;
+  font-family: v.$font-mono;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: v.$color-amber;
+  background: rgba(247, 168, 27, 0.12);
+  border: 1px solid rgba(247, 168, 27, 0.4);
+}
+
+.pkgTitle {
+  margin: 16px 0 8px;
+  font-size: 30px;
+  line-height: 1.15;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+}
+
+.pkgFor {
+  margin: 0 0 24px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: v.$color-text-on-dark-body;
+}
+
+.pkgNote {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: v.$color-text-on-dark-muted;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+}
+
+// Flagship vs Premium, row by row.
+.compare {
+  margin-top: 24px;
+  padding: 28px 28px 24px;
+  border-radius: 26px;
+  background: $glass;
+  border: 1px solid $glass-line;
+
+  @media (max-width: 480px) {
+    padding: 24px 16px 20px;
+  }
+}
+
+.compareScroll {
+  overflow-x: auto;
+}
+
+.compareTable {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 15px;
+
+  th,
+  td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  thead th {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: v.$color-text-on-dark-subtle;
+  }
+
+  thead th:last-child {
+    color: v.$color-amber;
+  }
+
+  tbody th {
+    font-weight: 600;
+    color: #fff;
+  }
+
+  td {
+    width: 28%;
+    color: v.$color-text-on-dark-body;
+  }
+
+  td[data-level="none"] {
+    color: v.$color-text-on-dark-muted;
+  }
+
+  tbody tr:last-child th,
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  // "Included" as a green pill; other levels stay plain text.
+  .compareYes {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: v.$radius-pill;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.12);
+  }
+
+  // "Your CRM", "Client portal": a heading row at the top of each section.
+  tr.compareGroup th {
+    padding: 22px 14px 10px;
+    font-family: v.$font-mono;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $cyan;
+    border-bottom-color: rgba(103, 232, 249, 0.25);
+  }
+}
+
+.compareNote {
+  margin: 16px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: v.$color-text-on-dark-muted;
 }
 
 .pkgPrice {
