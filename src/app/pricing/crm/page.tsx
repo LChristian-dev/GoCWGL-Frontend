@@ -6,7 +6,7 @@ import { CrmFaq, CrmHero, CrmInvite, CrmPackage, CrmSteps, WhatIsCrm, WhyOwn } f
 export const metadata: Metadata = {
   title: "CRM Pricing",
   description:
-    "Own your CRM instead of renting one. Two packages, Flagship from $8,500 and Premium from $15,000, with unlimited logins and no subscription: pay once, or over 6 or 12 months. Try the live demo, then sign up and request yours.",
+    "Own your CRM instead of renting one. Two packages, Growth from $8,500 and Premium from $15,000, with unlimited logins and no subscription: pay once, or over 6 or 12 months. Try the live demo, then sign up and request yours.",
 };
 
 export default function CrmPricingPage() {

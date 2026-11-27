@@ -35,7 +35,7 @@ export const NAV_SETS: Record<NavSet, NavGroup[]> = {
     { title: "Payments", items: [{ id: "invoices", label: "Invoices", icon: "invoice", tone: "green" }] },
     { title: "Marketing", items: [{ id: "automations", label: "Email automations", icon: "mail", tone: "sky" }] },
   ],
-  // The full menu of the Flagship and Premium CRM, on the CRM pricing page.
+  // The full menu of the Growth and Premium CRM, on the CRM pricing page.
   full: [
     // Each category is one item that opens its pages in a second sidebar,
     // so the main sidebar fits on one screen.

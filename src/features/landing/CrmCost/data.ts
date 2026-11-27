@@ -95,9 +95,9 @@ export const COMPARISON = {
 };
 
 /** The two Custom CRM packages, by one-time build price. */
-export type CrmPackageKey = "flagship" | "premium";
+export type CrmPackageKey = "growth" | "premium";
 export const PACKAGE_BUILDS: Array<{ key: CrmPackageKey; name: string; buildCents: number }> = [
-  { key: "flagship", name: "Flagship", buildCents: 850_000 },
+  { key: "growth", name: "Growth", buildCents: 850_000 },
   { key: "premium", name: "Premium", buildCents: 1_500_000 },
 ];
 

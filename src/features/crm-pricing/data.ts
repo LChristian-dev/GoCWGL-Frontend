@@ -2,7 +2,7 @@
 // "Get a CRM" page (gocwgl-admin src/data/portal.ts: CRM_PACKAGES,
 // CRM_PAYMENT_PLANS, CRM_WHY_OWN, CRM_CARE_PLAN, CRM_PRICE_BREAKDOWN, CRM_STEPS). Update both together.
 // The two packages follow the "GoCWGL Modern CRM Product & Package Blueprint":
-// Flagship (Business Growth CRM) and Premium (Advanced Business CRM).
+// Growth (Business Growth CRM) and Premium (Advanced Business CRM).
 
 import { PACKAGE_BUILDS, type CrmPackageKey } from "@/features/landing/CrmCost/data";
 import type { IconName } from "@/features/pricing-ui/Icon";
@@ -39,15 +39,15 @@ export type CrmPackage = {
 };
 
 // Grouped like the CRM's own menu (crm-demo nav.ts), with each package's
-// capabilities from the blueprint's Part 3 (Flagship) and Part 4 (Premium).
+// capabilities from the blueprint's Part 3 (Growth) and Part 4 (Premium).
 export const PACKAGES: CrmPackage[] = [
   {
-    key: "flagship",
-    name: "Flagship CRM",
+    key: "growth",
+    name: "Growth CRM",
     subtitle: "Business Growth CRM",
     bestFor:
       "Independent business, executive and online coaches, business consultants, and small coaching or consulting firms. A complete, polished CRM for your leads, clients, sales, sessions and daily work.",
-    plans: plans("flagship", 79_700, 152_700),
+    plans: plans("growth", 79_700, 152_700),
     groups: [
       {
         icon: "pipeline",
@@ -117,7 +117,7 @@ export const PACKAGES: CrmPackage[] = [
     groups: [
       {
         icon: "pipeline",
-        title: "Sales: everything in Flagship, plus",
+        title: "Sales: everything in Growth, plus",
         items: [
           "Custom CRM modules built for your business",
           "Advanced pipeline, lead and deal management",
@@ -126,7 +126,7 @@ export const PACKAGES: CrmPackage[] = [
       },
       {
         icon: "users",
-        title: "Clients: everything in Flagship, plus",
+        title: "Clients: everything in Growth, plus",
         items: [
           "Advanced client lifecycle and custom client records",
           "Custom onboarding workflows",
@@ -146,7 +146,7 @@ export const PACKAGES: CrmPackage[] = [
       },
       {
         icon: "clipboard",
-        title: "Operations: everything in Flagship, plus",
+        title: "Operations: everything in Growth, plus",
         items: ["Advanced forms and page customization", "Complex document workflows", "Advanced team operations"],
       },
       {
@@ -176,9 +176,9 @@ export const PACKAGES: CrmPackage[] = [
   },
 ];
 
-type CompareRow = [capability: string, flagship: string, premium: string];
+type CompareRow = [capability: string, growth: string, premium: string];
 
-/** Flagship vs Premium, row by row, in sections: the CRM itself (from the
+/** Growth vs Premium, row by row, in sections: the CRM itself (from the
  * package blueprint), then the portal your clients log in to. */
 export const COMPARE_SECTIONS: Array<{ title: string; rows: CompareRow[] }> = [
   {

@@ -1,9 +1,6 @@
-import type { CSSProperties } from "react";
-import { Button } from "@/components/ui/Button/Button";
 import { Icon } from "@/features/pricing-ui/Icon";
 import { Ctas, PricingSwitch } from "@/features/pricing-ui/Ctas";
 import {
-  APP_URL,
   CARE_PLAN,
   CARE_PRICE,
   COMPARE_SECTIONS,
@@ -15,16 +12,10 @@ import {
   WHAT_IS_DOES,
   WHY_OWN,
 } from "./data";
-import { PlanPicker } from "./PlanPicker";
+import { PackageTabs } from "./PackageTabs";
 import { CrmPreview } from "@/features/landing/Hero/CrmPreview";
 import styles from "@/features/pricing-ui/PricingPage.module.scss";
 import s from "./CrmPricing.module.scss";
-
-const amberVars = {
-  "--btn-shadow": "0 18px 40px -16px rgba(247,168,27,.95)",
-  "--btn-shadow-hover": "0 26px 50px -16px rgba(247,168,27,1)",
-  "--btn-hover-lift": "translateY(-2px)",
-} as CSSProperties;
 
 const CRM_SIGN_UP = "Sign up free and request your CRM";
 
@@ -180,95 +171,22 @@ export function CrmPackage() {
       <div aria-hidden="true" className={s.pkgGrid} />
       <div className={s.container}>
         <header className={s.centerHead} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={s.eyebrowDark}>Two packages</p>
+          <p className={s.eyebrowDark}>Packages</p>
           <h2 className={s.heading}>Built once. Paid your way. Yours for good.</h2>
           <p className={s.leadDark}>
             Both packages share the same modern design and are built around how your business runs.
-            Flagship gives you a complete CRM; Premium adds advanced automation, custom modules and
+            Growth gives you a complete CRM; Premium adds advanced automation, custom modules and
             a full course platform. Pay once, or spread it over 6 or 12 months.
           </p>
         </header>
 
-        <div className={s.pkgStack}>
-          {PACKAGES.map((pkg) => (
-            <div
-              key={pkg.key}
-              id={`crm-${pkg.key}`}
-              className={[s.pkg, pkg.featured ? s.pkgFeatured : ""].join(" ")}
-              data-reveal=""
-              style={{ animationName: "riseIn" }}
-            >
-              <div className={s.pkgBuy}>
-                <div className={s.pkgTags}>
-                  <span className={s.tag}>{pkg.subtitle}</span>
-                  {pkg.featured && <span className={s.tagAmber}>Most advanced</span>}
-                </div>
-                <h3 className={s.pkgTitle}>{pkg.name}</h3>
-                <p className={s.pkgFor}>{pkg.bestFor}</p>
-                <PlanPicker plans={pkg.plans} name={pkg.key} />
-                <ul className={s.pkgFacts}>
-                  <li>
-                    <Icon name="check" size={15} /> No subscription or per-login fees
-                  </li>
-                  <li>
-                    <Icon name="check" size={15} /> Unlimited team logins
-                  </li>
-                  <li>
-                    <Icon name="check" size={15} /> About 12–15 weeks to launch
-                  </li>
-                  <li>
-                    <Icon name="check" size={15} /> First year of care free
-                  </li>
-                </ul>
-                <Button href={APP_URL} variant="amber" className={s.pkgCta} sheen sheenDuration="4.6s" style={amberVars}>
-                  Request {pkg.name}
-                  <Icon name="arrow" size={18} />
-                </Button>
-                <p className={s.pkgFine}>
-                  Questions first?{" "}
-                  <a href="/book" className={s.inlineLink}>
-                    Book a free discovery call
-                  </a>
-                  . Nothing is billed until you approve the quote.
-                </p>
-              </div>
-
-              <div className={s.pkgBody}>
-                <p className={s.miniLabel}>What&apos;s included</p>
-                <div className={s.groups}>
-                  {pkg.groups.map((g) => (
-                    <div key={g.title} className={s.group}>
-                      <div className={s.groupHead}>
-                        <span className={s.groupIcon}>
-                          <Icon name={g.icon} size={16} />
-                        </span>
-                        <span className={s.groupTitle}>{g.title}</span>
-                      </div>
-                      <ul className={s.checkList}>
-                        {g.items.map((item) => (
-                          <li key={item}>
-                            <Icon name="check" size={14} className={s.checkIcon} />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-                <p className={s.pkgNote}>
-                  <Icon name="clipboard" size={16} />
-                  <span>{pkg.note}</span>
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <PackageTabs />
 
         <div className={s.compare} data-reveal="" style={{ animationName: "riseIn" }}>
           <div className={s.compareHead}>
             <div>
               <p className={s.miniLabel}>Side by side</p>
-              <h3 className={s.compareTitle}>Flagship vs Premium</h3>
+              <h3 className={s.compareTitle}>Growth vs Premium</h3>
             </div>
           </div>
           <div className={s.compareScroll}>

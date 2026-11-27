@@ -557,7 +557,7 @@ $glass-line: rgba(255, 255, 255, 0.12);
   }
 }
 
-// Flagship then Premium, one full package card each.
+// Growth then Premium, one full package card each.
 .pkgStack {
   display: grid;
   gap: 24px;
@@ -619,7 +619,7 @@ $glass-line: rgba(255, 255, 255, 0.12);
   border: 1px dashed rgba(255, 255, 255, 0.16);
 }
 
-// Flagship vs Premium, row by row.
+// Growth vs Premium, row by row.
 .compare {
   margin-top: 24px;
   padding: 28px 28px 24px;

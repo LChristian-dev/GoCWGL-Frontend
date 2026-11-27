@@ -38,14 +38,14 @@ const ctaVars = {
 /**
  * Renting vs owning: what HubSpot, GoHighLevel and Zoho cost over the years
  * for the visitor's team size, next to the one-time build of the chosen Custom
- * CRM package (Flagship or Premium). The same
+ * CRM package (Growth or Premium). The same
  * comparison clients see under "Get a CRM" in the client portal.
  */
 export function CrmCost() {
   const { defaultSeats, maxSeats, periods } = COMPARISON;
   const [seats, setSeats] = useState(defaultSeats);
   const [years, setYears] = useState<(typeof periods)[number]>(periods[0]);
-  const [pkgKey, setPkgKey] = useState<CrmPackageKey>("flagship");
+  const [pkgKey, setPkgKey] = useState<CrmPackageKey>("growth");
   const pkg = PACKAGE_BUILDS.find((p) => p.key === pkgKey) ?? PACKAGE_BUILDS[0];
 
   const ownCents = ownAfter(pkg.buildCents, years * 12);
