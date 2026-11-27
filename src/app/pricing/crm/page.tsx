@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
-import { Faq } from "@/features/landing";
-import { CrmHero, CrmInvite, CrmPackage, CrmSteps, WhatIsCrm, WhyOwn } from "@/features/crm-pricing";
+import { CrmFaq, CrmHero, CrmInvite, CrmPackage, CrmSteps, WhatIsCrm, WhyOwn } from "@/features/crm-pricing";
 
 export const metadata: Metadata = {
   title: "CRM Pricing",
@@ -20,7 +19,7 @@ export default function CrmPricingPage() {
         <WhyOwn />
         <CrmPackage />
         <CrmSteps />
-        <Faq only="crm" />
+        <CrmFaq />
         <CrmInvite />
       </main>
       <Footer />

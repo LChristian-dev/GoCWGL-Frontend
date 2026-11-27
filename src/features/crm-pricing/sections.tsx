@@ -18,6 +18,7 @@ import {
 import { PlanPicker } from "./PlanPicker";
 import { CrmPreview } from "@/features/landing/Hero/CrmPreview";
 import styles from "@/features/pricing-ui/PricingPage.module.scss";
+import s from "./CrmPricing.module.scss";
 
 const amberVars = {
   "--btn-shadow": "0 18px 40px -16px rgba(247,168,27,.95)",
@@ -73,12 +74,14 @@ export function CrmHero() {
 
 export function WhatIsCrm() {
   return (
-    <section id="what-is-a-crm" className={styles.whatIs}>
-      <div className={styles.container}>
-        <header className={styles.head} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrow}>New to CRMs? Start here</p>
-          <h2 className={styles.heading}>What is a custom CRM?</h2>
-          <p className={styles.whatIsLead}>
+    <section id="what-is-a-crm" className={s.whatIs}>
+      <div className={s.container}>
+        <header className={s.splitHead} data-reveal="" style={{ animationName: "rise" }}>
+          <div>
+            <p className={s.eyebrow}>New to CRMs? Start here</p>
+            <h2 className={s.heading}>What is a custom CRM?</h2>
+          </div>
+          <p className={s.lead}>
             CRM stands for <strong>Customer Relationship Manager</strong>. Think of it as a smart
             address book and to-do list for your business, kept safe on the computer instead of in a
             drawer. It holds everyone you do business with, and it helps you remember what to do
@@ -86,34 +89,48 @@ export function WhatIsCrm() {
           </p>
         </header>
 
-        <div className={styles.whatIsGrid}>
-          {WHAT_IS_DOES.map((d) => (
-            <article key={d.title} className={styles.whatIsCard} data-reveal="" style={{ animationName: "riseIn" }}>
-              <span className={styles.iconTile}>
-                <Icon name={d.icon} size={22} />
-              </span>
-              <h3 className={styles.whatIsTitle}>{d.title}</h3>
-              <p className={styles.whatIsBody}>{d.body}</p>
+        <div className={s.features} data-reveal="" style={{ animationName: "riseIn" }}>
+          {WHAT_IS_DOES.map((d, i) => (
+            <article key={d.title} className={s.feature}>
+              <div className={s.featureTop}>
+                <span className={s.iconBox}>
+                  <Icon name={d.icon} size={21} />
+                </span>
+                <span aria-hidden="true" className={s.featureNum}>
+                  0{i + 1}
+                </span>
+              </div>
+              <h3 className={s.featureTitle}>{d.title}</h3>
+              <p className={s.featureBody}>{d.body}</p>
             </article>
           ))}
         </div>
 
-        <div className={styles.whatIsCompare} data-reveal="" style={{ animationName: "riseIn" }}>
-          <div className={styles.whatIsSide}>
-            <h3 className={styles.whatIsTitle}>{WHAT_IS_COMPARE.rented.title}</h3>
-            <p className={styles.whatIsBody}>{WHAT_IS_COMPARE.rented.body}</p>
+        <div className={s.versus} data-reveal="" style={{ animationName: "riseIn" }}>
+          <div className={s.versusSide}>
+            <p className={s.versusTag}>Rented</p>
+            <h3 className={s.versusTitle}>{WHAT_IS_COMPARE.rented.title}</h3>
+            <p className={s.versusBody}>{WHAT_IS_COMPARE.rented.body}</p>
           </div>
-          <div className={[styles.whatIsSide, styles.whatIsSideCustom].join(" ")}>
-            <h3 className={styles.whatIsTitle}>
-              <Icon name="check" size={20} className={styles.checkIcon} /> {WHAT_IS_COMPARE.custom.title}
-            </h3>
-            <p className={styles.whatIsBody}>{WHAT_IS_COMPARE.custom.body}</p>
+          <span aria-hidden="true" className={s.versusBadge}>
+            vs
+          </span>
+          <div className={[s.versusSide, s.versusCustom].join(" ")}>
+            <p className={s.versusTag}>
+              <Icon name="check" size={13} /> Custom
+            </p>
+            <h3 className={s.versusTitle}>{WHAT_IS_COMPARE.custom.title}</h3>
+            <p className={s.versusBody}>{WHAT_IS_COMPARE.custom.body}</p>
           </div>
         </div>
 
-        <p className={styles.whatIsNote}>
-          <strong>In short:</strong> we build it for you, we teach you and your team how to use it,
-          and we look after it once it&apos;s running. You don&apos;t need to be good with computers.
+        <p className={s.callout}>
+          <Icon name="sparkle" size={18} />
+          <span>
+            <strong>In short:</strong> we build it for you, we teach you and your team how to use
+            it, and we look after it once it&apos;s running. You don&apos;t need to be good with
+            computers.
+          </span>
         </p>
       </div>
     </section>
@@ -124,22 +141,31 @@ export function WhatIsCrm() {
 
 export function WhyOwn() {
   return (
-    <section className={styles.why}>
-      <div className={styles.container}>
-        <header className={styles.head} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrow}>Why own your CRM</p>
-          <h2 className={styles.heading}>Run your sales the way bigger companies do.</h2>
-        </header>
-        <div className={styles.whyGrid}>
-          {WHY_OWN.map((r) => (
-            <article key={r.title} className={styles.whyCard} data-reveal="" style={{ animationName: "riseIn" }}>
-              <span className={styles.iconTile}>
-                <Icon name={r.icon} size={20} />
-              </span>
-              <h3 className={styles.cardTitle}>{r.title}</h3>
-              <p className={styles.cardBody}>{r.body}</p>
-            </article>
-          ))}
+    <section className={s.why}>
+      <div className={s.container}>
+        <div className={s.whyLayout}>
+          <header className={s.whyIntro} data-reveal="" style={{ animationName: "rise" }}>
+            <p className={s.eyebrow}>Why own your CRM</p>
+            <h2 className={s.heading}>Run your sales the way bigger companies do.</h2>
+            <p className={s.lead}>
+              One system, built around your business, with no monthly bill that grows every time
+              you hire.
+            </p>
+            <a href="#crm-pricing" className={s.textLink}>
+              See the packages <Icon name="arrow" size={16} />
+            </a>
+          </header>
+          <div className={s.whyGrid}>
+            {WHY_OWN.map((r) => (
+              <article key={r.title} className={s.whyCard} data-reveal="" style={{ animationName: "riseIn" }}>
+                <span className={s.iconBox}>
+                  <Icon name={r.icon} size={20} />
+                </span>
+                <h3 className={s.cardTitle}>{r.title}</h3>
+                <p className={s.cardBody}>{r.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -150,37 +176,37 @@ export function WhyOwn() {
 
 export function CrmPackage() {
   return (
-    <section id="crm-pricing" className={styles.pkgSection}>
-      <div aria-hidden="true" data-motion="" className={styles.pkgGlow} />
-      <div className={styles.container}>
-        <header className={styles.head} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrowDark}>Two packages</p>
-          <h2 className={styles.heading}>Built once. Paid your way. Yours for good.</h2>
-          <p className={styles.headLead}>
+    <section id="crm-pricing" className={s.pkgSection}>
+      <div aria-hidden="true" className={s.pkgGrid} />
+      <div className={s.container}>
+        <header className={s.centerHead} data-reveal="" style={{ animationName: "rise" }}>
+          <p className={s.eyebrowDark}>Two packages</p>
+          <h2 className={s.heading}>Built once. Paid your way. Yours for good.</h2>
+          <p className={s.leadDark}>
             Both packages share the same modern design and are built around how your business runs.
             Flagship gives you a complete CRM; Premium adds advanced automation, custom modules and
             a full course platform. Pay once, or spread it over 6 or 12 months.
           </p>
         </header>
 
-        <div className={styles.pkgStack}>
+        <div className={s.pkgStack}>
           {PACKAGES.map((pkg) => (
             <div
               key={pkg.key}
               id={`crm-${pkg.key}`}
-              className={[styles.pkg, pkg.featured ? styles.pkgFeatured : ""].join(" ")}
+              className={[s.pkg, pkg.featured ? s.pkgFeatured : ""].join(" ")}
               data-reveal=""
               style={{ animationName: "riseIn" }}
             >
-              <div className={styles.pkgBuy}>
-                <div className={styles.pkgTags}>
-                  <span className={styles.offerTag}>{pkg.subtitle}</span>
-                  {pkg.featured && <span className={styles.pkgBadge}>Most advanced</span>}
+              <div className={s.pkgBuy}>
+                <div className={s.pkgTags}>
+                  <span className={s.tag}>{pkg.subtitle}</span>
+                  {pkg.featured && <span className={s.tagAmber}>Most advanced</span>}
                 </div>
-                <h3 className={styles.pkgTitle}>{pkg.name}</h3>
-                <p className={styles.pkgFor}>{pkg.bestFor}</p>
+                <h3 className={s.pkgTitle}>{pkg.name}</h3>
+                <p className={s.pkgFor}>{pkg.bestFor}</p>
                 <PlanPicker plans={pkg.plans} name={pkg.key} />
-                <ul className={styles.pkgFacts}>
+                <ul className={s.pkgFacts}>
                   <li>
                     <Icon name="check" size={15} /> No subscription or per-login fees
                   </li>
@@ -194,34 +220,34 @@ export function CrmPackage() {
                     <Icon name="check" size={15} /> First year of care free
                   </li>
                 </ul>
-                <Button href={APP_URL} variant="amber" className={styles.pkgCta} sheen sheenDuration="4.6s" style={amberVars}>
+                <Button href={APP_URL} variant="amber" className={s.pkgCta} sheen sheenDuration="4.6s" style={amberVars}>
                   Request {pkg.name}
                   <Icon name="arrow" size={18} />
                 </Button>
-                <p className={styles.pkgFine}>
+                <p className={s.pkgFine}>
                   Questions first?{" "}
-                  <a href="/book" className={styles.inlineLink}>
+                  <a href="/book" className={s.inlineLink}>
                     Book a free discovery call
                   </a>
                   . Nothing is billed until you approve the quote.
                 </p>
               </div>
-    
-              <div className={styles.pkgBody}>
-                <p className={styles.miniLabel}>What&apos;s included</p>
-                <div className={styles.groups}>
+
+              <div className={s.pkgBody}>
+                <p className={s.miniLabel}>What&apos;s included</p>
+                <div className={s.groups}>
                   {pkg.groups.map((g) => (
-                    <div key={g.title} className={styles.group}>
-                      <div className={styles.groupHead}>
-                        <span className={styles.iconTileDark}>
-                          <Icon name={g.icon} size={17} />
+                    <div key={g.title} className={s.group}>
+                      <div className={s.groupHead}>
+                        <span className={s.groupIcon}>
+                          <Icon name={g.icon} size={16} />
                         </span>
-                        <span className={styles.groupTitle}>{g.title}</span>
+                        <span className={s.groupTitle}>{g.title}</span>
                       </div>
-                      <ul className={styles.checkList}>
+                      <ul className={s.checkList}>
                         {g.items.map((item) => (
                           <li key={item}>
-                            <Icon name="check" size={14} className={styles.checkIcon} />
+                            <Icon name="check" size={14} className={s.checkIcon} />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -229,16 +255,24 @@ export function CrmPackage() {
                     </div>
                   ))}
                 </div>
-                <p className={styles.pkgNote}>{pkg.note}</p>
+                <p className={s.pkgNote}>
+                  <Icon name="clipboard" size={16} />
+                  <span>{pkg.note}</span>
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className={styles.compare} data-reveal="" style={{ animationName: "riseIn" }}>
-          <p className={styles.miniLabel}>Flagship vs Premium</p>
-          <div className={styles.compareScroll}>
-            <table className={styles.compareTable}>
+        <div className={s.compare} data-reveal="" style={{ animationName: "riseIn" }}>
+          <div className={s.compareHead}>
+            <div>
+              <p className={s.miniLabel}>Side by side</p>
+              <h3 className={s.compareTitle}>Flagship vs Premium</h3>
+            </div>
+          </div>
+          <div className={s.compareScroll}>
+            <table className={s.compareTable}>
               <thead>
                 <tr>
                   <th scope="col">Capability</th>
@@ -251,7 +285,7 @@ export function CrmPackage() {
               </thead>
               {COMPARE_SECTIONS.map((section) => (
                 <tbody key={section.title}>
-                  <tr className={styles.compareGroup}>
+                  <tr className={s.compareGroup}>
                     <th scope="rowgroup" colSpan={PACKAGES.length + 1}>
                       {section.title}
                     </th>
@@ -265,7 +299,13 @@ export function CrmPackage() {
                           data-level={level.startsWith("Not") || level === "—" ? "none" : undefined}
                           aria-label={level === "—" ? "Not included" : undefined}
                         >
-                          {level === "Included" ? <span className={styles.compareYes}>Included</span> : level}
+                          {level === "Included" ? (
+                            <span className={s.compareYes}>
+                              <Icon name="check" size={15} /> Included
+                            </span>
+                          ) : (
+                            level
+                          )}
                         </td>
                       ))}
                     </tr>
@@ -274,50 +314,50 @@ export function CrmPackage() {
               ))}
             </table>
           </div>
-          <p className={styles.compareNote}>
+          <p className={s.compareNote}>
             Both packages share the same design, menu and app; Premium unlocks more on each page.
             Third-party costs, such as email, SMS, payment or video hosting services, are estimated
             in your blueprint.
           </p>
         </div>
 
-        <div className={styles.extras}>
-          <div className={styles.extra} data-reveal="" style={{ animationName: "riseIn" }}>
-            <p className={styles.miniLabel}>What the price covers</p>
-            <ol className={styles.covers}>
+        <div className={s.extras}>
+          <div className={s.extra} data-reveal="" style={{ animationName: "riseIn" }}>
+            <p className={s.miniLabel}>What the price covers</p>
+            <ol className={s.covers}>
               {PRICE_COVERS.map((item, i) => (
                 <li key={item}>
-                  <span className={styles.coverNum}>{i + 1}</span>
+                  <span className={s.coverNum}>{i + 1}</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ol>
           </div>
-          <div className={[styles.extra, styles.extraCare].join(" ")} data-reveal="" style={{ animationName: "riseIn" }}>
-            <div className={styles.careHead}>
-              <p className={styles.miniLabel}>After launch: Care plan</p>
-              <span className={styles.careFree}>First year free</span>
+          <div className={[s.extra, s.extraCare].join(" ")} data-reveal="" style={{ animationName: "riseIn" }}>
+            <div className={s.extraHead}>
+              <p className={s.miniLabel}>After launch: Care plan</p>
+              <span className={s.careFree}>First year free</span>
             </div>
-            <p className={styles.carePrice}>
+            <p className={s.extraPrice}>
               {CARE_PRICE}
               <small>/year after that</small>
             </p>
-            <ul className={styles.checkList}>
+            <ul className={s.checkList}>
               {CARE_PLAN.map((item) => (
                 <li key={item}>
-                  <Icon name="check" size={14} className={styles.checkIcon} />
+                  <Icon name="check" size={14} className={s.checkIcon} />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className={styles.extra} data-reveal="" style={{ animationName: "riseIn" }}>
-            <p className={styles.miniLabel}>Growing later</p>
-            <p className={styles.carePrice}>
+          <div className={s.extra} data-reveal="" style={{ animationName: "riseIn" }}>
+            <p className={s.miniLabel}>Growing later</p>
+            <p className={s.extraPrice}>
               {FEATURE_FROM}
               <small> per new feature, from</small>
             </p>
-            <p className={styles.extraText}>
+            <p className={s.extraText}>
               Once your CRM is launched and you and GoCWGL both mark it complete, a new menu, record
               type, integration or report starts at {FEATURE_FROM}, depending on how complex it is.
               We quote it before any work starts.
@@ -333,25 +373,31 @@ export function CrmPackage() {
 
 export function CrmSteps() {
   return (
-    <section className={styles.steps}>
-      <div className={styles.container}>
-        <header className={styles.head} data-reveal="" style={{ animationName: "rise" }}>
-          <p className={styles.eyebrow}>How it works</p>
-          <h2 className={styles.heading}>From sign-up to launch, in five steps.</h2>
-          <p className={styles.headLeadLight}>
+    <section className={s.steps}>
+      <div className={s.container}>
+        <header className={s.splitHead} data-reveal="" style={{ animationName: "rise" }}>
+          <div>
+            <p className={s.eyebrow}>How it works</p>
+            <h2 className={s.heading}>From sign-up to launch, in five steps.</h2>
+          </div>
+          <p className={s.lead}>
             The first step takes a minute. We handle the rest with you, one step at a time.
           </p>
         </header>
-        <ol className={styles.stepList}>
-          {STEPS.map((s, i) => (
-            <li key={s.title} className={styles.step} data-reveal="" style={{ animationName: "riseIn" }}>
-              <span className={i === 0 ? styles.stepNumFirst : styles.stepNum}>{i + 1}</span>
-              <h3 className={styles.cardTitle}>{s.title}</h3>
-              <p className={styles.cardBody}>{s.body}</p>
+        <ol className={s.stepList}>
+          {STEPS.map((step, i) => (
+            <li key={step.title} className={s.step} data-reveal="" style={{ animationName: "riseIn" }}>
+              <span className={i === 0 ? s.stepNumFirst : s.stepNum}>{i + 1}</span>
+              <h3 className={s.stepTitle}>{step.title}</h3>
+              <p className={s.stepBody}>{step.body}</p>
             </li>
           ))}
         </ol>
-        <div className={styles.stepsCta} data-reveal="" style={{ animationName: "rise" }}>
+        <div className={s.stepsCta} data-reveal="" style={{ animationName: "rise" }}>
+          <p>
+            Ready when you are.
+            <span>Free account and free discovery call. Nothing is billed until you approve the quote.</span>
+          </p>
           <Ctas dark={false} label="Start with step 1: sign up free" />
         </div>
       </div>
@@ -363,25 +409,29 @@ export function CrmSteps() {
 
 export function CrmInvite() {
   return (
-    <section className={styles.invite}>
-      <div aria-hidden="true" data-motion="" className={styles.heroGlowA} />
-      <div aria-hidden="true" className={styles.heroGrid} />
-      <div className={styles.inviteInner} data-reveal="" style={{ animationName: "riseIn" }}>
-        <p className={styles.pill}>
-          <Icon name="sparkle" size={14} /> Your CRM is one sign-up away
-        </p>
-        <h2 className={styles.inviteTitle}>Own the system your business runs on.</h2>
-        <p className={styles.inviteLead}>
-          Create your free client account and request your CRM today. We&apos;ll book your discovery
-          call, plan every screen with you, and you approve the quote before anything is billed.
-        </p>
-        <Ctas label={CRM_SIGN_UP} />
-        <p className={styles.inviteFine}>
-          Prefer email?{" "}
-          <a href="mailto:info@GoCWGL.com" className={styles.inlineLink}>
-            info@GoCWGL.com
-          </a>
-        </p>
+    <section className={s.invite}>
+      <div className={s.inviteWrap}>
+        <div className={s.inviteCard} data-reveal="" style={{ animationName: "riseIn" }}>
+          <div aria-hidden="true" className={s.inviteGrid} />
+          <div className={s.inviteInner}>
+            <p className={s.eyebrowDark}>Your CRM is one sign-up away</p>
+            <h2 className={s.inviteTitle}>Own the system your business runs on.</h2>
+            <p className={s.inviteLead}>
+              Create your free client account and request your CRM today. We&apos;ll book your
+              discovery call, plan every screen with you, and you approve the quote before anything
+              is billed.
+            </p>
+            <div className={s.inviteCtas}>
+              <Ctas label={CRM_SIGN_UP} />
+            </div>
+            <p className={s.inviteFine}>
+              Prefer email?{" "}
+              <a href="mailto:info@GoCWGL.com" className={s.inlineLink}>
+                info@GoCWGL.com
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

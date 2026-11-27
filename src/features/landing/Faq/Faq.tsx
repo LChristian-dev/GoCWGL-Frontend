@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import styles from "./Faq.module.scss";
 
-type FaqItem = [question: string, answer: string];
+export type FaqItem = [question: string, answer: string];
 
 // Mirrors the client app's VA agreement (gocwgl-admin
 // src/features/portal/components/VaRequestModal.tsx and lib/vaAgreement.ts).
@@ -34,7 +34,7 @@ const VA_ITEMS: FaqItem[] = [
   ],
 ];
 
-const CRM_ITEMS: FaqItem[] = [
+export const CRM_ITEMS: FaqItem[] = [
   [
     "Who is the CRM for?",
     "Coaches, consultants, and coaching and consulting firms. Flagship suits independent business, executive and online coaches, business consultants, and small coaching or consulting firms. Premium suits established coaching companies, growing consulting firms, multi-coach organizations, businesses with several teams, and coaches or consultants selling online courses or memberships.",

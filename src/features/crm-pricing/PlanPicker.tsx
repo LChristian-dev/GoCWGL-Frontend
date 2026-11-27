@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { planTotalCents, usd, type PaymentPlan, type PaymentPlanKey } from "./data";
-import styles from "@/features/pricing-ui/PricingPage.module.scss";
+import styles from "./CrmPricing.module.scss";
 
 /** A package's price, and the ways to pay it: once, or a set monthly payment. */
 export function PlanPicker({ plans, name }: { plans: PaymentPlan[]; name: string }) {
@@ -13,12 +13,12 @@ export function PlanPicker({ plans, name }: { plans: PaymentPlan[]; name: string
   return (
     <div className={styles.picker}>
       <div aria-live="polite" aria-atomic="true">
-        <p className={styles.offerLabel}>{monthly ? "Custom package option" : "One-time payment"}</p>
-        <p className={styles.pkgPrice}>
+        <p className={styles.priceLabel}>{monthly ? "Custom package option" : "One-time payment"}</p>
+        <p className={styles.price}>
           {usd(plan.paymentCents)}
           {monthly && <small>/month</small>}
         </p>
-        <p className={styles.pkgPriceNote}>
+        <p className={styles.priceNote}>
           {monthly
             ? `${plan.payments} monthly payments, ${usd(planTotalCents(plan))} in total`
             : "One payment for the whole build"}
